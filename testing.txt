@@ -9,3 +9,17 @@ Creating users:
   Sign Out:
 
   $.ajax({url: "/api/session", method: "DELETE"})
+
+
+StateShape for Session:
+
+
+session: {
+  currentUser: {
+
+  },
+  
+  errors: {
+    session: ["Errors reducer"]
+  }
+}
