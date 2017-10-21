@@ -10,9 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // TESTING START
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.signupAction = signupAction;
-  window.logoutAction = logoutAction;
-  window.loginAction = loginAction;
+  // window.signupAction = signupAction;
+  // window.logoutAction = logoutAction;
+  // window.loginAction = loginAction;
   // TESTING END
 //
   const root = document.getElementById('root');
