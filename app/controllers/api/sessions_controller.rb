@@ -3,7 +3,7 @@ class Api::SessionsController < ApplicationController
     #NB: find_by_credentials checks username and password match.
     userObject = params[:user]
     @user = User.find_by_credentials(
-      userObject[:username],
+      userObject[:email],
       userObject[:password])
 
     if @user

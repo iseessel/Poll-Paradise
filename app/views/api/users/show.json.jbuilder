@@ -1,1 +1,1 @@
-json.partial! 'api/user/users', comments: @message.comments
+json.partial! 'api/users/user', user: @user
