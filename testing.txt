@@ -1,6 +1,6 @@
 Creating users:
 
-  $.ajax({url: "/api/users", method: "POST", data: { user: {email: "iseessel@hotmail.com", password: "81third", fname: "isaac", lname: "seessel"}}})
+  $.ajax({url: "/api/users", method: "POST", data: { user: {email: "iseessel@msn.com", password: "81third", fname: "isaac", lname: "seessel"}}})
 
   Logging in:
 
@@ -18,7 +18,7 @@ session: {
   currentUser: {
 
   },
-  
+
   errors: {
     session: ["Errors reducer"]
   }

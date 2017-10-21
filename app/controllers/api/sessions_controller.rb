@@ -15,8 +15,12 @@ class Api::SessionsController < ApplicationController
   end
 
   def destroy
-    logout!
-    render json: {}
+    if current_user
+      logout!
+      render json: {}
+    else
+      render json: ["Nobody is Logged In!"], status: 422
+    end
   end
 
 end

@@ -3,10 +3,10 @@ export const signup = (user) => {
 };
 
 export const login = (user) => {
-  return $.ajax( {url: "/api/sessions", method: "POST", data: user} )
+  return $.ajax( {url: "/api/session", method: "POST", data: user} )
 
 };
 
 export const logout = () => {
-  return $.ajax( {url: "/api/sessions", method: "DELETE"} )
+  return $.ajax( {url: "/api/session", method: "DELETE"} )
 };
