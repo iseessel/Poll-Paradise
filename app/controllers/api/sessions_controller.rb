@@ -1,0 +1,22 @@
+class Api::SessionsController < ApplicationController
+  def create
+    #NB: find_by_credentials checks username and password match.
+    userObject = params[:user]
+    @user = User.find_by_credentials(
+      userObject[:username],
+      userObject[:password])
+
+    if @user
+      login!(@user)
+      render "api/users/show"
+    else
+      render json: ["Invalid Username/Password"], status: 422
+    end
+  end
+
+  def destroy
+    logout!
+    render json: {}
+  end
+
+end

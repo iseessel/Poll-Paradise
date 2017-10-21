@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :ensure_logged_in
 
   def login!(user)
-    #reset_session_token returns session token.
+    #NB: reset_session_token returns session token.
     session[:session_token] = user.reset_session_token
     @current_user = user
   end
