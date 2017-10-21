@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import logoutAction from '../../actions/session_actions';
+import { Link } from 'react-router-dom'
 
 const LeftSidebar = () => {
   return (
@@ -9,15 +10,16 @@ const LeftSidebar = () => {
     </div>
   )
 }
-
+//Also could pass down props if I want to make it a bit more dry? However I prefer this explicitness.
 const Header = ({loggedIn, logout}) => {
+  
   if(loggedIn){
     return(
       <header>
         <LeftSidebar />
         <div className="right-sidebar">
-          <a href=""><p>My Polls</p></a>
-          <a href="" className="signup" onClick={logout}><p>Sign Out</p></a>
+          <Link to="/mypolls" className="mypolls" ><p>My Polls</p></Link>
+          <a href="/" onClick={logout}><p>Sign Out</p></a>
         </div>
     </header>
   );
@@ -27,8 +29,8 @@ const Header = ({loggedIn, logout}) => {
     <header>
       <LeftSidebar />
         <div className="right-sidebar">
-          <a href=""><p>Sign In</p></a>
-          <a href="" className="signup"><p>Sign Up</p></a>
+          <Link to="/login"><p>Log In</p></Link>
+          <Link className="signup" to="/signup"><p>Sign Up</p></Link>
         </div>
     </header>
     )

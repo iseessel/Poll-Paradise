@@ -20,8 +20,8 @@ export const receiveSessionErrors = (errors) => {
 
 export const signupAction = (user) => (dispatch) => {
   return SessionUtil.signup(user)
-    .then((response) => dispatch(receiveCurrentUser(user)),
-      (err) => dispatch(receiveSessionErrors(err.responseJSON)))
+    .then((response) => dispatch(receiveCurrentUser(response)),
+      (err) => dispatch(receiveSessionErrors(err.responseJSON)));
 };
 
 //logout has no argument b/c we have access to current user
@@ -29,12 +29,12 @@ export const logoutAction = () => (dispatch) => {
   return SessionUtil.logout()
     .then((response) => dispatch(receiveCurrentUser(null)),
       (err) => dispatch(receiveSessionErrors(err.responseJSON))
-    )
+    );
 };
 
 export const loginAction = (user) => (dispatch) => {
   return SessionUtil.login(user)
-    .then((response) => dispatch(receiveCurrentUser(user)),
+    .then((response) => dispatch(receiveCurrentUser(response)),
       (err) => dispatch(receiveSessionErrors(err.responseJSON))
-    )
+    );
 };
