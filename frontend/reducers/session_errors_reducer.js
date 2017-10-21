@@ -7,14 +7,14 @@ const _defaultState = [];
 function SessionErrorsReducer(state = _defaultState, action){
   switch(action.type){
     case RECEIVE_CURRENT_USER:
-      return _defaultState
+      return _defaultState;
 
     case RECEIVE_SESSION_ERRORS:
-      return action.errors
+      return action.errors;
 
     default:
-      return state
-  };
+      return state;
+  }
 }
 
 export default SessionErrorsReducer;
