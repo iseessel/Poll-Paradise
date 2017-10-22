@@ -30,40 +30,4 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-activerecord:
-  attributes:
-    user:
-      email: "E-mail address"
-  errors:
-    models:
-      user:
-        attributes:
-          email:
-            blank: "is required"
-
-en:
   hello: "Hello world"
-
-en:
-activerecord:
-  attributes:
-    user:
-      fname: "First name"
-  errors:
-    models:
-      user:
-        attributes:
-          email:
-            blank: "is required"
-
-en:
-activerecord:
-  attributes:
-    user:
-      lname: "Last name"
-  errors:
-    models:
-      user:
-        attributes:
-          email:
-            blank: "is required"

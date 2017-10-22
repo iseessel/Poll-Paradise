@@ -6,7 +6,18 @@ import Root from './components/root';
 // import Root from './components/root';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const store = configureStore();
+
+  let store;
+
+
+  //boot strap current user by setting him equal to window.currentUser!
+
+  if (window.currentUser) {
+    const preloadedState = { session: { currentUser: window.currentUser } };
+    store = configureStore(preloadedState);
+  } else {
+    store = configureStore();
+  }
 
   // TESTING START
   window.getState = store.getState;
@@ -15,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.logoutAction = logoutAction;
   window.loginAction = loginAction;
   // TESTING END
-//
+
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store}/>, root);
 });

@@ -2,11 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { loginAction } from '../../actions/session_actions.js';
+import SessionErrorsContainer from '../errors/session_errors_container.jsx';
 
 const mapStateToProps = (state, ownProps) => {
   return {
     loggedIn: Boolean(state.session.currentUser),
-    errors: state.session.errors,
+    errors: state.errors.session,
   };
 };
 
@@ -36,6 +37,7 @@ class LoginForm extends React.Component {
     return (
       <div className="session-form">
         <h2>Log in</h2>
+        <SessionErrorsContainer errors={this.props.errors} />
         <form onSubmit={this.handleSubmit.bind(this)}>
           <label className="session-form-element">
             Email

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import logoutAction from '../../actions/session_actions';
+import { logoutAction } from '../../actions/session_actions';
 import { Link } from 'react-router-dom'
 
 const LeftSidebar = () => {
@@ -12,14 +12,13 @@ const LeftSidebar = () => {
 }
 //Also could pass down props if I want to make it a bit more dry? However I prefer this explicitness.
 const Header = ({loggedIn, logout}) => {
-  
   if(loggedIn){
     return(
       <header>
         <LeftSidebar />
         <div className="right-sidebar">
           <Link to="/mypolls" className="mypolls" ><p>My Polls</p></Link>
-          <a href="/" onClick={logout}><p>Sign Out</p></a>
+          <a onClick={logout}><p>Sign Out</p></a>
         </div>
     </header>
   );
@@ -45,4 +44,4 @@ const mapDispatchToProps = dispatch => (
   {logout: () => dispatch(logoutAction())}
 )
 
-export default connect(mapStateToProps, null)(Header)
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

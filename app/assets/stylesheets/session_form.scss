@@ -17,10 +17,6 @@ h2 {
   display: block;
 }
 
-.selected-session-element {
-
-}
-
 input {
   margin-top: 3px;
   display: block;
@@ -53,4 +49,20 @@ button:hover {
 
 .session-redirect-text a {
   text-decoration: underline;
+}
+
+.session-errors{
+  margin-top: 10px;
+}
+
+
+.session-errors li {
+  background-color: #FDD1CE;
+  height: 50px;
+  width: 460px;
+  font-weight: normal;
+  padding-left: 5px;
+  display: flex;
+  // justify-content: center;
+  align-items: center;
 }
