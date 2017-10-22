@@ -1,0 +1,56 @@
+.session-form {
+  height: 500px;
+  width: 500px;
+  margin: 0 auto;
+  margin-top: 60px;
+  color: #4F4F4F;
+  font-weight: bold;
+  font-family: "Source Sans Pro", Helvetica, Verdana, sans-serif;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+.session-form-element {
+  margin-top: 25px;;
+  display: block;
+}
+
+.selected-session-element {
+
+}
+
+input {
+  margin-top: 3px;
+  display: block;
+  border: 1px solid #D8E4F1;
+  width: 437px;
+  height: 41px;
+}
+
+button {
+  margin-top: 25px;;
+  width: 437px;
+  height: 36px;
+  background-color: #F95652;
+  color: white;
+  text-align: center;
+}
+
+button:hover {
+  background-color: #E04E4A;
+}
+
+//can I do better than this? this is a bit hacky.
+.session-redirect-text{
+  margin-top: 35px;
+  width: 437px;
+  height: 36px;
+  display: block;
+  text-align: center;
+}
+
+.session-redirect-text a {
+  text-decoration: underline;
+}

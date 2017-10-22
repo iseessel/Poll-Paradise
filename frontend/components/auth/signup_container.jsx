@@ -6,7 +6,7 @@ import { signupAction } from '../../actions/session_actions.js';
 const mapStateToProps = (state, ownProps) => {
   return {
     loggedIn: Boolean(state.session.currentUser),
-    errors: state.session.errors,
+    errors: state.errors.session,
   };
 };
 
@@ -35,26 +35,36 @@ class SignupForm extends React.Component {
     this.props.signup(user);
   }
 
+  errors(){
+    const errors = this.props.errors.map((error) => <li>{error}</li>);
+    return (
+      <ul className="session-errors">
+        {errors}
+      </ul>
+    );
+  }
+
   render(){
     return (
-      <div className="signup-form">
+      <div className="session-form">
         <h2>Create Your account</h2>
+        {this.errors()}
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <label>First name
+          <label className="session-form-element">First name
             <input className="password" onChange={(e)=> this.setState({fname: e.currentTarget.value})} />
           </label>
-          <label>Last name
+          <label className="session-form-element">Last name
             <input className="password" onChange={(e)=> this.setState({lname: e.currentTarget.value})} />
           </label>
-          <label>Email
+          <label className="session-form-element">Email
             <input className="email" onChange={(e)=> this.setState({email: e.currentTarget.value})} />
           </label>
-          <label>Password
+          <label className="session-form-element">Password
             <input className="password" onChange={(e)=> this.setState({password: e.currentTarget.value})} />
           </label>
           <button>Create my Account</button>
         </form>
-        <p>Already have an account? <Link to="/signup">Create One Now</Link></p>
+        <p className="session-redirect-text">Already have an account? <Link to="/login">Login Here</Link></p>
       </div>
     );
   }

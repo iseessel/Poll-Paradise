@@ -16,7 +16,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-
 class LoginForm extends React.Component {
 
   constructor(props){
@@ -35,18 +34,20 @@ class LoginForm extends React.Component {
 
   render(){
     return (
-      <div className="login-form">
+      <div className="session-form">
         <h2>Log in</h2>
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <label>Email
-            <input className="email" onChange={(e)=> this.setState({email: e.currentTarget.value})} />
+          <label className="session-form-element">
+            Email
+            <input onChange={(e)=> this.setState({email: e.currentTarget.value})} />
           </label>
-          <label>Password
-            <input className="password" onChange={(e)=> this.setState({password: e.currentTarget.value})} />
+          <label className="session-form-element">
+            Password
+            <input onChange={(e)=> this.setState({password: e.currentTarget.value})} />
           </label>
           <button>Log in</button>
         </form>
-        <p>Need an account? <Link to="/signup">Create One Now</Link></p>
+        <p className="session-redirect-text">Need an account? <Link to="/signup">Create One Now</Link></p>
       </div>
     );
   }
