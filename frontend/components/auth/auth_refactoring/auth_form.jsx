@@ -4,6 +4,7 @@ import { signupAction, clearSessionActions } from '../../../actions/session_acti
 import { connect } from 'react-redux';
 import ErrorsContainer from '../../errors/session_errors_container';
 import { withRouter, Link } from 'react-router-dom';
+import enhanceWithClickOutside from 'react-click-outside';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -18,15 +19,27 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
+
 class AuthForm extends React.Component{
 
   constructor(props){
     super(props)
-    this.state = this.initialInputState();
+    this.state = this._defaultState()
+  }
+
+  _defaultState(){
+    return {
+      user: this.initialInputState(),
+      selectedId: 1,
+    };
+  }
+
+  handleClickOutside(){
+    this.setState({selectedId: null});
   }
 
   componentWillUnmount(){
-    this.state = this.initialInputState();
+    this.state = this._defaultState()
   }
 
   initialInputState(){
@@ -37,13 +50,19 @@ class AuthForm extends React.Component{
     return initialState
   }
 
+  selected(idx){
+    return (this.state.selectedId === idx) ? "selected" :
+     ""
+  }
+
   generateInputs(){
     return this.props.inputs.map((inputString, idx) => {
       return (
         <label key={idx} className="session-form-element">
           {inputString}
-          <input onChange={(e) => this.setState(
-              {[snakeCase(inputString)]: e.currentTarget.value})}/>
+          <input className={this.selected(idx)} onChange={(e) => this.setState(
+              {[snakeCase(inputString)]: e.currentTarget.value})}
+              onClick={ () => this.setState({selectedId: idx})}/>
         </label>
       )
     });
@@ -52,11 +71,13 @@ class AuthForm extends React.Component{
   generateBottomText(){
     if (this.props.match.url === "login") {
       return (
-        <p className="session-redirect-text">Need an account? <Link to="/signup">Create One Now</Link></p>
+        <p className="session-redirect-text">Need an account?
+          <Link to="/signup">Create One Now</Link></p>
       )
     }else {
       return (
-        <p className="session-redirect-text">Already have an account? <Link to="/login">Login Here</Link></p>
+        <p className="session-redirect-text">Already have an account?
+          <Link to="/login">Login Here</Link></p>
       )
     }
   }
@@ -67,7 +88,7 @@ class AuthForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    const user = Object.assign({}, {user: this.state});
+    const user = Object.assign({}, {user: this.state.user});
     this.props.match.url === "/login" ? this.props.login(user) :
       this.props.signup(user)
   }
@@ -79,12 +100,17 @@ class AuthForm extends React.Component{
           <h2>{this.generateHeader()}</h2>
           <ErrorsContainer />
           <form onSubmit={this.handleSubmit.bind(this)}>
-          {this.generateInputs()}
-          <label className='session-form-element'>
-            Password
-            <input type="password" onChange={(e) => this.setState(
-                {password: e.currentTarget.value})}/>
-          </label>
+            {this.generateInputs()}
+            <label className="session-form-element">
+              Password
+
+              <input className={this.selected(-1)} type="password"
+                onChange={(e) => this.setState(
+                  {password: e.currentTarget.value})}
+                onClick={ () => this.setState({selectedId: -1})}>
+              </input>
+
+            </label>
           <button>{this.props.inputText}</button>
           </form>
           {this.generateBottomText()}
@@ -94,6 +120,9 @@ class AuthForm extends React.Component{
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AuthForm))
+export default withRouter(
+    connect(mapStateToProps, mapDispatchToProps)(
+      enhanceWithClickOutside(AuthForm))
+    )
 // problems: format responses correctly for the database
 // extra email, where is that coming from?
