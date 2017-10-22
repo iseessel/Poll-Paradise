@@ -61,8 +61,10 @@ class AuthForm extends React.Component{
         <label key={idx} className="session-form-element">
           {inputString}
           <input className={this.selected(idx)} onChange={(e) => this.setState(
-              {[snakeCase(inputString)]: e.currentTarget.value})}
-              onClick={ () => this.setState({selectedId: idx})}/>
+              {
+                [snakeCase(inputString)]: e.currentTarget.value
+              })}
+            onClick={ () => this.setState({selectedId: idx})}/>
         </label>
       )
     });
@@ -88,7 +90,9 @@ class AuthForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    const user = Object.assign({}, {user: this.state.user});
+    const user = Object.assign({}, { user: this.state });
+    console.log(user);
+    debugger;
     this.props.match.url === "/login" ? this.props.login(user) :
       this.props.signup(user)
   }
@@ -104,9 +108,9 @@ class AuthForm extends React.Component{
             <label className="session-form-element">
               Password
 
-              <input className={this.selected(-1)} type="password"
+              <input wrappedRef={ () => this.setState({selectedId: null}) } className={this.selected(-1)} type="password"
                 onChange={(e) => this.setState(
-                  {password: e.currentTarget.value})}
+                  { password: e.currentTarget.value})}
                 onClick={ () => this.setState({selectedId: -1})}>
               </input>
 
@@ -120,9 +124,4 @@ class AuthForm extends React.Component{
   }
 }
 
-export default withRouter(
-    connect(mapStateToProps, mapDispatchToProps)(
-      enhanceWithClickOutside(AuthForm))
-    )
-// problems: format responses correctly for the database
-// extra email, where is that coming from?
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AuthForm))
