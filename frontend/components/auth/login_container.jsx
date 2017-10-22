@@ -7,7 +7,6 @@ import SessionErrorsContainer from '../errors/session_errors_container.jsx';
 const mapStateToProps = (state, ownProps) => {
   return {
     loggedIn: Boolean(state.session.currentUser),
-    errors: state.errors.session,
   };
 };
 
@@ -28,7 +27,7 @@ class LoginForm extends React.Component {
   }
 
   toggleForm(){
-    
+
   }
 
   handleSubmit(e){
@@ -42,7 +41,7 @@ class LoginForm extends React.Component {
       <div className="session-form">
         <div className="session-form-container">
           <h2>Log in</h2>
-          <SessionErrorsContainer errors={this.props.errors} />
+          <SessionErrorsContainer />
           <form onSubmit={this.handleSubmit.bind(this)}>
             <label className="session-form-element">
               Email

@@ -6,6 +6,7 @@ import SignupContainer from './auth/signup_container.jsx';
 import MainPage from './main/main_page';
 import { Footer } from './footer.jsx';
 import HeaderContainer from './header_container.jsx';
+import { Login, SignIn } from './auth/auth_refactoring/auth_master.jsx';
 
 const App = () => {
 
@@ -13,11 +14,14 @@ const App = () => {
     <div className="main-app">
       <HeaderContainer />
       <Route exact path="/" component={MainPage} />
-      <AuthRoute path="/login" component={LoginContainer} />
-      <AuthRoute path="/signup" component={SignupContainer} />
+      <AuthRoute path='/login' component={Login} />
+      <AuthRoute path='/signup' component={SignIn} />
       <Footer />
     </div>
   )
 };
+
+// <AuthRoute path="/login" component={LoginContainer} />
+// <AuthRoute path="/signup" component={SignupContainer} />
 
 export default App;

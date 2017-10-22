@@ -7,7 +7,6 @@ import SessionErrorsContainer from '../errors/session_errors_container.jsx';
 const mapStateToProps = (state, ownProps) => {
   return {
     loggedIn: Boolean(state.session.currentUser),
-    errors: state.errors.session,
   };
 };
 
@@ -25,8 +24,8 @@ class SignupForm extends React.Component {
     this.state = {
       email: "",
       password: "",
-      fname: "",
-      lname: ""
+      first_name: "",
+      last_name: ""
     };
   }
 
@@ -45,13 +44,13 @@ class SignupForm extends React.Component {
       <div className="session-form">
         <div className="form-container">
           <h2>Create Your account</h2>
-          <SessionErrorsContainer errors={this.props.errors} />
+          <SessionErrorsContainer />
           <form onSubmit={this.handleSubmit.bind(this)}>
             <label className="session-form-element">First name
-              <input className="password" onChange={(e)=> this.setState({fname: e.currentTarget.value})} />
+              <input className="password" onChange={(e)=> this.setState({first_name: e.currentTarget.value})} />
             </label>
             <label className="session-form-element">Last name
-              <input className="password" onChange={(e)=> this.setState({lname: e.currentTarget.value})} />
+              <input className="password" onChange={(e)=> this.setState({last_name: e.currentTarget.value})} />
             </label>
             <label className="session-form-element">Email
               <input className="email" onChange={(e)=> this.setState({email: e.currentTarget.value})} />

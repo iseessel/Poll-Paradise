@@ -1,12 +1,18 @@
 import React from 'react';
-import { clearSessionErrors } from '../../actions/session_actions.js';
+import { clearErrors } from '../../actions/errors.js';
 import { connect } from 'react-redux';
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    clearErrors: (user) => dispatch(clearSessionErrors())
+    clearErrors: (user) => dispatch(clearErrors())
   };
 };
+
+const mapStateToProps = (state) => {
+  return {
+    errors: state.errors
+  };
+}
 
 //map state to props here; get rid of session errors reducer;
 
@@ -31,4 +37,4 @@ class Errors extends React.Component{
 
 }
 
-export default connect(null, mapDispatchToProps)(Errors);
+export default connect(mapStateToProps, mapDispatchToProps)(Errors);

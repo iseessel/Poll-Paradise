@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MainPage = () => (
+const MainPage = (props) => (
   <div className="MainPage">
     <div className="content">
 
@@ -13,7 +13,7 @@ const MainPage = () => (
             <div className="text">
               <h2>Live interactive audience participation</h2>
               <h4>Engage your audience or class in real time</h4>
-              <button>Get started</button>
+              <button onClick={() => props.history.push('signup')}>Get started</button>
             </div>
           </div>
           </div>
