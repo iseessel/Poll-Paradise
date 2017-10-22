@@ -1,10 +1,13 @@
 .session-form {
-  height: 500px;
-  width: 500px;
+  box-sizing: border-box;
   margin: 0 auto;
-  margin-top: 60px;
+  padding-top: 55px;
+  padding-bottom: 55px;
   color: #4F4F4F;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: "Source Sans Pro", Helvetica, Verdana, sans-serif;
 }
 
@@ -23,10 +26,11 @@ input {
   border: 1px solid #D8E4F1;
   width: 437px;
   height: 41px;
+  padding-left: 8px;
 }
 
 button {
-  margin-top: 25px;;
+  margin-top: 25px;
   width: 437px;
   height: 36px;
   background-color: #F95652;

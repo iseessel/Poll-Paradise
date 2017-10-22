@@ -8,6 +8,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
+//map state to props here; get rid of session errors reducer;
+
 class Errors extends React.Component{
 
   constructor(props){

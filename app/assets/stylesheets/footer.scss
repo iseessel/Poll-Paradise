@@ -1,0 +1,39 @@
+.top-footer {
+  height: 130px;
+  background-color: #4F4F4F;
+  border-top: 1px solid #303334;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.links {
+  display: flex;
+  margin-right: 8px;
+}
+
+.links a {
+  display: block;
+  padding: 10px;
+  color: whitesmoke;
+}
+
+
+.links a:first-child {
+  border-top: 1px solid white;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+}
+
+.links a:first-child:hover{
+  background-color: #428FCD;
+}
+
+.links a:last-child:hover {
+  color: lightgray;
+}
+
+.lower-footer{
+  height: 20px;
+  background-color: #303334;
+}

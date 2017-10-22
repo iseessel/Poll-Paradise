@@ -4,18 +4,20 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util.jsx';
 import LoginContainer from './auth/login_container.jsx';
 import SignupContainer from './auth/signup_container.jsx';
 import MainPage from './main/main_page';
+import { Footer } from './footer.jsx';
+import HeaderContainer from './header_container.jsx';
 
 const App = () => {
 
   return (
     <div className="main-app">
-      <Route path="/" component={MainPage} />
+      <HeaderContainer />
+      <Route exact path="/" component={MainPage} />
       <AuthRoute path="/login" component={LoginContainer} />
       <AuthRoute path="/signup" component={SignupContainer} />
-      <footer></footer>
+      <Footer />
     </div>
-  );
-
+  )
 };
 
 export default App;

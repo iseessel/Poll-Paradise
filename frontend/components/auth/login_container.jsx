@@ -27,6 +27,10 @@ class LoginForm extends React.Component {
     };
   }
 
+  toggleForm(){
+    
+  }
+
   handleSubmit(e){
     e.preventDefault();
     const user = Object.assign({}, {user: this.state});
@@ -36,20 +40,22 @@ class LoginForm extends React.Component {
   render(){
     return (
       <div className="session-form">
-        <h2>Log in</h2>
-        <SessionErrorsContainer errors={this.props.errors} />
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <label className="session-form-element">
-            Email
-            <input onChange={(e)=> this.setState({email: e.currentTarget.value})} />
-          </label>
-          <label className="session-form-element">
-            Password
-            <input onChange={(e)=> this.setState({password: e.currentTarget.value})} />
-          </label>
-          <button>Log in</button>
-        </form>
-        <p className="session-redirect-text">Need an account? <Link to="/signup">Create One Now</Link></p>
+        <div className="session-form-container">
+          <h2>Log in</h2>
+          <SessionErrorsContainer errors={this.props.errors} />
+          <form onSubmit={this.handleSubmit.bind(this)}>
+            <label className="session-form-element">
+              Email
+              <input onChange={(e)=> this.setState({email: e.currentTarget.value})} />
+            </label>
+            <label className="session-form-element">
+              Password
+              <input type="password" onChange={(e)=> this.setState({password: e.currentTarget.value})} />
+            </label>
+            <button>Log in</button>
+          </form>
+          <p className="session-redirect-text">Need an account? <Link to="/signup">Create One Now</Link></p>
+        </div>
       </div>
     );
   }

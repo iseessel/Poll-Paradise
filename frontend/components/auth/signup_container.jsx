@@ -43,24 +43,26 @@ class SignupForm extends React.Component {
   render(){
     return (
       <div className="session-form">
-        <h2>Create Your account</h2>
-        <SessionErrorsContainer errors={this.props.errors} />
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <label className="session-form-element">First name
-            <input className="password" onChange={(e)=> this.setState({fname: e.currentTarget.value})} />
-          </label>
-          <label className="session-form-element">Last name
-            <input className="password" onChange={(e)=> this.setState({lname: e.currentTarget.value})} />
-          </label>
-          <label className="session-form-element">Email
-            <input className="email" onChange={(e)=> this.setState({email: e.currentTarget.value})} />
-          </label>
-          <label className="session-form-element">Password
-            <input className="password" onChange={(e)=> this.setState({password: e.currentTarget.value})} />
-          </label>
-          <button>Create my Account</button>
-        </form>
-        <p className="session-redirect-text">Already have an account? <Link to="/login">Login Here</Link></p>
+        <div className="form-container">
+          <h2>Create Your account</h2>
+          <SessionErrorsContainer errors={this.props.errors} />
+          <form onSubmit={this.handleSubmit.bind(this)}>
+            <label className="session-form-element">First name
+              <input className="password" onChange={(e)=> this.setState({fname: e.currentTarget.value})} />
+            </label>
+            <label className="session-form-element">Last name
+              <input className="password" onChange={(e)=> this.setState({lname: e.currentTarget.value})} />
+            </label>
+            <label className="session-form-element">Email
+              <input className="email" onChange={(e)=> this.setState({email: e.currentTarget.value})} />
+            </label>
+            <label className="session-form-element">Password
+              <input type="password" className="password" onChange={(e)=> this.setState({password: e.currentTarget.value})} />
+            </label>
+            <button>Create my Account</button>
+          </form>
+          <p className="session-redirect-text">Already have an account? <Link to="/login">Login Here</Link></p>
+        </div>
       </div>
     );
   }

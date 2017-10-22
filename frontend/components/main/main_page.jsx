@@ -1,13 +1,25 @@
 import React from 'react';
-import HeaderContainer from './header_container.jsx';
 
 const MainPage = () => (
   <div className="MainPage">
-    <HeaderContainer />
     <div className="content">
 
+
       <section className="banner">
+        <div className="background-image">
+        </div>
+        <div className="banner-text">
+          <div className="row">
+            <div className="text">
+              <h2>Live interactive audience participation</h2>
+              <h4>Engage your audience or class in real time</h4>
+              <button>Get started</button>
+            </div>
+          </div>
+          </div>
+
       </section>
+
 
 
       <section className="about">
