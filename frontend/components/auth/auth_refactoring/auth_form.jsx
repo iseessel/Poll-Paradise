@@ -4,9 +4,8 @@ import { signupAction, clearSessionActions } from '../../../actions/session_acti
 import { connect } from 'react-redux';
 import ErrorsContainer from '../../errors/session_errors_container';
 import { withRouter, Link } from 'react-router-dom';
-import enhanceWithClickOutside from 'react-click-outside';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
     loggedIn: Boolean(state.session.currentUser),
   };
@@ -34,10 +33,6 @@ class AuthForm extends React.Component{
     };
   }
 
-  handleClickOutside(){
-    this.setState({selectedId: null});
-  }
-
   componentWillUnmount(){
     this.state = this._defaultState()
   }
@@ -51,8 +46,11 @@ class AuthForm extends React.Component{
   }
 
   selected(idx){
-    return (this.state.selectedId === idx) ? "selected" :
-     ""
+    return (this.state.selectedId === idx) ? "selected" : ""
+  }
+
+  handleChange(string){
+    return (e) => this.setState({[snakeCase(string)]: e.currentTarget.value})
   }
 
   generateInputs(){
@@ -60,10 +58,8 @@ class AuthForm extends React.Component{
       return (
         <label key={idx} className="session-form-element">
           {inputString}
-          <input className={this.selected(idx)} onChange={(e) => this.setState(
-              {
-                [snakeCase(inputString)]: e.currentTarget.value
-              })}
+          <input className={this.selected(idx)}
+            onChange={this.handleChange(inputString).bind(this)}
             onClick={ () => this.setState({selectedId: idx})}/>
         </label>
       )
@@ -71,15 +67,15 @@ class AuthForm extends React.Component{
   }
 
   generateBottomText(){
-    if (this.props.match.url === "login") {
+    if (this.props.match.url === "/login") {
       return (
         <p className="session-redirect-text">Need an account?
-          <Link to="/signup">Create One Now</Link></p>
+          <Link to="/signup"> Create One Now</Link></p>
       )
     }else {
       return (
         <p className="session-redirect-text">Already have an account?
-          <Link to="/login">Login Here</Link></p>
+          <Link to="/login"> Login Here</Link></p>
       )
     }
   }
@@ -91,8 +87,6 @@ class AuthForm extends React.Component{
   handleSubmit(e){
     e.preventDefault();
     const user = Object.assign({}, { user: this.state });
-    console.log(user);
-    debugger;
     this.props.match.url === "/login" ? this.props.login(user) :
       this.props.signup(user)
   }
@@ -107,13 +101,11 @@ class AuthForm extends React.Component{
             {this.generateInputs()}
             <label className="session-form-element">
               Password
-
-              <input wrappedRef={ () => this.setState({selectedId: null}) } className={this.selected(-1)} type="password"
+              <input className={this.selected(-1)} type="password"
                 onChange={(e) => this.setState(
                   { password: e.currentTarget.value})}
-                onClick={ () => this.setState({selectedId: -1})}>
-              </input>
-
+                onClick={ () => this.setState({selectedId: -1})}
+                />
             </label>
           <button>{this.props.inputText}</button>
           </form>

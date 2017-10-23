@@ -20,7 +20,9 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_logged_in
-    redirect_to
+    unless logged_in?
+      render json: {}, status: 422
+    end
   end
 
   def logged_in?

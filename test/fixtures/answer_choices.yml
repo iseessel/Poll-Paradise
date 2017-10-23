@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: answer_choices
+#
+#  id           :integer          not null, primary key
+#  body         :string
+#  question_id  :integer
+#  times_chosen :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body: MyString
+  question_id: 1
+  times_chosen: 1
+
+two:
+  body: MyString
+  question_id: 1
+  times_chosen: 1
