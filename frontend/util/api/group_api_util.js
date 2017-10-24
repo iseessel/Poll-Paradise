@@ -1,6 +1,6 @@
 //This request will fetch group, questions, and all answer_choices
 //Data will be NORMALIZED
-export const fetchGroups= () => {
+export const fetchGroups = () => {
   return $.ajax( {url: "/api/groups",
   method: "GET"} );
 };

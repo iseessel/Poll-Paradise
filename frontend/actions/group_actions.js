@@ -1,4 +1,4 @@
-import * as GroupUtil from '../util/api/question_api_util.js';
+import * as GroupUtil from '../util/api/group_api_util.js';
 import { receiveErrors, clearErrors } from './errors.js'
 
 export const RECEIVE_GROUPS = "RECEIVE_GROUPS"
@@ -31,7 +31,7 @@ export const deleteGroupAction = (payload) => {
 // b/c the controller will find the current_user
 
 export const retrieveGroups = () => (dispatch) => {
-  return GroupUtil.fetchGroups().then((response) => dispatch(receiveGroups()),
+  return GroupUtil.fetchGroups().then((response) => dispatch(receiveGroups(response)),
     (err) => dispatch(receiveErrors(err.responseJSON))
     ).then(() => dispatch(clearErrors))
 };

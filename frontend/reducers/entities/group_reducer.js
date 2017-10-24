@@ -7,6 +7,7 @@ const _defaultState = {}
 function GroupReducer(state = _defaultState, action){
   switch(action.type){
     case RECEIVE_GROUPS:
+      debugger
       let newState = action.payload.groups
       return merge({}, state, newState);
 
@@ -16,7 +17,9 @@ function GroupReducer(state = _defaultState, action){
       return merge({}, state, newState);
 
     default:
-      state
+      return state
   }
 
 }
+
+export default GroupReducer;
