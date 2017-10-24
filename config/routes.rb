@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :groups, only: [:create, :destroy, :index, :show]
     resources :questions, only: [:show ,:create, :destroy, :update]
-    resources :answer_choices, only: [:update, :destroy]
+    resources :answer_choices, only: [:update, :destroy, :create]
   end
 
 end

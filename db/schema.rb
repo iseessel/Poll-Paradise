@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20171023170157) do
 
   create_table "questions", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "group_id", null: false
+    t.integer "group_id"
     t.string "body", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

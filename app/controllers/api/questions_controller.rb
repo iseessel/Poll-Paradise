@@ -1,4 +1,5 @@
 class Api::QuestionsController < ApplicationController
+  before_action :ensure_logged_in
 
   def show
     @question = Question.find_by(id: params[:id])
@@ -15,21 +16,18 @@ class Api::QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
-    @question.user = current_user
-
-    @answer_choices = params[:answer_choices].map_with_index do |answer_choice, idx|
-      answer_choice = AnswerChoice.new(params[:answer_choices][idx])
+    @question.user_id = current_user.id
+    @answer_choices = []
+    params[:answer_choices].values.each do |answer_choice|
+      answer_choice = AnswerChoice.new(answer_choice)
       answer_choice.times_chosen = 0
-      if (@question.answer_choices << answer_choice)
-        answer_choice
-      else
-        render json: answer_choice.erorrs.full_messages, status: 422
-      end
+      @question.answer_choices << answer_choice
+      @answer_choices << answer_choice
     end
 
     if @question.save
-     render json: "api/questions/show"
-   else
+     render "api/questions/show"
+    else
       render json: @question.errors.full_messages
     end
   end
@@ -47,6 +45,7 @@ class Api::QuestionsController < ApplicationController
   def update
     @question = Question.find_by(id: params[:id])
     if @question && @question.update(question_params)
+      @answer_choices = @question.answer_choices
       render "api/questions/show"
     else
       render json: @question.errors.full_messages, status: 422
@@ -56,10 +55,7 @@ class Api::QuestionsController < ApplicationController
   private
 
   def question_params
-    params.permit(:question).require(:group_id, :body) #will this mess up the rest of my params?
+    params.require(:question).permit(:group_id, :body) #will this mess up the rest of my params?
   end
-
-
-
 
 end

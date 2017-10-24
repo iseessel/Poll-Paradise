@@ -14,7 +14,7 @@
 class Question < ApplicationRecord
   validates :user, :body, presence: true
   belongs_to :user
-  belongs_to :group
+  belongs_to :group, optional: true
   has_many :answer_choices, inverse_of: :question, dependent: :destroy
 
   def grouped?

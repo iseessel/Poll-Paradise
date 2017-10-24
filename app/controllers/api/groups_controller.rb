@@ -9,17 +9,23 @@ class Api::GroupsController < ApplicationController
 
   def show
     @group = Group.find_by(id: params[:id])
-    @questions = @group.questions.includes(:answer_choices)
-    @answer_choices = @questions.map { |question| question.answer_choices }
-      .flatten
-    render "api/groups/show"
+    if @group
+      @questions = @group.questions.includes(:answer_choices)
+      @answer_choices = @questions.map { |question| question.answer_choices }
+        .flatten
+      render "api/groups/show"
+    else
+      render json: ["Group does not exist!"], status: 404
+    end
   end
 
+#expecting { group: {:title} }
   def create
+    debugger
     @group = Group.new(group_params)
     @group.user = current_user
     if @group.save
-      render "api/groups/show"
+      render "api/groups/create"
     else
       render json: @group.errors.full_messages, status: 422
     end
@@ -27,14 +33,18 @@ class Api::GroupsController < ApplicationController
 
   def destroy
     @group = Group.find_by(id: params[:id])
-    @group.destroy!
-    render json: {}
+    if @group
+      @group.destroy!
+      render json: {}
+    else
+      render json: ["Group Does not Exist"], status: 404
+    end
   end
 
   private
 
   def group_params
-    params.permit(:group).require(:title)
+    params.require(:group).permit(:title)
   end
 
 end
