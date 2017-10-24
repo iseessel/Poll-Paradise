@@ -25,8 +25,8 @@ class Errors extends React.Component{
   render(){
     const errors = this.props.errors.map((error, idx) => <li key={idx}>{error}</li>);
     return (
-      <ul className="session-errors">
-        <p>{errors}</p>
+        <ul>
+          <p>{errors}</p>
       </ul>
     );
   }

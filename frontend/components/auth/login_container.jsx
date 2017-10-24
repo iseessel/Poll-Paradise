@@ -53,7 +53,7 @@ class LoginForm extends React.Component {
             </label>
             <button>Log in</button>
           </form>
-          <p className="session-redirect-text">Need an account? <Link to="/signup">Create One Now</Link></p>
+          <p className="session-redirect-text">Need an account?  <Link to="/signup">Create One Now</Link></p>
         </div>
       </div>
     );

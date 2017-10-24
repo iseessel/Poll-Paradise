@@ -23,30 +23,10 @@ class AuthForm extends React.Component{
 
   constructor(props){
     super(props)
-    this.state = this._defaultState()
-  }
-
-  _defaultState(){
-    return {
-      user: this.initialInputState(),
-      selectedId: 1,
-    };
   }
 
   componentWillUnmount(){
-    this.state = this._defaultState()
-  }
-
-  initialInputState(){
-    const initialState = {password: ""}
-    this.props.inputs.forEach((inputString) => {
-      initialState[snakeCase(inputString)] = ""
-    })
-    return initialState
-  }
-
-  selected(idx){
-    return (this.state.selectedId === idx) ? "selected" : ""
+    this.state = {}
   }
 
   handleChange(string){
@@ -58,9 +38,7 @@ class AuthForm extends React.Component{
       return (
         <label key={idx} className="session-form-element">
           {inputString}
-          <input className={this.selected(idx)}
-            onChange={this.handleChange(inputString).bind(this)}
-            onClick={ () => this.setState({selectedId: idx})}/>
+          <input onChange={this.handleChange(inputString).bind(this)}/>
         </label>
       )
     });
@@ -70,12 +48,12 @@ class AuthForm extends React.Component{
     if (this.props.match.url === "/login") {
       return (
         <p className="session-redirect-text">Need an account?
-          <Link to="/signup"> Create One Now</Link></p>
+          <Link to="/signup">  Create One Now</Link></p>
       )
     }else {
       return (
         <p className="session-redirect-text">Already have an account?
-          <Link to="/login"> Login Here</Link></p>
+          <Link to="/login">  Login Here</Link></p>
       )
     }
   }
@@ -101,11 +79,9 @@ class AuthForm extends React.Component{
             {this.generateInputs()}
             <label className="session-form-element">
               Password
-              <input className={this.selected(-1)} type="password"
+              <input type="password"
                 onChange={(e) => this.setState(
-                  { password: e.currentTarget.value})}
-                onClick={ () => this.setState({selectedId: -1})}
-                />
+                  { password: e.currentTarget.value})}/>
             </label>
           <button>{this.props.inputText}</button>
           </form>

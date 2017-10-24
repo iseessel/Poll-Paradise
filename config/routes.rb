@@ -11,5 +11,4 @@ Rails.application.routes.draw do
     resources :questions, only: [:show ,:create, :destroy, :update]
     resources :answer_choices, only: [:update, :destroy, :create]
   end
-
 end
