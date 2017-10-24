@@ -1,6 +1,8 @@
 class Api::GroupsController < ApplicationController
   before_action :ensure_logged_in
 
+#NB: This action also returns 'ungrouped' questions.
+
   def index
     @groups = current_user.groups.includes(:questions)
     @questions = current_user.questions
@@ -21,7 +23,7 @@ class Api::GroupsController < ApplicationController
 
 #expecting { group: {:title} }
   def create
-    
+
     @group = Group.new(group_params)
     @group.user = current_user
     if @group.save
