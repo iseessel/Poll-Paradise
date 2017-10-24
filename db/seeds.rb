@@ -30,7 +30,7 @@ user_six = User.create(email: 'iseessel@apple.com', first_name: "isaac",
 # GROUPS
 Group.destroy_all
 group_one = Group.create(user_id: user_one.id, title: "Seinfeld")
-group_two = Group.create(user_id: user_two.id, title: "Birds")
+group_two = Group.create(user_id: user_one.id, title: "Birds")
 group_three = Group.create(user_id: user_one.id, title: "Veep")
 
 #QUESTIONS
@@ -39,13 +39,13 @@ question_one = Question.create(user_id: user_one.id,
     body: "Who is your favorite character?", group_id: group_one.id)
 question_two = Question.create(user_id: user_one.id,
     body: "Jerry or Newman?", group_id: group_one.id)
-question_three = Question.create(user_id: user_two.id,
+question_three = Question.create(user_id: user_one.id,
     body: "What is your favorite bird in the whole world?", group_id: group_two.id)
 question_four = Question.create(user_id: user_one.id,
     body: "How mean is Selena?", group_id: group_three.id)
 
 #ANSWER_CHOICES
-AnswerChoices.destroy_all
+AnswerChoice.destroy_all
 #question_one
 AnswerChoice.create(body: "Elayne", question_id: question_one.id, times_chosen: 0)
 AnswerChoice.create(body: "Jerry", question_id: question_one.id, times_chosen: 0)

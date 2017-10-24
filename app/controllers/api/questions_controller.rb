@@ -33,10 +33,14 @@ class Api::QuestionsController < ApplicationController
   end
 
   def destroy
-    @question = Question.find_by(id: params[:id])
+    @question = current_user.questions.find_by(id: params[:id])
     if @question
+      @answer_choice_ids = @question.answer_choice_ids
       @question.destroy!
-      render json: {}
+      render json: {
+        id: @question.id,
+        answer_choice_ids: @answer_choice_ids
+      }
     else
       render json: ["Question does not exist"], status: 422
     end

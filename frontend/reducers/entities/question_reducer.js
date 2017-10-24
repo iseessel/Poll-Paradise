@@ -8,8 +8,13 @@ function QuestionReducer(state = _defaultState, action){
 
     case RECEIVE_QUESTION:
       const question = action.payload.question
-      const newState = {[question.id]: question}
+      let newState = {[question.id]: question}
       return merge({}, state, newState)
+
+    case DELETE_QUESTION:
+      newState = merge({}, state)
+      delete newState[action.payload.id]
+      return newState
 
     default:
       return state;
