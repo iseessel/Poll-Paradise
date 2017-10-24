@@ -1,4 +1,4 @@
-import * as GroupUtil from '../util/Api/question_api_util.js';
+import * as GroupUtil from '../util/api/question_api_util.js';
 import { receiveErrors, clearErrors } from './errors.js'
 
 export const RECEIVE_GROUPS = "RECEIVE_GROUPS"

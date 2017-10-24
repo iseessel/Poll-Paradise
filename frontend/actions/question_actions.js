@@ -1,4 +1,4 @@
-import * as QuestionUtil from '../util/Api/question_api_util.js';
+import * as QuestionUtil from '../util/api/question_api_util.js';
 import { receiveErrors, clearErrors } from './errors.js';
 
 export const RECEIVE_QUESTION = "RECEIVE_QUESTION";
