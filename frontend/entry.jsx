@@ -7,6 +7,7 @@ import { retrieveOneQuestion, deleteQuestion, createQuestion } from './actions/q
 import * as answerChoiceApi from './util/api/answer_choice_api_util'
 import * as groupApi from './util/api/group_api_util'
 import * as questionApi from './util/api/question_api_util'
+import * as groupActions from './actions/group_actions.js'
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -23,13 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // TESTING START
   window.getState = store.getState;
-  window.answerChoiceApi = answerChoiceApi;
-  window.retrieveOneQuestion = retrieveOneQuestion;
-  window.createQuestion = createQuestion;
   window.dispatch = store.dispatch;
-  window.signupAction = signupAction;
-  window.logoutAction = logoutAction;
-  window.loginAction = loginAction;
+  window.retrieveGroups = groupActions.retrieveGroups
+  window.retrieveOneGroup = groupActions.retrieveOneGroup
+  window.createGroup = groupActions.createGroup
   // TESTING END
 
   const root = document.getElementById('root');

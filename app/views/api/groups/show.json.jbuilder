@@ -1,4 +1,6 @@
-json.partial! 'api/groups/group', group: @group
+json.group do
+  json.partial! 'api/groups/group', group: @group
+end
 
 json.questions do
   @questions.each do |question|

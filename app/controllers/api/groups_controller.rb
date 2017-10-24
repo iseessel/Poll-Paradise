@@ -36,8 +36,14 @@ class Api::GroupsController < ApplicationController
   def destroy
     @group = Group.find_by(id: params[:id])
     if @group
+      @question_ids = @group.question_ids
+      @answer_choice_ids = @group.answer_choice_ids
       @group.destroy!
-      render json: {}
+      render json: {
+        id: @group.id,
+        answer_choice_ids: @answer_choice_ids,
+        question_ids: @question_ids
+      }
     else
       render json: ["Group Does not Exist"], status: 404
     end

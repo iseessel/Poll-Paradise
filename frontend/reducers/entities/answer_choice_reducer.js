@@ -16,7 +16,6 @@ function AnswerChoiceReducer(state = _defaultState, action){
         .forEach((answer_choice_id) => {
           delete newState[answer_choice_id]
         })
-      debugger
       return newState
 
     default:
