@@ -3,11 +3,6 @@ class Api::AnswerChoicesController < ApplicationController
   def create
     @answer_choice = AnswerChoice.new(answer_choice_params)
     @answer_choice.times_chosen = 0
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> mypolls
     if @answer_choice.save
       render 'api/answer_choices/show'
     else
