@@ -18,25 +18,31 @@ class Api::QuestionsController < ApplicationController
     @question = Question.new(question_params)
     @question.user_id = current_user.id
     @answer_choices = []
-    params[:answer_choices].values.each do |answer_choice|
-      answer_choice = AnswerChoice.new(answer_choice)
-      answer_choice.times_chosen = 0
-      @question.answer_choices << answer_choice
-      @answer_choices << answer_choice
+    if params[:answer_choices]
+      params[:answer_choices].values.each do |answer_choice|
+        answer_choice = AnswerChoice.new(answer_choice)
+        answer_choice.times_chosen = 0
+        @question.answer_choices << answer_choice
+        @answer_choices << answer_choice
+      end
     end
-
+    
     if @question.save
      render "api/questions/show"
     else
-      render json: @question.errors.full_messages
+      render json: @question.errors.full_messages, status: 422
     end
   end
 
   def destroy
-    @question = Question.find_by(id: params[:id])
+    @question = current_user.questions.find_by(id: params[:id])
     if @question
+      @answer_choice_ids = @question.answer_choice_ids
       @question.destroy!
-      render json: {}
+      render json: {
+        id: @question.id,
+        answer_choice_ids: @answer_choice_ids
+      }
     else
       render json: ["Question does not exist"], status: 422
     end

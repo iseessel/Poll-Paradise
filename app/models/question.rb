@@ -13,9 +13,16 @@
 
 class Question < ApplicationRecord
   validates :user, :body, presence: true
+  validate :at_least_one_answer_choice
   belongs_to :user
   belongs_to :group, optional: true
   has_many :answer_choices, inverse_of: :question, dependent: :destroy
+
+  def at_least_one_answer_choice
+    unless self.answer_choices.length > 0
+      errors.add(:question, "must have at least one answer choice!")
+    end
+  end
 
   def grouped?
     !!self.group_id

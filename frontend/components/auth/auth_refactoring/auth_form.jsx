@@ -59,7 +59,7 @@ class AuthForm extends React.Component{
   }
 
   generateHeader(){
-    return this.props.match.url === "login" ? "Log in" : "Create Your account"
+    return this.props.match.url === "/login" ? "Log in" : "Create Your account"
   }
 
   handleSubmit(e){

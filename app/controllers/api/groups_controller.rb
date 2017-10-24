@@ -1,6 +1,8 @@
 class Api::GroupsController < ApplicationController
   before_action :ensure_logged_in
 
+#NB: This action also returns 'ungrouped' questions.
+
   def index
     @groups = current_user.groups.includes(:questions)
     @questions = current_user.questions
@@ -21,7 +23,11 @@ class Api::GroupsController < ApplicationController
 
 #expecting { group: {:title} }
   def create
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> mypolls
     @group = Group.new(group_params)
     @group.user = current_user
     if @group.save
@@ -34,8 +40,14 @@ class Api::GroupsController < ApplicationController
   def destroy
     @group = Group.find_by(id: params[:id])
     if @group
+      @question_ids = @group.question_ids
+      @answer_choice_ids = @group.answer_choice_ids
       @group.destroy!
-      render json: {}
+      render json: {
+        id: @group.id,
+        answer_choice_ids: @answer_choice_ids,
+        question_ids: @question_ids
+      }
     else
       render json: ["Group Does not Exist"], status: 404
     end

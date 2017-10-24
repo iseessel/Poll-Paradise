@@ -1,4 +1,6 @@
-json.partial! 'api/questions/question', question: @question
+json.question do
+  json.partial! 'api/questions/question', question: @question
+end
 
 json.answer_choices do
   @answer_choices.each do |answer_choice|
