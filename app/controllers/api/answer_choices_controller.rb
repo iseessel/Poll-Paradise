@@ -3,7 +3,7 @@ class Api::AnswerChoicesController < ApplicationController
   def create
     @answer_choice = AnswerChoice.new(answer_choice_params)
     @answer_choice.times_chosen = 0
-    debugger
+
     if @answer_choice.save
       render 'api/answer_choices/show'
     else
@@ -13,11 +13,12 @@ class Api::AnswerChoicesController < ApplicationController
 
   def update
     @answer_choice = AnswerChoice.find_by(id: params[:id])
-    @answer_choice.times_chosen += 1
-    if @answer_choice.save
+    if @answer_choice
+      @answer_choice.times_chosen += 1
+      @answer_choice.save
       render 'api/answer_choices/show'
     else
-      render json: @answer_choice.errors.full_messages, status: 422
+      render json: ["Answer choice cannot be found"], status: 422
     end
   end
 
