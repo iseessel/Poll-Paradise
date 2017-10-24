@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import { signupAction, logoutAction, loginAction } from './actions/session_actions';
 import Root from './components/root';
-import { retrieveOneQuestion, deleteQuestion } from './actions/question_actions.js'
+import { retrieveOneQuestion, deleteQuestion, createQuestion } from './actions/question_actions.js'
 import * as answerChoiceApi from './util/api/answer_choice_api_util'
 import * as groupApi from './util/api/group_api_util'
 import * as questionApi from './util/api/question_api_util'
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getState = store.getState;
   window.answerChoiceApi = answerChoiceApi;
   window.retrieveOneQuestion = retrieveOneQuestion;
-  window.deleteQuestion = deleteQuestion;
+  window.createQuestion = createQuestion;
   window.dispatch = store.dispatch;
   window.signupAction = signupAction;
   window.logoutAction = logoutAction;

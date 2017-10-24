@@ -29,14 +29,14 @@ export const retrieveOneQuestion = (id) => (dispatch) => {
 
 export const createQuestion = (data) => (dispatch) => {
   return QuestionUtil.createQuestion(data)
-    .then((response) => dispatch(receiveQuestion(response)),
+    .then((response) => dispatch(receiveOneQuestion(response)),
       (err) => dispatch(receiveErrors(err.responseJSON))
     ).then(() => dispatch(clearErrors()))
 };
 
 export const updateQuestion = (id, data) => (dispatch) => {
   return QuestionUtil.updateQuestion(id, data)
-    .then((response) => dispatch(receiveQuestion(response)),
+    .then((response) => dispatch(receiveOneQuestion(response)),
       (err) => dispatch(receiveErrors(err.responseJSON))
     ).then(() => dispatch(clearErrors()))
 };
