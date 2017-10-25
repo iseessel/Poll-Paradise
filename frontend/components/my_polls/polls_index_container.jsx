@@ -4,6 +4,7 @@ import * as pollIndexSelector from '../../util/selectors/poll_index_selector.js'
 import { retrieveGroups } from '../../actions/group_actions.js';
 import QuestionIndexContainer from './question_index_container.jsx';
 import FontAwesome from 'react-fontawesome';
+import GroupName from './group_name.jsx'
 
 
 
@@ -47,6 +48,12 @@ class PollIndex extends React.Component{
     }else {
       return (
         <div className="poll-view">
+          <div className="poll-view-banner">
+              <FontAwesome name="check" size="2x"/>
+              <div className="banner-text">
+                Group
+              </div>
+          </div>
           {this.generateUls()}
         </div>
       );
@@ -54,22 +61,10 @@ class PollIndex extends React.Component{
   }
 
   generateUls(){
-    return this.props.polls.map((poll) => {
+    return this.props.polls.map((poll, idx) => {
       return (
-        <ul>
-          <div className="group-bar">
-            <div className="left-group">
-              <FontAwesome name="caret-down" size="2x"/>
-              <h2>{poll.title}</h2>
-            </div>
-
-            <div className="right-group-view">
-              <p>{poll.questions.length}  activities</p>
-            </div>
-          </div>
-          {this.generateLis(poll.questions)}
-        </ul>
-      )
+        <GroupName key={idx} poll={poll}/>
+      );
     })
   }
 

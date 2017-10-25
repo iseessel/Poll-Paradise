@@ -12,6 +12,7 @@ function QuestionReducer(state = _defaultState, action){
   case RECEIVE_QUESTION:
     let question = action.payload.question
     let newState = {[question.id]: question}
+    debugger;
     return merge({}, state, newState)
 
   case RECEIVE_GROUPS:

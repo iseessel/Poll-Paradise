@@ -5,6 +5,7 @@ export const RECEIVE_QUESTION = "RECEIVE_QUESTION";
 export const DELETE_QUESTION = "DELETE_QUESTION";
 
 export const receiveOneQuestion = (payload) => {
+  debugger
   return {
     type: RECEIVE_QUESTION,
     payload: payload

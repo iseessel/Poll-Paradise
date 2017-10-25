@@ -124,6 +124,13 @@
   font-size: 12.8px;
 }
 
+.poll-view-banner{
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  height: 30px;
+}
+
 li {
   display: flex;
   align-items: center;
@@ -131,6 +138,10 @@ li {
   height: 40px;
   background-color: #E9EFF4;
   border-top: 1px solid white;
+}
+
+li:hover {
+  background-color: #d8e3ec;
 }
 
 li a {
@@ -159,4 +170,28 @@ li a:hover{
 
 .left-row-question a {
   margin-left: 18px;
+}
+
+.inactive {
+  visibility: hidden;
+}
+
+.fa-check, .banner-text {
+  font-size: 12.8px;
+  background-color: #e5e5e5;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.fa-check{
+  padding: 10px
+}
+
+.banner-text{
+  padding:8.3px;
+  margin-left: 5px;
+}
+
+.fa-caret-down:focus {
+  border: 1px solid black;
 }
