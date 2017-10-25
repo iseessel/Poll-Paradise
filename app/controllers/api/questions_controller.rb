@@ -18,12 +18,14 @@ class Api::QuestionsController < ApplicationController
     @question = Question.new(question_params)
     @question.user_id = current_user.id
     @answer_choices = []
+    
     if params[:answer_choices]
       params[:answer_choices].values.each do |answer_choice|
         answer_choice = AnswerChoice.new(answer_choice)
         answer_choice.times_chosen = 0
         @question.answer_choices << answer_choice
         @answer_choices << answer_choice
+
       end
     end
 

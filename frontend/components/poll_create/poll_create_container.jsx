@@ -70,10 +70,10 @@ class PollCreate extends React.Component{
     }
 
     const question = { body: this.state.question }
-
+    ;
     return {
       question: question,
-      answerChoices: answerChoices
+      answer_choices: answerChoices
     };
   }
 
