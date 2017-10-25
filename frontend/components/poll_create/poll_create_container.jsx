@@ -10,7 +10,7 @@ import { createQuestion } from '../../actions/question_actions.js';
 // };
 
 //data expected: { question: { group_id, body},
-//                answer_choices: [{body},{},{}] }
+//                answerChoices: [{body},{},{}] }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
 const _defaultState = {
   question: "",
-  answer_choices: ["", "", ""]
+  answerChoices: ["", "", ""]
 }
 
 class PollCreate extends React.Component{
@@ -32,9 +32,9 @@ class PollCreate extends React.Component{
 
   handleAnswerChoiceChange(idx){
     return (e) => {
-      const newState = this.state.answer_choices.slice(0)
+      const newState = this.state.answerChoices.slice(0)
       newState[idx] = e.currentTarget.value
-      this.setState({answer_choices: newState })
+      this.setState({answerChoices: newState })
     }
   }
 
@@ -49,32 +49,36 @@ class PollCreate extends React.Component{
       e.preventDefault();
       const data = this.packageData()
       this.props.createQuestion(data)
+
       this.setState(_defaultState)
     }
   }
 
   packageData(){
-    const answer_choices = this.state.answer_choices.map((body)=> {
-      return {
-        body: body
+    const userInputAnswerChoices = this.state.answerChoices
+    let answerChoices = []
+    let body
+    for (let i = 0; i < userInputAnswerChoices.length; i++){
+      body = userInputAnswerChoices[i]
+      if(body){
+        answerChoices.push({body: body })
       }
-    })
+    }
 
     const question = { body: this.state.question }
 
     return {
       question: question,
-      answer_choices: answer_choices
+      answerChoices: answerChoices
     };
   }
 
   generateAnswerChoiceInputs(){
-    const that = this
-    return this.state.answer_choices.map((body, idx) => {
+    return this.state.answerChoices.map((body, idx) => {
       return (
         <label key={idx} className="answerchoice-input-element">
           <input onChange={this.handleAnswerChoiceChange(idx).bind(this)}
-            value={this.state.answer_choices[idx]}/>
+            value={this.state.answerChoices[idx]}/>
         </label>
       )
     })
@@ -87,7 +91,7 @@ class PollCreate extends React.Component{
         <label>
           <input className="question"
             onChange={this.handleQuestionChange().bind(this)}
-            value={this.props.question}
+            value={this.state.question}
             />
           {this.generateAnswerChoiceInputs()}
         </label>
