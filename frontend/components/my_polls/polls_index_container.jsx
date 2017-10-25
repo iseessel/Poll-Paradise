@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import * as pollIndexSelector from '../../util/selectors/poll_index_selector.js';
 import { retrieveGroups } from '../../actions/group_actions.js';
 import QuestionIndexContainer from './question_index_container.jsx';
+import FontAwesome from 'react-fontawesome';
+
 
 
 /* polls: [
@@ -55,7 +57,16 @@ class PollIndex extends React.Component{
     return this.props.polls.map((poll) => {
       return (
         <ul>
-          <h2>{poll.title}</h2>
+          <div className="group-bar">
+            <div className="left-group">
+              <FontAwesome name="caret-down" size="2x"/>
+              <h2>{poll.title}</h2>
+            </div>
+
+            <div className="right-group-view">
+              <p>{poll.questions.length}  activities</p>
+            </div>
+          </div>
           {this.generateLis(poll.questions)}
         </ul>
       )

@@ -1,0 +1,16 @@
+html, body, header, nav, h1, a,
+ul, li, strong, main, button, i,
+section, img, div, h2, p, form,
+fieldset, label, input, textarea,
+span, article, footer, time, small {
+  font-family: 'Source Sans Pro', Helvetica,Verdana,sans-serif;
+}
+button {
+  background-color: #F95652;
+  color: white;
+  text-align: center;
+}
+
+button:hover {
+  background-color: #E04E4A;
+}

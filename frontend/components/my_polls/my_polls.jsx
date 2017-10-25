@@ -21,11 +21,12 @@ export const MyPolls = (props) => {
 
         <div className="my-polls-header-right">
           <div className="dropdown-menu">
-            {props.currentUser.email}
+            <p>{props.currentUser.email}</p>
             <FontAwesome name="cog" size="2x"/>
           </div>
+          </div>
         </div>
-      </div>
+
       <div className="main-polls">
         <div className="my-polls-sidebar">
           <button onClick={() => props.history.push('create')}>Create</button>
