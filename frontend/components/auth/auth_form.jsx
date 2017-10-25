@@ -1,8 +1,8 @@
 import React from 'react';
 import snakeCase from 'lodash/snakeCase'
-import { signupAction, clearSessionActions } from '../../../actions/session_actions.js';
+import { signupAction, clearSessionActions } from '../../actions/session_actions.js';
 import { connect } from 'react-redux';
-import ErrorsContainer from '../../errors/session_errors_container';
+import ErrorsContainer from '../errors/session_errors_container';
 import { withRouter, Link } from 'react-router-dom';
 
 const mapStateToProps = (state) => {
