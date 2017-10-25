@@ -65,12 +65,15 @@ class AuthForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    const user = Object.assign({}, { user: this.state });
+    const data = (this.state ? this.state : {empty: true})
+    const user = Object.assign({}, { user: data });
+    debugger;
     this.props.match.url === "/login" ? this.props.login(user) :
       this.props.signup(user)
   }
 
   render(){
+    debugger;
     return (
       <div className="main">
         <HeaderContainer />

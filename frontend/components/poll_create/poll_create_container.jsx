@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createQuestion } from '../../actions/question_actions.js';
+import ErrorsContainer from '../errors/session_errors_container.jsx'
 
 // const mapStateToProps = (state) => {
 // return {
@@ -86,17 +87,30 @@ class PollCreate extends React.Component{
 
   render(){
     return (
-      <form className="poll-creation"
-        onSubmit={this.handleSubmit().bind(this)}>
-        <label>
-          <input className="question"
-            onChange={this.handleQuestionChange().bind(this)}
-            value={this.state.question}
-            />
-          {this.generateAnswerChoiceInputs()}
-        </label>
-        <button>Create</button>
-      </form>
+      <div className="create-poll">
+        <ErrorsContainer />
+        <div className="create-poll-baner">
+
+
+        </div>
+
+        <div className="poll-form">
+          <form className="poll-creation"
+            onSubmit={this.handleSubmit().bind(this)}>
+            <label>
+              <input className="question"
+                onChange={this.handleQuestionChange().bind(this)}
+                value={this.state.question}
+                />
+              {this.generateAnswerChoiceInputs()}
+            </label>
+            <button>Create</button>
+          </form>
+        </div>
+
+      </div>
+
+
     )
 
   }
