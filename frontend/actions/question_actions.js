@@ -5,7 +5,7 @@ export const RECEIVE_QUESTION = "RECEIVE_QUESTION";
 export const DELETE_QUESTION = "DELETE_QUESTION";
 
 export const receiveOneQuestion = (payload) => {
-  debugger
+
   return {
     type: RECEIVE_QUESTION,
     payload: payload
@@ -13,7 +13,7 @@ export const receiveOneQuestion = (payload) => {
 };
 
 export const deleteQuestionAction = (payload) => {
-  debugger;
+
   return {
     type: DELETE_QUESTION,
     payload: payload
@@ -44,7 +44,7 @@ export const updateQuestion = (id, data) => (dispatch) => {
 };
 
 export const deleteQuestion = (id) => (dispatch) => {
-  debugger;
+
   return QuestionUtil.deleteQuestion(id)
     .then((response) => dispatch(deleteQuestionAction(response)),
       (err) => dispatch(receiveErrors(err.responseJSON))

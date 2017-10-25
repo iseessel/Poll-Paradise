@@ -30,7 +30,7 @@ function GroupReducer(state = _defaultState, action){
       return newState
 
     default:
-      debugger
+      
       return state
   }
 }

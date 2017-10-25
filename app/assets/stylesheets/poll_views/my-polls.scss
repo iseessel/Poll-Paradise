@@ -67,6 +67,7 @@
 .my-polls-sidebar button {
   font-family: "Source Sans Pro";
   width: 150px;
+  font-weight: bold;
   margin-left: 18px;
   margin-right: 18px;
   margin-top: 15px;
@@ -176,22 +177,31 @@ li a:hover{
   visibility: hidden;
 }
 
-.fa-check, .banner-text {
+.fa-check, .poll-banner-text {
+  color: #8b8c8c;
   font-size: 12.8px;
   background-color: #e5e5e5;
   cursor: pointer;
   border-radius: 3px;
 }
 
+.fa-check:hover, .poll-banner-text:hover{
+  color: black;
+}
+
 .fa-check{
   padding: 10px
 }
 
-.banner-text{
+.poll-banner-text{
   padding:8.3px;
   margin-left: 5px;
 }
 
 .fa-caret-down:focus {
   border: 1px solid black;
+}
+
+.poll-create {
+  border:none;
 }

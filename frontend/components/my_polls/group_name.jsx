@@ -35,6 +35,18 @@ class GroupName extends React.Component{
   : <FontAwesome name="caret-right" size="2x"/>
   }
 
+  numActivities(){
+    const length = this.props.poll.questions.length
+    if ( length === 0 ){
+      return "no activities"
+    }else if(length === 1){
+        return "1 activity"
+    }else{
+      return `${length} activities`
+    }
+
+  }
+
   render(){
     return (
       <ul>
@@ -47,7 +59,7 @@ class GroupName extends React.Component{
           </div>
 
           <div className="right-group-view">
-            <p>{this.props.poll.questions.length}  activities</p>
+            <p>{this.numActivities()}</p>
           </div>
         </div>
         {this.generateLis(this.props.poll.questions)}

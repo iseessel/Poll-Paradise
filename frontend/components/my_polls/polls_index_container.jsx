@@ -50,7 +50,7 @@ class PollIndex extends React.Component{
         <div className="poll-view">
           <div className="poll-view-banner">
               <FontAwesome name="check" size="2x"/>
-              <div className="banner-text">
+              <div className="poll-banner-text">
                 Group
               </div>
           </div>
@@ -61,7 +61,7 @@ class PollIndex extends React.Component{
   }
 
   generateUls(){
-    debugger;
+
     return this.props.polls.map((poll, idx) => {
       return (
         <GroupName key={idx} poll={poll}/>

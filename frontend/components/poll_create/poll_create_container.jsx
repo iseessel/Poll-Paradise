@@ -2,6 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createQuestion } from '../../actions/question_actions.js';
 import ErrorsContainer from '../errors/session_errors_container.jsx'
+import PollHeaderContainer from '../my_polls/poll_header_container.jsx';
+import FontAwesome from 'react-fontawesome';
+
 
 // const mapStateToProps = (state) => {
 // return {
@@ -77,8 +80,9 @@ class PollCreate extends React.Component{
   generateAnswerChoiceInputs(){
     return this.state.answerChoices.map((body, idx) => {
       return (
-        <label key={idx} className="answerchoice-input-element">
-          <input onChange={this.handleAnswerChoiceChange(idx).bind(this)}
+        <label className="answerchoice-input-element" key={idx}>
+          <input className="poll-create" placeholder="(Text or Image)"
+            onChange={this.handleAnswerChoiceChange(idx).bind(this)}
             value={this.state.answerChoices[idx]}/>
         </label>
       )
@@ -87,30 +91,38 @@ class PollCreate extends React.Component{
 
   render(){
     return (
-      <div className="create-poll">
-        <ErrorsContainer />
-        <div className="create-poll-baner">
-
+      <div className="main">
+        <PollHeaderContainer/>
+          <div className="create-poll">
+            <div className="create-poll-banner">
+              <button className="x-back-to-polls">
+                X
+              </button>
+            </div>
+          </div>
+      <div className="main-poll">
+        <div className="poll-selection">
 
         </div>
 
-        <div className="poll-form">
+        <div className="poll-form"></div>
           <form className="poll-creation"
             onSubmit={this.handleSubmit().bind(this)}>
-            <label>
-              <input className="question"
-                onChange={this.handleQuestionChange().bind(this)}
-                value={this.state.question}
-                />
+              <label className="question">
+                <input
+                  className="poll-create"
+                  placeholder="Question"
+                  onChange={this.handleQuestionChange().bind(this)}
+                  value={this.state.question}
+                  />
+              </label>
               {this.generateAnswerChoiceInputs()}
-            </label>
+              <button><FontAwesome name="plus" size="2x"/></button>
+            <button>Add another activity</button>
             <button>Create</button>
           </form>
         </div>
-
       </div>
-
-
     )
 
   }
