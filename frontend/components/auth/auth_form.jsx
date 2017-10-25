@@ -4,6 +4,7 @@ import { signupAction, clearSessionActions, loginAction } from '../../actions/se
 import { connect } from 'react-redux';
 import ErrorsContainer from '../errors/session_errors_container';
 import { withRouter, Link } from 'react-router-dom';
+import HeaderContainer from '../header_container.jsx';
 
 const mapStateToProps = (state) => {
   return {
@@ -71,23 +72,27 @@ class AuthForm extends React.Component{
 
   render(){
     return (
-      <div className="session-form">
-        <div className="session-form-container">
-          <h2>{this.generateHeader()}</h2>
-          <ErrorsContainer />
-          <form onSubmit={this.handleSubmit.bind(this)}>
-            {this.generateInputs()}
-            <label className="session-form-element">
-              Password
-              <input type="password"
-                onChange={(e) => this.setState(
-                  { password: e.currentTarget.value})}/>
-            </label>
-          <button>{this.props.inputText}</button>
-          </form>
-          {this.generateBottomText()}
+      <div className="main">
+        <HeaderContainer />
+        <div className="session-form">
+          <div className="session-form-container">
+            <h2>{this.generateHeader()}</h2>
+            <ErrorsContainer />
+            <form onSubmit={this.handleSubmit.bind(this)}>
+              {this.generateInputs()}
+              <label className="session-form-element">
+                Password
+                <input type="password"
+                  onChange={(e) => this.setState(
+                    { password: e.currentTarget.value})}/>
+              </label>
+            <button>{this.props.inputText}</button>
+            </form>
+            {this.generateBottomText()}
+          </div>
         </div>
       </div>
+
     )
   }
 }
