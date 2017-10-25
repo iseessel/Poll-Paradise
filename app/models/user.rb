@@ -19,9 +19,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6, allow_nil: true }
 
   has_many :groups
-  has_many :questions,
-    through: :groups,
-    source: :questions
+  has_many :questions
 
   after_initialize :ensure_session_token
   attr_reader :password

@@ -8,7 +8,7 @@ import * as answerChoiceApi from './util/api/answer_choice_api_util'
 import * as groupApi from './util/api/group_api_util'
 import * as questionApi from './util/api/question_api_util'
 import * as groupActions from './actions/group_actions.js'
-import * as selector from './util'
+import * as selector from './util/selectors/poll_index_selector.js'
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // TESTING START
   window.getState = store.getState;
+  window.allPolls = selector.allPolls
   window.dispatch = store.dispatch;
   window.retrieveGroups = groupActions.retrieveGroups
   window.retrieveOneGroup = groupActions.retrieveOneGroup
