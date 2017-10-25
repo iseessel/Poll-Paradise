@@ -5,6 +5,7 @@ import MainPage from './main/main_page';
 import { Footer } from './footer.jsx';
 import HeaderContainer from './header_container.jsx';
 import { Login, SignIn } from './auth/auth_master.jsx';
+import PollIndexContainer from './my_polls/polls_index_container.jsx'
 
 const App = () => {
 
@@ -14,6 +15,7 @@ const App = () => {
       <Route exact path="/" component={MainPage} />
       <AuthRoute path='/login' component={Login} />
       <AuthRoute path='/signup' component={SignIn} />
+      <Route path='/mypolls' component={PollIndexContainer} />
       <Footer />
     </div>
   )

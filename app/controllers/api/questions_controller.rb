@@ -26,7 +26,7 @@ class Api::QuestionsController < ApplicationController
         @answer_choices << answer_choice
       end
     end
-    
+
     if @question.save
      render "api/questions/show"
     else
@@ -40,6 +40,7 @@ class Api::QuestionsController < ApplicationController
       @answer_choice_ids = @question.answer_choice_ids
       @question.destroy!
       render json: {
+        group_id: @question.group.id,
         id: @question.id,
         answer_choice_ids: @answer_choice_ids
       }
