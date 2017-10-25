@@ -22,6 +22,7 @@ class QuestionIndexContainer extends React.Component{
   }
 
   handleClick(){
+    debugger;
     this.props.deleteQuestion(this.props.question.id)
   }
 

@@ -38,9 +38,12 @@ class Api::QuestionsController < ApplicationController
     @question = current_user.questions.find_by(id: params[:id])
     if @question
       @answer_choice_ids = @question.answer_choice_ids
+      @group = @question.group
+      @group_ids = (@group ? @group.id : nil )
+
       @question.destroy!
       render json: {
-        group_id: @question.group.id,
+        group_id: @group_ids,
         id: @question.id,
         answer_choice_ids: @answer_choice_ids
       }

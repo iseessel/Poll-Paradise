@@ -61,6 +61,7 @@ class PollIndex extends React.Component{
   }
 
   generateUls(){
+    debugger;
     return this.props.polls.map((poll, idx) => {
       return (
         <GroupName key={idx} poll={poll}/>
