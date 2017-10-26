@@ -14,8 +14,8 @@ const App = () => {
       <Route exact path="/" component={MainPage} />
       <AuthRoute path='/login' component={Login} />
       <AuthRoute path='/signup' component={SignIn} />
-      <Route path='/mypolls' component={MyPolls} />
-      <Route path='/create' component={PollCreateContainer} />
+      <ProtectedRoute path='/mypolls' component={MyPolls} />
+      <ProtectedRoute path='/create' component={PollCreateContainer} />
       <Footer />
     </div>
   )

@@ -24,20 +24,33 @@
   display: flex;
 }
 
-.dropdown-menu {
+.dropdown-menu{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdown-text {
+  font-size: 13px;
   cursor: pointer;
   display:flex;
   align-items: center;
   justify-content: center;
   height: 100%;
   padding: 0px 15px;
+  font-weight: normal;
+}
+.fa-cog{
+  margin-left: 5px;
 }
 
-.dropdown-menu:hover {
+.dropdown-text:hover {
   background-color: #1f4360;
 }
 
 .my-polls-header-right {
+  width: 170px;
 }
 
 .plus {
@@ -129,7 +142,7 @@
   font-size: 12.8px;
 }
 
-.dropdown-menu p {
+.dropdown-text p {
   margin-right: 5px;
   font-family: "Lucida Grande","Lucida Sans","Lucida Sans Unicode";
   font-weight: normal;
@@ -214,6 +227,7 @@
   border: 1px solid black;
 }
 
+
 .poll-input-item {
   border:none;
 }
@@ -227,4 +241,50 @@
   justify-content: center;
   align-items: center;
   color: #255071
+}
+
+.dropdown-items{
+  position: absolute;
+}
+
+.poll-view-dropdown{
+  position: relative;
+  top:47px;
+}
+
+.dropdown-text{
+  width: 170px;
+}
+
+.logout-item{
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 170px;
+  border-bottom: 2px solid #EDEDED;
+  border-left: 1px solid #EDEDED;
+}
+
+.logout-button{
+  text-align: left;
+  height: 100%;
+  width: 100%;
+}
+
+.logout-button:hover{
+  border-left: 2px solid #203349;
+  padding-left: 8px;
+  background-color: #e9eff4;
+}
+
+.poll-view-dropdown, .logout-item, .logout-button{
+  box-sizing: content-box;
+}
+
+.logout-button{
+  color: #255073;
+  background-color: white;
+  font-family: "Lucida Grande", "Lucida Sans", "Lucida Sans Unicode", sans-serif;
+  font-size: 14px;
+  padding-left: 10px;
 }

@@ -35,6 +35,10 @@ class PollCreate extends React.Component{
     this.state = _defaultState
   }
 
+  componentDidMount(){
+    
+  }
+
   handleTrashClick(idx){
     return (e) => {
       e.preventDefault();
@@ -113,7 +117,7 @@ class PollCreate extends React.Component{
   generateQuestionError(){
     return this.hasQuestionError() ?
       <li className="question-error-message">
-        Question cannot be blank!
+        Question cannot be blank
       </li>
     : <div></div>
   }

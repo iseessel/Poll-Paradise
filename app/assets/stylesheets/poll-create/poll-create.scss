@@ -187,16 +187,16 @@
 .answer-choice-error-message, .question-error-message{
   border: none;
   color: #d95347;
+  letter-spacing: .5px;
   font-size: 10px;
 }
 
 .question-error-message{
   background-color: white;
-  width: 150px;
+  width: 170px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-left: 1px solid #d95347;
 }
 
 .answer-choice-error-message{
