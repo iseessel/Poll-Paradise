@@ -99,22 +99,40 @@ class PollCreate extends React.Component{
     this.setState({answerChoices: newState })
   }
 
-  errorQuestionClassName(){
+  hasQuestionError(){
     const allErrors = this.props.errors
-    return allErrors.includes("Question must have at least one answer choice!")
-      ? "poll-create question-error" : "poll-create"
+    return allErrors.some((error) => error.hasOwnProperty("body"))
   }
 
-  errorTextClassNames(){
-    const allErrors = this.props.errors
-    return allErrors.includes("Body can't be blank") ?
-      "poll-create answer-choice-error" : "poll-create"
+  errorQuestionClassName(){
+    return this.hasQuestionError() ? "poll-create question-error"
+      : "poll-create"
   }
+
+  generateQuestionError(){
+    this.hasQuestionError() ?
+      <li className="question-error">
+
+      </li>
+    : <div></div>
+  }
+
+  hasAnswerChoiceError(){
+    const allErrors = this.props.errors
+    return allErrors.some((error) => error.hasOwnProperty("question"))
+  }
+
+  errorAnswerChoiceClassName(){
+    return this.hasAnswerChoiceError() ? "poll-create answer-choice-error"
+      : "poll-create"
+  }
+
+
 
   generateAnswerChoiceInputs(){
     return this.state.answerChoices.map((body, idx) => {
       return (
-        <div className={this.errorTextClassNames()}>
+        <div className={this.errorAnswerChoiceClassName()}>
           <input key={idx} className="poll-create" placeholder="(Text or Image)"
             onChange={this.handleAnswerChoiceChange(idx).bind(this)}
             value={this.state.answerChoices[idx]}/>
@@ -122,7 +140,7 @@ class PollCreate extends React.Component{
             className="delete-answer-choice">
             <FontAwesome name="trash" size="2x"/>
               <li className="answer-choice-errors">
-                {this.idx === 0 ? }
+
               </li>
           </div>
         </div>
@@ -143,7 +161,6 @@ class PollCreate extends React.Component{
               </div>
 
               <div className="right-banner">
-                <ErrorsContainer correctClass="poll-create-errors" />
               </div>
 
             </div>

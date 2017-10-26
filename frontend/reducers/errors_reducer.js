@@ -5,14 +5,16 @@ import { CLEAR_ERRORS, RECEIVE_ERRORS }  from '../actions/errors.js';
 const _defaultState = [];
 
 function ErrorsReducer(state = _defaultState, action){
-  
+
   switch(action.type){
 
     case RECEIVE_CURRENT_USER:
       return _defaultState;
 
     case RECEIVE_ERRORS:
-      return action.errors;
+      ;
+      return Array.isArray(action.errors) ?
+        action.errors : [action.errors]
 
     case CLEAR_ERRORS:
       return _defaultState;
