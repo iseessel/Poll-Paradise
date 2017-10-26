@@ -18,21 +18,20 @@ class Api::QuestionsController < ApplicationController
     @question = Question.new(question_params)
     @question.user_id = current_user.id
     @answer_choices = []
-    
+
     if params[:answer_choices]
       params[:answer_choices].values.each do |answer_choice|
         answer_choice = AnswerChoice.new(answer_choice)
         answer_choice.times_chosen = 0
         @question.answer_choices << answer_choice
         @answer_choices << answer_choice
-
       end
     end
 
     if @question.save
      render "api/questions/show"
     else
-      render json: @question.errors.full_messages, status: 422
+      render json: @question.errors, status: 422
     end
   end
 
@@ -67,7 +66,9 @@ class Api::QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:group_id, :body) #will this mess up the rest of my params?
+    params.require(:question).permit(:group_id, :body, answer_choices_attributes: [:body] ) #will this mess up the rest of my params?
   end
+
+  #nested_attributes will automatically create these for you!
 
 end

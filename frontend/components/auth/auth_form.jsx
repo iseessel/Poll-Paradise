@@ -2,7 +2,7 @@ import React from 'react';
 import snakeCase from 'lodash/snakeCase'
 import { signupAction, clearSessionActions, loginAction } from '../../actions/session_actions.js';
 import { connect } from 'react-redux';
-import ErrorsContainer from '../errors/session_errors_container';
+import ErrorsContainer from '../errors/errors_container.jsx';
 import { withRouter, Link } from 'react-router-dom';
 import HeaderContainer from '../header_container.jsx';
 
@@ -39,7 +39,8 @@ class AuthForm extends React.Component{
       return (
         <label key={idx} className="session-form-element">
           {inputString}
-          <input onChange={this.handleChange(inputString).bind(this)}/>
+          <input className="auth-input"
+            onChange={this.handleChange(inputString).bind(this)}/>
         </label>
       )
     });
@@ -67,29 +68,29 @@ class AuthForm extends React.Component{
     e.preventDefault();
     const data = (this.state ? this.state : {empty: true})
     const user = Object.assign({}, { user: data });
-    
+
     this.props.match.url === "/login" ? this.props.login(user) :
       this.props.signup(user)
   }
 
   render(){
-    
+
     return (
       <div className="main">
         <HeaderContainer />
         <div className="session-form">
           <div className="session-form-container">
             <h2>{this.generateHeader()}</h2>
-            <ErrorsContainer />
+            <ErrorsContainer correctClass="session-errors" />
             <form onSubmit={this.handleSubmit.bind(this)}>
               {this.generateInputs()}
               <label className="session-form-element">
                 Password
-                <input type="password"
+                <input className="auth-input" type="password"
                   onChange={(e) => this.setState(
                     { password: e.currentTarget.value})}/>
               </label>
-            <button>{this.props.inputText}</button>
+            <button className="auth-form-button">{this.props.inputText}</button>
             </form>
             {this.generateBottomText()}
           </div>

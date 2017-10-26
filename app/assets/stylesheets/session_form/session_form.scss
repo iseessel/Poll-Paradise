@@ -20,7 +20,7 @@ h2 {
   display: block;
 }
 
-input {
+.auth-input {
   margin-top: 3px;
   display: block;
   border: 1px solid #D8E4F1;
@@ -29,12 +29,12 @@ input {
   padding-left: 8px;
 }
 
-input:focus{
+.auth-input:focus{
   border: 2px solid #51B2FA;
   box-shadow: 0 0 .25em #51B2FA;
 }
 
-.button-default {
+.auth-form-button {
   margin-top: 25px;
   width: 437px;
   height: 36px;
@@ -43,7 +43,7 @@ input:focus{
   text-align: center;
 }
 
-.button-default:hover {
+.auth-form-button:hover {
   background-color: #E04E4A;
 }
 
@@ -60,12 +60,12 @@ input:focus{
   text-decoration: underline;
 }
 
-.errors{
+.session-errors{
   margin-top: 10px;
 }
 
 
-.errors li {
+.session-errors li {
   background-color: #FDD1CE;
   height: 50px;
   width: 460px;

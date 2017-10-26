@@ -1,24 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createQuestion } from '../../actions/question_actions.js';
-import ErrorsContainer from '../errors/session_errors_container.jsx'
+import ErrorsContainer from '../errors/errors_container.jsx'
 import PollHeaderContainer from '../my_polls/poll_header_container.jsx';
 import FontAwesome from 'react-fontawesome';
 
 
-// const mapStateToProps = (state) => {
-// return {
-//   polls: pollIndexSelector.allPolls(state.entities.groups,
-//     state.entities.questions)
-// };
-// };
+
+const mapStateToProps = (state) => {
+  return {
+    errors: state.errors
+  };
+}
 
 //data expected: { question: { group_id, body},
 //                answerChoices: [{body},{},{}] }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    createQuestion: (data) => dispatch(createQuestion(data))
+    createQuestion: (data) => {
+      return dispatch(createQuestion(data))}
   };
 };
 
@@ -34,6 +35,15 @@ class PollCreate extends React.Component{
     this.state = _defaultState
   }
 
+  handleTrashClick(idx){
+    return (e) => {
+      e.preventDefault();
+      const newState = this.state.answerChoices.slice(0)
+      newState.splice(idx, 1);
+      this.setState({answerChoices: newState })
+    }
+  }
+
   handleAnswerChoiceChange(idx){
     return (e) => {
       const newState = this.state.answerChoices.slice(0)
@@ -42,20 +52,8 @@ class PollCreate extends React.Component{
     }
   }
 
-  handleQuestionChange(){
-    return (e) => {
-      this.setState({question: e.currentTarget.value})
-    };
-  }
-
-  handleSubmit(){
-    return (e) => {
-      e.preventDefault();
-      const data = this.packageData()
-      this.props.createQuestion(data)
-
-      this.setState(_defaultState)
-    }
+  handleQuestionChange(e){
+    this.setState({question: e.currentTarget.value})
   }
 
   packageData(){
@@ -77,18 +75,59 @@ class PollCreate extends React.Component{
     };
   }
 
-  generateAnswerChoiceInputs(){
-    return this.state.answerChoices.map((body, idx) => {
-      return (
-        <input key={idx} className="poll-create" placeholder="(Text or Image)"
-          onChange={this.handleAnswerChoiceChange(idx).bind(this)}
-          value={this.state.answerChoices[idx]}/>
-      )
-    })
+  handleSubmit(e){
+    e.preventDefault();
+    const data = this.packageData()
+    this.setState(_defaultState)
+    return this.props.createQuestion(data)
+  }
+
+  handleCreateClick(e){
+    this.handleSubmit(e)
+      .then(() => this.props.history.push('/mypolls'))
+
   }
 
   handleXClick(e){
     this.props.history.push('/mypolls')
+  }
+
+  handlePlusClick(e){
+    e.preventDefault()
+    const newState = this.state.answerChoices.slice(0)
+    newState.push("")
+    this.setState({answerChoices: newState })
+  }
+
+  errorQuestionClassName(){
+    const allErrors = this.props.errors
+    return allErrors.includes("Question must have at least one answer choice!")
+      ? "poll-create question-error" : "poll-create"
+  }
+
+  errorTextClassNames(){
+    const allErrors = this.props.errors
+    return allErrors.includes("Body can't be blank") ?
+      "poll-create answer-choice-error" : "poll-create"
+  }
+
+  generateAnswerChoiceInputs(){
+    return this.state.answerChoices.map((body, idx) => {
+      return (
+        <div className={this.errorTextClassNames()}>
+          <input key={idx} className="poll-create" placeholder="(Text or Image)"
+            onChange={this.handleAnswerChoiceChange(idx).bind(this)}
+            value={this.state.answerChoices[idx]}/>
+          <div onClick={this.handleTrashClick(idx).bind(this)}
+            className="delete-answer-choice">
+            <FontAwesome name="trash" size="2x"/>
+              <li className="answer-choice-errors">
+                {this.idx === 0 ? }
+              </li>
+          </div>
+        </div>
+      )
+    })
   }
 
   render(){
@@ -97,9 +136,16 @@ class PollCreate extends React.Component{
         <PollHeaderContainer/>
           <div className="create-poll">
             <div className="create-poll-banner">
-              <button onClick={this.handleXClick.bind(this)} className="x-back-to-polls">
-                X
-              </button>
+              <div className="left-banner">
+                <button onClick={this.handleXClick.bind(this)} className="x-back-to-polls">
+                  X
+                </button>
+              </div>
+
+              <div className="right-banner">
+                <ErrorsContainer correctClass="poll-create-errors" />
+              </div>
+
             </div>
           </div>
       <div className="main-poll">
@@ -109,18 +155,18 @@ class PollCreate extends React.Component{
               </div>
 
 
-          <form className="poll-creation"
-            onSubmit={this.handleSubmit().bind(this)}>
+          <form className="poll-creation">
             <div className="poll-inputs">
               <input
-                className="poll-create"
+                className={this.errorQuestionClassName()}
                 placeholder="Question"
-                onChange={this.handleQuestionChange().bind(this)}
+                onChange={this.handleQuestionChange.bind(this)}
                 value={this.state.question}
                 />
               {this.generateAnswerChoiceInputs()}
               <div className="left-poll">
-                <button className="poll-creation-plus"><FontAwesome name="plus" size="2x"/></button>
+                <button onClick={this.handlePlusClick.bind(this)}
+                  className="poll-creation-plus"><FontAwesome name="plus" size="2x"/></button>
               </div>
             </div>
 
@@ -136,8 +182,9 @@ class PollCreate extends React.Component{
                 </div>
 
                 <div className="right-create-banner">
-                  <button className="add-activity">Add another activity</button>
-                  <button className="create">Create</button>
+                  <button onClick={this.handleSubmit.bind(this)}
+                    className="add-activity">Add another activity</button>
+                  <button onClick={this.handleCreateClick.bind(this)} className="create">Create</button>
                 </div>
 
               </div>
@@ -150,4 +197,4 @@ class PollCreate extends React.Component{
   }
 }
 
-export default connect(null, mapDispatchToProps)(PollCreate)
+export default connect(mapStateToProps, mapDispatchToProps)(PollCreate)
