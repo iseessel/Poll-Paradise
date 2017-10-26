@@ -33,7 +33,7 @@ class PollHeader extends React.Component{
         <ul className="poll-view-dropdown">
           <li className="logout-item">
             <button
-              onClick={this.props.logout.bind(this)} 
+              onClick={this.props.logout.bind(this)}
               className="logout-button">
             Log out
             </button>

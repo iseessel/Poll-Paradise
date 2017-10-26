@@ -1,10 +1,17 @@
 .top-footer {
-  height: 130px;
+  height: 200px;
   background-color: #4F4F4F;
   border-top: 1px solid #303334;
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
+}
+
+.footer{
+  position: fixed;
+  width: 100%;
+  left:0px;
+  bottom:0px;
 }
 
 .links {

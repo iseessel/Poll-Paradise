@@ -7,7 +7,7 @@ class GroupName extends React.Component{
 
   constructor(props){
     super(props)
-    this.state = {clicked: true}
+    this.state = {clicked: false}
   }
 
   generateLis(questions){

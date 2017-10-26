@@ -1,5 +1,6 @@
 import React from 'react';
 import HeaderContainer from '../header_container.jsx';
+import { Footer } from '../footer.jsx';
 
 
 const MainPage = (props) => (
@@ -24,6 +25,7 @@ const MainPage = (props) => (
         </section>
       </div>
     </div>
+    <Footer />
   </div>
 
 );

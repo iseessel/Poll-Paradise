@@ -2,7 +2,6 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util.jsx';
 import MainPage from './main/main_page';
-import { Footer } from './footer.jsx';
 import { Login, SignIn } from './auth/auth_master.jsx';
 import MyPolls from './my_polls/my_polls.jsx'
 import PollCreateContainer from './poll_create/poll_create_container.jsx'
@@ -16,7 +15,6 @@ const App = () => {
       <AuthRoute path='/signup' component={SignIn} />
       <ProtectedRoute path='/mypolls' component={MyPolls} />
       <ProtectedRoute path='/create' component={PollCreateContainer} />
-      <Footer />
     </div>
   )
 };
