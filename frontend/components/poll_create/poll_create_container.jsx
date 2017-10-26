@@ -101,18 +101,19 @@ class PollCreate extends React.Component{
 
   hasQuestionError(){
     const allErrors = this.props.errors
+
     return allErrors.some((error) => error.hasOwnProperty("body"))
   }
 
   errorQuestionClassName(){
-    return this.hasQuestionError() ? "poll-create question-error"
-      : "poll-create"
+    return this.hasQuestionError() ? "poll-input-item question-error"
+      : "poll-input-item"
   }
 
   generateQuestionError(){
-    this.hasQuestionError() ?
-      <li className="question-error">
-
+    return this.hasQuestionError() ?
+      <li className="question-error-message">
+        Question cannot be blank!
       </li>
     : <div></div>
   }
@@ -123,24 +124,29 @@ class PollCreate extends React.Component{
   }
 
   errorAnswerChoiceClassName(){
-    return this.hasAnswerChoiceError() ? "poll-create answer-choice-error"
-      : "poll-create"
+    return this.hasAnswerChoiceError() ? "poll-input-item answer-choice-error"
+      : "poll-input-item"
   }
 
-
+  generateAnswerChoiceError(idx){
+    return this.hasAnswerChoiceError() ?
+      <li className="answer-choice-error-message">
+        Question must have at least one response item
+      </li>
+    : <div></div>
+  }
 
   generateAnswerChoiceInputs(){
     return this.state.answerChoices.map((body, idx) => {
       return (
         <div className={this.errorAnswerChoiceClassName()}>
-          <input key={idx} className="poll-create" placeholder="(Text or Image)"
+          <input key={idx} className="poll-input-item" placeholder="(Text or Image)"
             onChange={this.handleAnswerChoiceChange(idx).bind(this)}
             value={this.state.answerChoices[idx]}/>
           <div onClick={this.handleTrashClick(idx).bind(this)}
             className="delete-answer-choice">
             <FontAwesome name="trash" size="2x"/>
               <li className="answer-choice-errors">
-
               </li>
           </div>
         </div>
@@ -174,13 +180,23 @@ class PollCreate extends React.Component{
 
           <form className="poll-creation">
             <div className="poll-inputs">
-              <input
-                className={this.errorQuestionClassName()}
-                placeholder="Question"
-                onChange={this.handleQuestionChange.bind(this)}
-                value={this.state.question}
-                />
-              {this.generateAnswerChoiceInputs()}
+              <div className="poll-question">
+                <div className={this.errorQuestionClassName()}>
+                <input
+                  className="poll-input-item question"
+                  placeholder="Question"
+                  onChange={this.handleQuestionChange.bind(this)}
+                  value={this.state.question}
+                  />
+                  {this.generateQuestionError()}
+                </div>
+              </div>
+
+              <div className="answer-choices">
+                {this.generateAnswerChoiceError()}
+                {this.generateAnswerChoiceInputs()}
+              </div>
+
               <div className="left-poll">
                 <button onClick={this.handlePlusClick.bind(this)}
                   className="poll-creation-plus"><FontAwesome name="plus" size="2x"/></button>
@@ -188,7 +204,6 @@ class PollCreate extends React.Component{
             </div>
 
               <div className="bottom-create-buttons">
-
                 <div className="left-create-banner">
                   <select className="group-dropdown">
                     <option value="volvo">Volvo</option>

@@ -7,6 +7,7 @@ export const DELETE_GROUP = "DELETE_GROUP"
 
 //NB: Receive Groups also returns all the questions for a user.
 export const receiveGroups = (payload) => {
+
   return {
     type: RECEIVE_GROUPS,
     payload: payload
@@ -31,6 +32,7 @@ export const deleteGroupAction = (payload) => {
 // b/c the controller will find the current_user
 
 export const retrieveGroups = () => (dispatch) => {
+  
   return GroupUtil.fetchGroups().then((response) => dispatch(receiveGroups(response)),
     (err) => dispatch(receiveErrors(err.responseJSON))
     ).then(() => dispatch(clearErrors))

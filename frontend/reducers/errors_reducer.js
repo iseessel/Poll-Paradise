@@ -12,9 +12,8 @@ function ErrorsReducer(state = _defaultState, action){
       return _defaultState;
 
     case RECEIVE_ERRORS:
-      ;
-      return Array.isArray(action.errors) ?
-        action.errors : [action.errors]
+    return Array.isArray(action.errors) ?
+      action.errors : [action.errors]
 
     case CLEAR_ERRORS:
       return _defaultState;
@@ -25,3 +24,4 @@ function ErrorsReducer(state = _defaultState, action){
 }
 
 export default ErrorsReducer;
+// ;

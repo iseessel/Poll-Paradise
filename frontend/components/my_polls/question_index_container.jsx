@@ -40,7 +40,7 @@ class QuestionIndexContainer extends React.Component{
 
   render(){
     return (
-        <li onMouseEnter={this.handleMouseEnter}
+        <li className="question-view" onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}>
           <div className="left-row-question">
             <FontAwesome name="wpforms" size="2x"/>

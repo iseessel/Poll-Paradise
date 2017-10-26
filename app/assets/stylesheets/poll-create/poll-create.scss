@@ -54,7 +54,7 @@
 }
 
 
-.poll-create::placeholder{
+.poll-input-item::placeholder{
   width: 100%;
   font-size: 12.8px;
   color: lightgray;
@@ -89,14 +89,10 @@
   border: none;
 }
 
-.poll-create:first-child {
-  margin-bottom: 15px;
-}
-
-.poll-create{
+.poll-input-item{
   height: 41px;
   background-color: white;
-  box-sizing: border-box;
+  box-sizing: content-box;
   margin-top: 0;
   padding-left: 5px;
   width: 100%;
@@ -133,6 +129,7 @@
 }
 
 .delete-answer-choice{
+  list-style: none;
   cursor: pointer;
   height: 41px;
   width: 41px;
@@ -160,7 +157,7 @@
   width: 760px;
 }
 
-.poll-create-errors{
+.poll-input-item-errors{
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -172,8 +169,12 @@
 
 .answer-choice-error:first-of-type{
   border: 1px solid #DA514A;
-  overflow: hidden;
 }
+
+.poll-question{
+  margin-bottom: 15px;
+}
+
 
 .polls-index{
   margin-bottom: 25px;
@@ -181,4 +182,26 @@
 
 .add-activity:hover{
   color: black;
+}
+
+.answer-choice-error-message, .question-error-message{
+  border: none;
+  color: #d95347;
+  font-size: 10px;
+}
+
+.question-error-message{
+  background-color: white;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid #d95347;
+}
+
+.answer-choice-error-message{
+  background-color: #d3d3d3;
+  height: 20px;
+  margin-bottom: 3px;
+  display: flex;
 }
