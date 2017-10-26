@@ -5,12 +5,13 @@ fieldset, label, input, textarea,
 span, article, footer, time, small {
   font-family: 'Source Sans Pro', Helvetica,Verdana,sans-serif;
 }
-button {
+
+button{
   background-color: #F95652;
   color: white;
   text-align: center;
 }
 
-button:hover {
+.button-default:hover {
   background-color: #E04E4A;
 }

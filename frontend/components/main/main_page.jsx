@@ -15,7 +15,7 @@ const MainPage = (props) => (
               <div className="text">
                 <h2>Live interactive audience participation</h2>
                 <h4 className="subheader-main">Engage your audience or class in real time</h4>
-                <button onClick={() => props.history.push('signup')}>Get started</button>
+                <button className="get-started" onClick={() => props.history.push('signup')}>Get started</button>
               </div>
             </div>
             </div>

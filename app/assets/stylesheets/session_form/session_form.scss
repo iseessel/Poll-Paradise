@@ -34,7 +34,7 @@ input:focus{
   box-shadow: 0 0 .25em #51B2FA;
 }
 
-button {
+.button-default {
   margin-top: 25px;
   width: 437px;
   height: 36px;
@@ -43,7 +43,7 @@ button {
   text-align: center;
 }
 
-button:hover {
+.button-default:hover {
   background-color: #E04E4A;
 }
 

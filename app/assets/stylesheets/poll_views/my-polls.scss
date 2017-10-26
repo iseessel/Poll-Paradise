@@ -25,6 +25,7 @@
 }
 
 .dropdown-menu {
+  cursor: pointer;
   display:flex;
   align-items: center;
   justify-content: center;
@@ -73,15 +74,19 @@
   margin-top: 15px;
   border-radius: 3px;
   font-size: 12.8px;
+  height: 35px;
+  width: 150px;
+  color: white;
+  background-color: #F95652;
+}
+
+.my-polls-sidebar button:hover {
+  background-color: #E04E4A;
 }
 
 .right-group {
   display:flex;
   align-items: center;
-}
-
-.polls-index{
-  width: 100%;
 }
 
 .my-polls h2 {
@@ -90,6 +95,12 @@
   font-weight: bold;
   margin: 0px;
   margin-left: 18px;
+}
+
+.fa-spinner {
+  margin-top:100px;
+  margin-bottom: 100px;
+  font-size: 200px;
 }
 
 .left-group{
@@ -159,6 +170,7 @@ li a:hover{
 .polls-index{
   padding-bottom: 15px;
   padding-right: 15px;
+  width: 100%;
 }
 
 .right-row-question {
@@ -204,4 +216,8 @@ li a:hover{
 
 .poll-create {
   border:none;
+}
+
+.poll-inputs {
+  margin-bottom: 15px;
 }

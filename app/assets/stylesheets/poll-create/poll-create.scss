@@ -15,6 +15,14 @@
   width: 40px;
   border-radius:3px;
   font-weight: bold;
+  background-color: #F95652;
+  text-align: center;
+  font-family: 'Source Sans Pro', Helvetica,Verdana,sans-serif;
+  color: white;
+}
+
+.x-back-to-polls:hover{
+  background-color: #E04E4A;
 }
 
 .main-poll{
@@ -27,10 +35,10 @@
 }
 
 .poll-creation{
+  width: 950px;
   padding-top: 40px;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .main-poll{
@@ -43,14 +51,6 @@
   width: 115px;
 }
 
-.question, .answerchoice-input-element{
-  margin: 0;
-  width: 95%;
-}
-
-.question, .answerchoice-input-element{
-  background-color: white;
-}
 
 .poll-create::placeholder{
   width: 100%;
@@ -58,17 +58,84 @@
   color: lightgray;
 }
 
+.poll-form{
+  display: flex;
+  justify-content: center;
+}
+
+.poll-creation-plus{
+  height: 35px;
+  width: 35px;
+  color: #5CE3DC;
+  margin-top: 0px;
+  background-color: white;
+}
+
+
+.left-create-banner{
+  width: 50%;
+}
+
+.right-create-banner{
+  width: 50%;
+}
+
+.group-dropdown{
+  width: 80%;
+  height:50px;
+  border: none;
+}
+
+.poll-create:first-of-type {
+  margin-bottom: 15px;
+}
+
 .poll-create{
+  background-color: white;
   box-sizing: border-box;
   margin-top: 0;
   padding-left: 5px;
   width: 100%;
+  margin-bottom: 8px;
+  font-size: 12.8px;
 }
 
-.question {
-  margin-bottom: 15px;
+.right-create-banner{
+  display: flex;
+  justify-content: flex-end;
 }
 
-.answerchoice-input-element{
-  margin-bottom: 5px;
+.create{
+  margin-top: 0px;
+  width: 115px;
+  height: 50px;
+  background-color: #6193c5;
+  color: white;
+  font-family: 'Source Sans Pro', Helvetica,Verdana,sans-serif;
+}
+
+.create:hover {
+  background-color: #3c749e;
+}
+
+.bottom-create-buttons{
+  border-top: 1px dashed #FBFBFB;
+  display: flex;
+  padding-top: 20px;
+  padding-bottom:20px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.add-activity{
+  margin-top: 0px;
+  margin-right: 8px;
+  width: 200px;
+  height: 50px;
+  color: #8D9195;
+  background-color: #E6E6E6;
+}
+
+.add-activity:hover{
+  color: black;
 }

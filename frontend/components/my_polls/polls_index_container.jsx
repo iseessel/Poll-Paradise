@@ -42,7 +42,11 @@ class PollIndex extends React.Component{
     if (this.state.loading){
       return(
         <div className="loading">
-
+          <FontAwesome
+            name='spinner'
+            size='2x'
+            pulse
+          />
         </div>
       )
     }else {
