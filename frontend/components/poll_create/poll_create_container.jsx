@@ -4,6 +4,7 @@ import { createQuestion } from '../../actions/question_actions.js';
 import ErrorsContainer from '../errors/errors_container.jsx'
 import PollHeaderContainer from '../my_polls/poll_header_container.jsx';
 import FontAwesome from 'react-fontawesome';
+import { Route, Redirect } from 'react-router'
 
 
 
@@ -36,7 +37,7 @@ class PollCreate extends React.Component{
   }
 
   componentDidMount(){
-    
+
   }
 
   handleTrashClick(idx){

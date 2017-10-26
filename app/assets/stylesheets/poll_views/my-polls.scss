@@ -1,7 +1,10 @@
 .main-polls{
   display: flex;
   background-color: white;
+  min-height: 550px;
 }
+
+
 
 .my-polls-sidebar{
   width: 180px;
@@ -250,6 +253,7 @@
 .poll-view-dropdown{
   position: relative;
   top:47px;
+  // right: 100px;
 }
 
 .dropdown-text{

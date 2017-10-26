@@ -3,6 +3,7 @@
 }
 
 .create-poll-banner {
+  background-color: white;
   height: 60px;
   display: flex;
   align-items: center;
@@ -27,9 +28,6 @@
   background-color: #E04E4A;
 }
 
-.main-poll{
-  background-color: #d3d3d3;
-}
 
 .poll-form, .poll-selection{
   background-color: #d3d3d3;
@@ -44,6 +42,7 @@
 }
 
 .main-poll{
+  height: 89.5%;
   background-color: #d3d3d3;
 }
 

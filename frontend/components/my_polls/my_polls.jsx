@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
 import { connect } from 'react-redux';
 import PollHeaderContainer from './poll_header_container.jsx'
+import { Footer } from '../footer.jsx';
 
 const mapStateToProps = (state) => {
   return {
@@ -24,6 +25,7 @@ export const MyPolls = (props) => {
           <PollIndexContainer />
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
