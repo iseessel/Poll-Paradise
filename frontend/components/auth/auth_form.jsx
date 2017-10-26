@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import ErrorsContainer from '../errors/errors_container.jsx';
 import { withRouter, Link } from 'react-router-dom';
 import HeaderContainer from '../header_container.jsx';
+import { Footer } from '../footer.jsx';
 
 const mapStateToProps = (state) => {
   return {
@@ -76,7 +77,7 @@ class AuthForm extends React.Component{
   render(){
 
     return (
-      <div className="main">
+      <div className="main-session">
         <HeaderContainer />
         <div className="session-form">
           <div className="session-form-container">
@@ -95,6 +96,7 @@ class AuthForm extends React.Component{
             {this.generateBottomText()}
           </div>
         </div>
+        <Footer />
       </div>
 
     )

@@ -1,14 +1,27 @@
-.top-footer {
-  height: 200px;
+.main-app{
   background-color: #4F4F4F;
-  border-top: 1px solid #303334;
+}
+
+.content{
+  background-color: white;
+}
+
+
+.top-footer {
+  height: 120px;
+  background-color: #303334;
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
 }
 
+.lower-footer{
+
+}
+
 .footer{
-  position: fixed;
+  height: 52%;
+  position: relative;
   width: 100%;
   left:0px;
   bottom:0px;
@@ -38,9 +51,4 @@
 
 .links a:last-child:hover {
   color: lightgray;
-}
-
-.lower-footer{
-  height: 20px;
-  background-color: #303334;
 }

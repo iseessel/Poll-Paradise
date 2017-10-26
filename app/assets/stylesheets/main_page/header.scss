@@ -1,11 +1,13 @@
 header {
   height: 75px;
-  background-color: #FFFFFF;
+  background-color: white;
   border-bottom: 1px solid lightgray;
-  box-shadow: 0px 1px 10px lightgray;
+  box-shadow: 1px 1px 10px lightgray;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  position: relative;
+  z-index: 10;
 }
 
 .right-sidebar {
