@@ -15,6 +15,7 @@ const App = () => {
       <AuthRoute path='/signup' component={SignIn} />
       <ProtectedRoute path='/mypolls' component={MyPolls} />
       <ProtectedRoute path='/create' component={PollCreateContainer} />
+      <ProtectedRoute path="/users/:userName" />
     </div>
   )
 };

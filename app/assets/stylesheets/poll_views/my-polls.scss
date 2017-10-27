@@ -225,15 +225,6 @@
   border-radius: 3px;
 }
 
-.fa-thumbs-up:hover {
-  text-decoration: none;
-  color: #82F6A8
-}
-
-.fa-thumbs-down:hover {
-  text-decoration: none;
-  color: red;
-}
 
 .fa-check:hover, .poll-banner-text:hover{
   color: black;
@@ -316,4 +307,14 @@
   font-family: "Lucida Grande", "Lucida Sans", "Lucida Sans Unicode", sans-serif;
   font-size: 14px;
   padding-left: 10px;
+}
+
+.fa-thumbs-up:hover {
+  text-decoration: none;
+  color: #82F6A8;
+}
+
+.fa-thumbs-down:hover {
+  text-decoration: none;
+  color: red;
 }
