@@ -25,22 +25,19 @@ h2 {
   display: block;
 }
 
+.auth-input:focus{
+  border: 2px solid #51B2FA;
+  box-shadow: 0 0 .25em #51B2FA;
+}
+
 .auth-input {
+  box-sizing: border-box;
   margin-top: 3px;
   display: block;
   border: 1px solid #D8E4F1;
   width: 437px;
   height: 38px;
   padding-left: 8px;
-}
-
-.poll-input-item{
-  display:flex;
-  justify-content: space-between;
-}
-
-.poll-input{
-  width: 100%;
 }
 
 .auth-form-button {

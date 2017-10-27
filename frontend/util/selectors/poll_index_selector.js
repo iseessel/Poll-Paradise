@@ -34,7 +34,7 @@ const ungroupedQuestions = (questions) => {
     valuesSelected = questionIndexSelector(question)
     ungrouped_questions.push(valuesSelected)
   })
-  return {title: "ungrouped", questions: ungrouped_questions}
+  return {title: "Ungrouped", questions: ungrouped_questions}
 }
 
 const questionIndexSelector = (question) => {
