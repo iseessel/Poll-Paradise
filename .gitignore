@@ -15,7 +15,6 @@
 
 /node_modules
 /yarn-error.log
-
 .byebug_history
 node_modules/
 bundle.js

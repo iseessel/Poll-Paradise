@@ -4,8 +4,6 @@
   min-height: 550px;
 }
 
-
-
 .my-polls-sidebar{
   width: 180px;
   display: flex;
@@ -183,6 +181,15 @@
   color: #d95347
 }
 
+.active-question{
+  background-color: #BAF4C5;
+}
+
+.active-question:hover {
+  background-color: #82F6A8;
+}
+
+
 .polls-index{
   padding-bottom: 15px;
   padding-right: 15px;
@@ -190,7 +197,7 @@
 }
 
 .right-row-question {
-  margin-right: 40px;
+  margin-right: 20px;
 }
 
 .left-row-question {
@@ -205,12 +212,27 @@
   visibility: hidden;
 }
 
+.active {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
 .fa-check, .poll-banner-text {
   color: #8b8c8c;
   font-size: 12.8px;
   background-color: #e5e5e5;
   cursor: pointer;
   border-radius: 3px;
+}
+
+.fa-thumbs-up:hover {
+  text-decoration: none;
+  color: #82F6A8
+}
+
+.fa-thumbs-down:hover {
+  text-decoration: none;
+  color: red;
 }
 
 .fa-check:hover, .poll-banner-text:hover{
@@ -281,6 +303,8 @@
   padding-left: 8px;
   background-color: #e9eff4;
 }
+
+
 
 .poll-view-dropdown, .logout-item, .logout-button{
   box-sizing: content-box;

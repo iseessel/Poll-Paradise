@@ -1,6 +1,6 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
-import QuestionIndexContainer from './question_index_container';
+import QuestionItemContainer from './question_item_container.jsx';
 import { connect } from 'react-redux';
 import { toggleSelected } from '../../actions/ui_actions.js';
 
@@ -33,7 +33,7 @@ class GroupName extends React.Component{
     if (this.props.selected){
       return questions.map((question, idx) => {
         return (
-          <QuestionIndexContainer key={question.id} question={question} />
+          <QuestionItemContainer key={question.id} question={question} />
         );
       })
     }else {

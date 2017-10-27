@@ -40,5 +40,6 @@ const ungroupedQuestions = (questions) => {
 const questionIndexSelector = (question) => {
 
   return {user: question.user_id,
-    body: question.body, id: question.id}
+    body: question.body, id: question.id,
+    active: question.active }
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import * as pollIndexSelector from '../../util/selectors/poll_index_selector.js';
 import { retrieveGroups } from '../../actions/group_actions.js';
-import QuestionIndexContainer from './question_index_container.jsx';
+import QuestionItemContainer from './question_item_container';
 import FontAwesome from 'react-fontawesome';
 import GroupName from './group_name.jsx'
 
@@ -76,7 +76,7 @@ class PollIndex extends React.Component{
   generateLis(questions){
     return questions.map((question, idx) => {
       return (
-        <QuestionIndexContainer key={question.id} question={question} />
+        <QuestionItemContainer key={question.id} question={question} />
       );
     })
   }

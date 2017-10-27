@@ -8,7 +8,10 @@ Rails.application.routes.draw do
     resources :users, only: [:create]
     resource :session, only: [:create, :destroy]
     resources :groups, only: [:create, :destroy, :index, :show]
-    resources :questions, only: [:show ,:create, :destroy, :update, :activate]
+    resources :questions, only: [:show ,:create, :destroy, :update]
+    resources :questions do
+      patch 'activate', :to => 'questions#activate', :as => :activate
+    end
     resources :answer_choices, only: [:update, :destroy, :create]
   end
 end

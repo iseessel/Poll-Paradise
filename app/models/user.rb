@@ -48,6 +48,12 @@ class User < ApplicationRecord
     self.session_token
   end
 
+
+  def question_activated
+    self.questions.find_by(active: true)
+  end
+
+
   private
 
   def ensure_session_token

@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20171027143037) do
     t.string "body", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "active"
+    t.boolean "active", default: false
     t.index ["group_id"], name: "index_questions_on_group_id"
     t.index ["user_id"], name: "index_questions_on_user_id"
   end

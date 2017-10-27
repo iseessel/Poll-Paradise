@@ -9,7 +9,7 @@ export const createQuestion = (data) => {
   return $.ajax( {url: `/api/questions`,
     method: "POST", data: data} );
 
-};
+}
 
 export const updateQuestion = (id, data) => {
   return $.ajax( {url: `/api/questions/${id}`,
@@ -20,3 +20,8 @@ export const deleteQuestion = (id) => {
   return $.ajax( {url: `/api/questions/${id}`,
      method: "DELETE"} );
 };
+
+export const activateQuestion = (id) => {
+  return $.ajax({url: `/api/questions/${id}/activate`,
+    method: "PATCH"})
+}

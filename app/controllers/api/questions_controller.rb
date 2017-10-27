@@ -64,7 +64,24 @@ class Api::QuestionsController < ApplicationController
   end
 
   def activate
-    
+    @question = Question.find_by(id: params[:question_id])
+
+    if @question
+      @prev_activated_question = @question.user.question_activated
+      
+      self.toggle_active(@prev_activated_question).save! if @prev_activated_question
+      self.toggle_active(@question).save!
+
+      render "api/questions/activate"
+    else
+      render json: ["Question not found"], status: 404
+    end
+  end
+
+  def toggle_active(question)
+    active = question.active
+    question.active = (active ? false : true)
+    question
   end
 
   private
@@ -72,7 +89,6 @@ class Api::QuestionsController < ApplicationController
   def question_params
     params.require(:question).permit(:group_id, :body, answer_choices_attributes: [:body] ) #will this mess up the rest of my params?
   end
-
   #nested_attributes will automatically create these for you!
 
 end
