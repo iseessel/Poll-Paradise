@@ -6,6 +6,7 @@ import PollHeaderContainer from '../my_polls/poll_header_container.jsx';
 import FontAwesome from 'react-fontawesome';
 import { Route, Redirect } from 'react-router'
 import { clearErrors } from '../../actions/errors.js'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 
 const mapStateToProps = (state) => {
@@ -110,7 +111,6 @@ class PollCreate extends React.Component{
 
   hasQuestionError(){
     const allErrors = this.props.errors
-
     return allErrors.some((error) => error.hasOwnProperty("body"))
   }
 
@@ -132,9 +132,9 @@ class PollCreate extends React.Component{
     return allErrors.some((error) => error.hasOwnProperty("question"))
   }
 
-  errorAnswerChoiceClassName(){
-    return this.hasAnswerChoiceError() ? "poll-input-item answer-choice-error"
-      : "poll-input-item"
+  errorAnswerChoiceClassName(idx){
+    return this.hasAnswerChoiceError() && idx === 0
+     ? "poll-input-item answer-choice-error" : "poll-input-item"
   }
 
   generateAnswerChoiceError(idx){
@@ -147,18 +147,28 @@ class PollCreate extends React.Component{
 
   generateAnswerChoiceInputs(){
     return this.state.answerChoices.map((body, idx) => {
+
       return (
-        <div className={this.errorAnswerChoiceClassName()}>
-          <input key={idx} className="poll-input" placeholder="(Text or Image)"
-            onChange={this.handleAnswerChoiceChange(idx).bind(this)}
-            value={this.state.answerChoices[idx]}/>
-          <div onClick={this.handleTrashClick(idx).bind(this)}
-            className="delete-answer-choice">
-            <FontAwesome name="trash" size="2x"/>
-              <li className="answer-choice-errors">
-              </li>
+        <ReactCSSTransitionGroup transitionName="example"
+          transitionAppear={true} transitionAppearTimeout={500}
+          transitionEnter={false} transitionLeave={false}>
+          <div className="answer-choice-transition">
+            <div className={this.errorAnswerChoiceClassName(idx)}>
+              <input key={idx} className="poll-input" placeholder="(Text or Image)"
+                onChange={this.handleAnswerChoiceChange(idx).bind(this)}
+                value={this.state.answerChoices[idx]}/>
+              <div onClick={this.handleTrashClick(idx).bind(this)}
+                className="delete-answer-choice">
+                <FontAwesome name="trash" size="2x"/>
+                  <li className="answer-choice-errors">
+                  </li>
+              </div>
+            </div>
           </div>
-        </div>
+       </ReactCSSTransitionGroup>
+
+
+
       )
     })
   }
@@ -167,6 +177,10 @@ class PollCreate extends React.Component{
     return (
       <div className="main">
         <PollHeaderContainer/>
+          <ReactCSSTransitionGroup transitionName="example"
+            transitionAppear={true} transitionAppearTimeout={500}
+            transitionEnter={false} transitionLeave={false}>
+        <div className="transition-wrapper">
           <div className="create-poll">
             <div className="create-poll-banner">
               <div className="left-banner">
@@ -229,9 +243,11 @@ class PollCreate extends React.Component{
                 </div>
 
               </div>
-          </form>
+            </form>
+            </div>
           </div>
         </div>
+        </ReactCSSTransitionGroup>
       </div>
     )
     //make left-create-banner
