@@ -149,7 +149,7 @@ class PollCreate extends React.Component{
     return this.state.answerChoices.map((body, idx) => {
       return (
         <div className={this.errorAnswerChoiceClassName()}>
-          <input key={idx} className="poll-input-item" placeholder="(Text or Image)"
+          <input key={idx} className="poll-input" placeholder="(Text or Image)"
             onChange={this.handleAnswerChoiceChange(idx).bind(this)}
             value={this.state.answerChoices[idx]}/>
           <div onClick={this.handleTrashClick(idx).bind(this)}
@@ -191,13 +191,13 @@ class PollCreate extends React.Component{
             <div className="poll-inputs">
               <div className="poll-question">
                 <div className={this.errorQuestionClassName()}>
-                <input
-                  className="poll-input-item question"
-                  placeholder="Question"
-                  onChange={this.handleQuestionChange.bind(this)}
-                  value={this.state.question}
-                  />
-                  {this.generateQuestionError()}
+                  <input
+                    className="poll-input"
+                    placeholder="Question"
+                    onChange={this.handleQuestionChange.bind(this)}
+                    value={this.state.question}
+                    />
+                    {this.generateQuestionError()}
                 </div>
               </div>
 
