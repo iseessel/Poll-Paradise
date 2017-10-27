@@ -4,7 +4,6 @@ import FontAwesome from 'react-fontawesome';
 import onClickOutside from 'react-onclickoutside'
 import { logoutAction } from '../../actions/session_actions.js';
 
-
 const mapStateToProps = (state) => {
   return {
     currentUser: state.session.currentUser
@@ -25,7 +24,6 @@ class DropDownMenu extends React.Component{
     }
 
     handleClickOutside(){
-      console.log("hello")
       this.setState({dropdownSelected: false})
     }
 

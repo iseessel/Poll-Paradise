@@ -10,7 +10,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
 const mapStateToProps = (state) => {
   return {
-    errors: state.errors
+    errors: state.ui.errors
   };
 }
 

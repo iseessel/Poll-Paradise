@@ -1,17 +1,36 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import QuestionIndexContainer from './question_index_container';
+import { connect } from 'react-redux';
+import { toggleSelected } from '../../actions/ui_actions.js';
+
+const mapStateToProps = (state, ownProps) => {
+  const groupsSelected = state.ui.groupsSelected
+  const groupId = ownProps.poll.id
+  const selected = groupsSelected.hasOwnProperty(groupId)
+    && groupsSelected[groupId]
+
+  return {
+    selected: selected
+  }
+
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    toggleSelected: (groupId) => dispatch(toggleSelected(groupId))
+  };
+};
 
 
 class GroupName extends React.Component{
 
   constructor(props){
     super(props)
-    this.state = {clicked: false}
   }
 
   generateLis(questions){
-    if (this.state.clicked){
+    if (this.props.selected){
       return questions.map((question, idx) => {
         return (
           <QuestionIndexContainer key={question.id} question={question} />
@@ -26,12 +45,11 @@ class GroupName extends React.Component{
   }
 
   handleClick(){
-    const clicked = this.state.clicked ? false : true
-    this.setState({clicked: clicked})
+    this.props.toggleSelected(this.props.poll.id)
   }
 
   selectedCarrot(){
-    return this.state.clicked ? <FontAwesome name="caret-down" size="2x"/>
+    return this.props.selected ? <FontAwesome name="caret-down" size="2x"/>
   : <FontAwesome name="caret-right" size="2x"/>
   }
 
@@ -68,4 +86,4 @@ class GroupName extends React.Component{
   }
 }
 
-export default GroupName
+export default connect(mapStateToProps, mapDispatchToProps)(GroupName)

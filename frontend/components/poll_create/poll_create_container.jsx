@@ -11,7 +11,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 const mapStateToProps = (state) => {
   return {
-    errors: state.errors
+    errors: state.ui.errors
   };
 }
 

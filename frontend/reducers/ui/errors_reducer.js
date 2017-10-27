@@ -1,6 +1,6 @@
 import merge from 'lodash/merge';
-import { RECEIVE_CURRENT_USER } from '../actions/session_actions.js';
-import { CLEAR_ERRORS, RECEIVE_ERRORS }  from '../actions/errors.js';
+import { RECEIVE_CURRENT_USER } from '../../actions/session_actions.js';
+import { CLEAR_ERRORS, RECEIVE_ERRORS }  from '../../actions/errors.js';
 
 const _defaultState = [];
 
