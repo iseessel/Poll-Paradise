@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PollHeaderContainer from './poll_header_container.jsx';
 import { Link } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
-import { logoutAction } from '../../actions/session_actions.js';
 import { clearErrors } from '../../actions/errors.js';
 import DropDownMenu from './dropdown_menu.jsx'
 

@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux';
 import FontAwesome from 'react-fontawesome';
 import onClickOutside from 'react-onclickoutside'
+import { logoutAction } from '../../actions/session_actions.js';
+
 
 const mapStateToProps = (state) => {
   return {
@@ -12,7 +14,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     logout: () => dispatch(logoutAction()),
-    clearErrors: (user) => dispatch(clearErrors())
   };
 };
 
