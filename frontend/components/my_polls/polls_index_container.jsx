@@ -35,7 +35,8 @@ class PollIndex extends React.Component{
   }
 
   componentDidMount(){
-    this.props.retrieveGroups().then(() => this.setState({loading: false}))
+    setTimeout(() => this.props.retrieveGroups()
+      .then(() => this.setState({loading: false})), 1000)
   }
 
   render(){
