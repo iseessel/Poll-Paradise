@@ -5,6 +5,7 @@ import MainPage from './main/main_page';
 import { Login, SignIn } from './auth/auth_master.jsx';
 import MyPolls from './my_polls/my_polls.jsx'
 import PollCreateContainer from './poll_create/poll_create_container.jsx'
+import ActivePollContainer from './active_polls/active_poll_container.jsx'
 
 const App = () => {
 
@@ -15,12 +16,11 @@ const App = () => {
       <AuthRoute path='/signup' component={SignIn} />
       <ProtectedRoute path='/mypolls' component={MyPolls} />
       <ProtectedRoute path='/create' component={PollCreateContainer} />
-      <ProtectedRoute path="/users/:userName" />
+      <Route path="/users/:userName" component={ActivePollContainer}/>
     </div>
   )
 };
+//
 
-// <AuthRoute path="/login" component={LoginContainer} />
-// <AuthRoute path="/signup" component={SignupContainer} />
 
 export default App;

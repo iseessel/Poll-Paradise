@@ -25,3 +25,8 @@ export const activateQuestion = (id) => {
   return $.ajax({url: `/api/questions/${id}/activate`,
     method: "PATCH"})
 }
+
+export const fetchUsersActiveQuestion = (username) => {
+  return $.ajax({url: `/api/active_question/${username}`,
+    method: "GET"})
+}

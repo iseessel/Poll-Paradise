@@ -1,0 +1,40 @@
+.question-header, .possible-answer-choices{
+  margin: 0 auto;
+  width: 50%;
+}
+
+.possible-answer-choices{
+  margin-top: 15px;
+}
+
+.main-poll-take{
+  height: 100%;
+  background-color: #2E5676;
+}
+
+.question-header{
+  margin-top: 30px;
+  color:white;
+  font-size: 20px;
+  font-family: "Source Sans Pro";
+  font-weight: bold;
+}
+
+.question-subheading{
+  font-size: 14.4px;
+  font-weight: normal;
+  font-family: "Source Sans Pro";
+}
+
+.answer-choice-item{
+  width: 100%;
+  background-color: #EBEBEB;
+  height:62px;
+}
+
+.answer-question-header{
+  height: 50px;
+  border-bottom: none;
+  box-shadow:none;
+  background-color: #232323;
+}

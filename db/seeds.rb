@@ -9,22 +9,22 @@
 
 # USERS
 User.destroy_all
-user_one = User.create(email: 'iseessel@gmail.com', first_name: "isaac",
+user_one = User.create(email: 'iseessel@gmail.com', username:'iseessel153', first_name: "isaac",
   last_name: "seessel", password:"password")
 
-user_two = User.create(email: 'iseessel@msn.com', first_name: "isaac",
+user_two = User.create(email: 'iseessel@msn.com', username:'iseessel1534', first_name: "isaac",
   last_name: "seessel", password:"password")
 
-user_three = User.create(email: 'iseessel@hotmail.com', first_name: "isaac",
+user_three = User.create(email: 'iseessel@hotmail.com', username:'iseessel1585', first_name: "isaac",
   last_name: "seessel", password:"password")
 
-user_four = User.create(email: 'iseessel@aol.com', first_name: "isaac",
+user_four = User.create(email: 'iseessel@aol.com', username:'iseessel1325', first_name: "isaac",
   last_name: "seessel", password:"password")
 
-user_five = User.create(email: 'iseessel@yahoo.com', first_name: "isaac",
+user_five = User.create(email: 'iseessel@yahoo.com', username:'iseessel1087', first_name: "isaac",
   last_name: "seessel", password:"password")
 
-user_six = User.create(email: 'iseessel@apple.com', first_name: "isaac",
+user_six = User.create(email: 'iseessel@apple.com', username:'iseessel4832', first_name: "isaac",
   last_name: "seessel", password:"password")
 
 # GROUPS

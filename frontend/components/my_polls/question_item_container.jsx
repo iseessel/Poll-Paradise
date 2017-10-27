@@ -50,8 +50,8 @@ class QuestionItemContainer extends React.Component{
 
   activeThumbIcon(){
     return this.props.question.active ?
-    <FontAwesome name="thumbs-down" size="2x"/> :
-    <FontAwesome name="thumbs-up" size="2x"/>
+    <FontAwesome title="Deactivate" name="thumbs-down" size="2x"/> :
+    <FontAwesome title="Activate" name="thumbs-up" size="2x"/>
 
   }
 

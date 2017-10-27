@@ -57,7 +57,7 @@ class DropDownMenu extends React.Component{
       return (
         <div className="dropdown-menu" onClick={this.toggleSelected.bind(this)}>
           <div className="dropdown-text">
-            <span>{this.props.currentUser.email}</span>
+            <span>{this.props.currentUser.username}</span>
             <FontAwesome name="cog" size="2x"/>
           </div>
           <div className="dropdown-items">

@@ -4,5 +4,5 @@ import GroupUIReducer from './group_ui_reducer.js'
 
 export default combineReducers({
   errors: ErrorsReducer,
-  groupsSelected: GroupUIReducer
+  groupsSelected: GroupUIReducer,
 });

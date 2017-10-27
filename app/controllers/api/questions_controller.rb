@@ -1,8 +1,9 @@
 class Api::QuestionsController < ApplicationController
-  before_action :ensure_logged_in
+  before_action :ensure_logged_in,
+    only: [:show, :create, :destroy, :update, :activate]
 
   def show
-    @question = Question.find_by(id: params[:id])
+    @question = current_user.questions.find_by(id: params[:id])
     if @question
       @answer_choices = @question.answer_choices
       render "api/questions/show"
@@ -68,7 +69,7 @@ class Api::QuestionsController < ApplicationController
 
     if @question
       @prev_activated_question = @question.user.question_activated
-      
+
       self.toggle_active(@prev_activated_question).save! if @prev_activated_question
       self.toggle_active(@question).save!
 

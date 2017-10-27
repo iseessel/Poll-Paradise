@@ -64,3 +64,9 @@ export const activateQuestion = (id) => (dispatch) => {
     .then((response) => dispatch(receiveQuestions(response)),
       (err) => dispatch(receiveErrors(err.responseJSON)))
 }
+
+export const fetchUsersActiveQuestion = (username) => dispatch => {
+  return QuestionUtil.fetchUsersActiveQuestion(username)
+    .then((response) => dispatch(receiveOneQuestion(response)),
+    (err) => dispatch(receiveErrors(err.responseJSON)))
+}

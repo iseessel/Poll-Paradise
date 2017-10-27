@@ -6,5 +6,5 @@ import GroupReducer from './entities/group_reducer.js'
 export default combineReducers({
   groups: GroupReducer,
   questions: QuestionReducer,
-  answer_choices: AnswerChoiceReducer
+  answerChoices: AnswerChoiceReducer
 });

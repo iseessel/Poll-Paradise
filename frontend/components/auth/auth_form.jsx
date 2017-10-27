@@ -53,17 +53,14 @@ class AuthForm extends React.Component{
       return (
         <p className="session-redirect-text">
           Need an account?
-          <Link to="/signup">
-            Create One Now
-          </Link>
+          <Link to="/signup">  Create One Now</Link>
         </p>
       )
     }else {
       return (
         <p className="session-redirect-text">
           Already have an account?
-          <Link to="/login">
-            Login Here</Link>
+          <Link to="/login">  Login Here</Link>
         </p>
       )
     }
@@ -81,18 +78,17 @@ class AuthForm extends React.Component{
   }
 
   resetLoginText(){
-    this.setState({submitText: "Log in"})
+    this.setState({submitText: this.props.inputText})
   }
 
   submitForm(e){
     return (e) => {
-      ;
       const data = (this.state ? this.state : {empty: true})
       const user = Object.assign({}, { user: data });
 
       this.props.match.url === "/login" ?
         this.props.login(user).then(null, this.resetLoginText.bind(this)) :
-        this.props.signup(user).then(null, his.resetLoginText.bind(this))
+        this.props.signup(user).then(null, this.resetLoginText.bind(this))
     }
   }
 

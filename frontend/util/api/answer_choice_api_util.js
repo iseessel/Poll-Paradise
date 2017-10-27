@@ -1,4 +1,4 @@
-export const updateAnswerchoice = (id) => {
+export const chooseAnswer = (id) => {
   return $.ajax( {url: `/api/answer_choices/${id}`,
     method: "PATCH"} );
 };
