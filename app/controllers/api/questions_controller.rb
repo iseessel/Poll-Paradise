@@ -63,6 +63,10 @@ class Api::QuestionsController < ApplicationController
     end
   end
 
+  def activate
+    
+  end
+
   private
 
   def question_params
