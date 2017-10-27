@@ -25,6 +25,7 @@ class AuthForm extends React.Component{
 
   constructor(props){
     super(props)
+    this.state = {submitText: props.inputText}
   }
 
   componentWillUnmount(){
@@ -67,11 +68,20 @@ class AuthForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    const data = (this.state ? this.state : {empty: true})
-    const user = Object.assign({}, { user: data });
+    debugger;
+    this.setState({submitText: "Creating wormhole to Poll Paradise"})
+    setTimeout(this.submitForm(e).bind(this), 1250)
+  }
 
-    this.props.match.url === "/login" ? this.props.login(user) :
-      this.props.signup(user)
+  submitForm(e){
+    return (e) => {
+      debugger;
+      const data = (this.state ? this.state : {empty: true})
+      const user = Object.assign({}, { user: data });
+
+      this.props.match.url === "/login" ? this.props.login(user) :
+        this.props.signup(user)
+    }
   }
 
   render(){
@@ -91,7 +101,7 @@ class AuthForm extends React.Component{
                   onChange={(e) => this.setState(
                     { password: e.currentTarget.value})}/>
               </label>
-            <button className="auth-form-button">{this.props.inputText}</button>
+            <button className="auth-form-button">{this.state.submitText}</button>
             </form>
             {this.generateBottomText()}
           </div>

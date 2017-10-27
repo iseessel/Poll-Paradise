@@ -18,7 +18,7 @@ const Auth = ({component: Component, path, loggedIn}) => (
     !loggedIn ? (
       <Component {...props} />
     ) : (
-      <Redirect to="/" />
+      <Redirect to="/mypolls" />
     )
   )}/>
 );

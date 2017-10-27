@@ -4,6 +4,7 @@ class Api::GroupsController < ApplicationController
 #NB: This action also returns 'ungrouped' questions.
   # .includes(:answer_choices)
   def index
+    sleep(1)
     @groups = current_user.groups.includes(:questions)
     @questions = current_user.questions.includes(:answer_choices)
     render "api/groups/index"
