@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
 import { logoutAction } from '../../actions/session_actions.js';
 import { clearErrors } from '../../actions/errors.js';
-
+import DropDownMenu from './dropdown_menu.jsx'
 
 const mapStateToProps = (state) => {
   return {
@@ -47,11 +47,6 @@ class PollHeader extends React.Component{
     }
   }
 
-  toggleSelected(){
-    const dropdownSelected = !this.state.dropdownSelected
-    this.setState({dropdownSelected: dropdownSelected})
-  }
-
   render(){
     return (
       <div className="my-polls-header">
@@ -61,18 +56,9 @@ class PollHeader extends React.Component{
         </div>
 
         <div className="my-polls-header-right">
-          <div className="dropdown-menu" onClick={this.toggleSelected.bind(this)}>
-            <div className="dropdown-text">
-              <span>{this.props.currentUser.email}</span>
-              <FontAwesome name="cog" size="2x"/>
-            </div>
-            <div className="dropdown-items">
-              {this.dropdownMenu()}
-            </div>
-
-          </div>
-          </div>
+          <DropDownMenu />
         </div>
+      </div>
     );
   }
 }

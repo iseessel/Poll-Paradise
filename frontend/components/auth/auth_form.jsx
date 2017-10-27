@@ -51,36 +51,48 @@ class AuthForm extends React.Component{
   generateBottomText(){
     if (this.props.match.url === "/login") {
       return (
-        <p className="session-redirect-text">Need an account?
-          <Link to="/signup">  Create One Now</Link></p>
+        <p className="session-redirect-text">
+          Need an account?
+          <Link to="/signup">
+            Create One Now
+          </Link>
+        </p>
       )
     }else {
       return (
-        <p className="session-redirect-text">Already have an account?
-          <Link to="/login">  Login Here</Link></p>
+        <p className="session-redirect-text">
+          Already have an account?
+          <Link to="/login">
+            Login Here</Link>
+        </p>
       )
     }
   }
 
   generateHeader(){
-    return this.props.match.url === "/login" ? "Log in" : "Create Your account"
+    return this.props.match.url === "/login"
+      ? "Log in" : "Create Your account"
   }
 
   handleSubmit(e){
     e.preventDefault();
-    debugger;
     this.setState({submitText: "Creating wormhole to Poll Paradise"})
     setTimeout(this.submitForm(e).bind(this), 1250)
   }
 
+  resetLoginText(){
+    this.setState({submitText: "Log in"})
+  }
+
   submitForm(e){
     return (e) => {
-      debugger;
+      ;
       const data = (this.state ? this.state : {empty: true})
       const user = Object.assign({}, { user: data });
 
-      this.props.match.url === "/login" ? this.props.login(user) :
-        this.props.signup(user)
+      this.props.match.url === "/login" ?
+        this.props.login(user).then(null, this.resetLoginText.bind(this)) :
+        this.props.signup(user).then(null, his.resetLoginText.bind(this))
     }
   }
 
@@ -101,7 +113,9 @@ class AuthForm extends React.Component{
                   onChange={(e) => this.setState(
                     { password: e.currentTarget.value})}/>
               </label>
-            <button className="auth-form-button">{this.state.submitText}</button>
+            <button className="auth-form-button">
+              {this.state.submitText}
+            </button>
             </form>
             {this.generateBottomText()}
           </div>
