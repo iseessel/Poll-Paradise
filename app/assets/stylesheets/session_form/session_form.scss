@@ -1,9 +1,8 @@
 .session-form {
   background-color: white;
-  box-sizing: border-box;
+  // box-sizing: content-box;
   margin: 0 auto;
-  padding-top: 55px;
-  padding-bottom: 55px;
+  min-height: 390px;
   color: #4F4F4F;
   font-weight: bold;
   display: flex;
@@ -12,12 +11,17 @@
   font-family: "Source Sans Pro", Helvetica, Verdana, sans-serif;
 }
 
+.session-form-container{
+  margin-top: 30px;
+  margin-bottom: 30px
+}
+
 h2 {
   font-size: 32px;
 }
 
 .session-form-element {
-  margin-top: 25px;;
+  margin-top: 10px;;
   display: block;
 }
 
@@ -26,7 +30,7 @@ h2 {
   display: block;
   border: 1px solid #D8E4F1;
   width: 437px;
-  height: 41px;
+  height: 38px;
   padding-left: 8px;
 }
 
@@ -36,8 +40,9 @@ h2 {
 }
 
 .auth-form-button {
+  font-weight: normal;
   margin-top: 25px;
-  width: 437px;
+  width: 447px;
   height: 36px;
   background-color: #F95652;
   color: white;
@@ -50,6 +55,7 @@ h2 {
 
 //can I do better than this? this is a bit hacky.
 .session-redirect-text{
+  font-weight: normal;
   margin-top: 35px;
   width: 437px;
   height: 36px;

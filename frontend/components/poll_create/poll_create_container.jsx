@@ -5,7 +5,7 @@ import ErrorsContainer from '../errors/errors_container.jsx'
 import PollHeaderContainer from '../my_polls/poll_header_container.jsx';
 import FontAwesome from 'react-fontawesome';
 import { Route, Redirect } from 'react-router'
-
+import { clearErrors } from '../../actions/errors.js'
 
 
 const mapStateToProps = (state) => {
@@ -20,7 +20,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     createQuestion: (data) => {
-      return dispatch(createQuestion(data))}
+      return dispatch(createQuestion(data))},
+    clearErrors: () => {
+      dispatch(clearErrors())
+    }
   };
 };
 
@@ -36,8 +39,8 @@ class PollCreate extends React.Component{
     this.state = _defaultState
   }
 
-  componentDidMount(){
-
+  componentWillUnmount(){
+    this.props.clearErrors()
   }
 
   handleTrashClick(idx){
@@ -83,8 +86,9 @@ class PollCreate extends React.Component{
   handleSubmit(e){
     e.preventDefault();
     const data = this.packageData()
-    this.setState(_defaultState)
     return this.props.createQuestion(data)
+      .then(()=>this.setState(_defaultState))
+
   }
 
   handleCreateClick(e){
