@@ -25,12 +25,12 @@ class Errors extends React.Component{
   render(){
     const liClassName = this.props.correctClass + "-li"
     const errors = this.props.errors.map(
-      (error, idx) => <li className={liClassName} key={idx}>{error}</li>);
+      (error, idx) => <li className={liClassName} key={idx}>{error}</li>)
 
     return (
         <ul className={this.props.correctClass}>
           {this.props.errors.map(
-            (error, idx) => <li className={liClassName} key={idx}>{error}</li>}
+            (error, idx) => <li className={liClassName} key={idx}>{error}</li>)}
         </ul>
     );
   }
