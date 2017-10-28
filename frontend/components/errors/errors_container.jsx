@@ -29,7 +29,8 @@ class Errors extends React.Component{
 
     return (
         <ul className={this.props.correctClass}>
-          {errors}
+          {this.props.errors.map(
+            (error, idx) => <li className={liClassName} key={idx}>{error}</li>}
         </ul>
     );
   }
