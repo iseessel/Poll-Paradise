@@ -1,5 +1,10 @@
 export const chooseAnswer = (id) => {
-  return $.ajax( {url: `/api/answer_choices/${id}`,
+  return $.ajax( {url: `/api/answer_choices/${id}/choose`,
+    method: "PATCH"} );
+};
+
+export const takeBackAnswer = (id) => {
+  return $.ajax( {url: `/api/answer_choices/${id}/takeback`,
     method: "PATCH"} );
 };
 

@@ -10,10 +10,22 @@ class Api::AnswerChoicesController < ApplicationController
     end
   end
 
-  def update
-    @answer_choice = AnswerChoice.find_by(id: params[:id])
+  def choose
+    @answer_choice = AnswerChoice.find_by(id: params[:answer_choice_id])
     if @answer_choice
       @answer_choice.times_chosen += 1
+      @answer_choice.save
+      render 'api/answer_choices/show'
+    else
+      render json: ["Answer choice cannot be found"], status: 422
+    end
+  end
+
+
+  def take_back
+    @answer_choice = AnswerChoice.find_by(id: params[:answer_choice_id])
+    if @answer_choice
+      @answer_choice.times_chosen -= 1
       @answer_choice.save
       render 'api/answer_choices/show'
     else

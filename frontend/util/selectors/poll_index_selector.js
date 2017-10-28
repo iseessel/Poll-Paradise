@@ -29,8 +29,9 @@ export const allPolls = (groups, questions) => {
 const ungroupedQuestions = (questions) => {
   const ungrouped_questions = []
   let valuesSelected
+  debugger
   Object.values(questions).forEach((question) => {
-
+    debugger
     valuesSelected = questionIndexSelector(question)
     ungrouped_questions.push(valuesSelected)
   })
@@ -38,8 +39,9 @@ const ungroupedQuestions = (questions) => {
 }
 
 const questionIndexSelector = (question) => {
-
+  debugger
   return {user: question.user_id,
     body: question.body, id: question.id,
     active: question.active }
+
 }

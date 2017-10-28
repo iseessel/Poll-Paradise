@@ -1,0 +1,40 @@
+.no-active-polls{
+  height: 100%;
+  background-color: #2E5676;
+  font-family: "Source Sans Pro";
+}
+
+.poll-not-found{
+  font-size: 100px;
+  color: white;
+  font-weight: bold;
+  font-family: "Source Sans Pro";
+  text-align: center;
+  padding-top: 15px
+}
+
+.no-active-polls-message{
+  font-size: 25px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.back-to-homepage{
+  width: auto;
+  display: block;
+  width: 200px;
+  height: 50px;
+  margin: 0 auto;
+  margin-top:50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: 15px;
+  font-weight: bold;
+}
+.back-to-homepage:hover {
+  background-color: lightgray;
+}

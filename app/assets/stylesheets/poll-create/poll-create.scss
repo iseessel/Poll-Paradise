@@ -206,13 +206,13 @@
   margin-bottom: 15px;
 }
 
-.example-appear {
+.answer-choice-group-appear {
   opacity: 0.01;
 }
 
-.example-appear.example-appear-active {
+.answer-choice-group-appear.answer-choice-group-appear-active {
   opacity: 1;
-  transition: opacity .3s ease-in;
+  transition: opacity .5s ease-in;
 }
 
 .answer-choice-appear {

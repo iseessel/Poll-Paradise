@@ -23,6 +23,7 @@ class Api::UsersController < ApplicationController
   def active_question
     @user = User.find_by(username: params[:username])
     @question = @user.question_activated
+    
     if @question
       @answer_choices = @question.answer_choices
       render "api/questions/show"

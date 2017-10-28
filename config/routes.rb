@@ -13,6 +13,9 @@ Rails.application.routes.draw do
     resources :questions do
       patch 'activate', :to => 'questions#activate', :as => :activate
     end
-    resources :answer_choices, only: [:update, :destroy, :create]
+    resources :answer_choices, only: [:update, :destroy, :create] do
+      patch 'choose', :to => 'answer_choices#choose', :as => :choose
+      patch 'takeback', :to => 'answer_choices#take_back', :as => :take_back
+    end
   end
 end

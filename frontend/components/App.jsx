@@ -6,6 +6,7 @@ import { Login, SignIn } from './auth/auth_master.jsx';
 import MyPolls from './my_polls/my_polls.jsx'
 import PollCreateContainer from './poll_create/poll_create_container.jsx'
 import ActivePollContainer from './active_polls/active_poll_container.jsx'
+import PollShowContainer from './poll-show-container/poll-show-container.jsx'
 
 const App = () => {
 
@@ -16,7 +17,8 @@ const App = () => {
       <AuthRoute path='/signup' component={SignIn} />
       <ProtectedRoute path='/mypolls' component={MyPolls} />
       <ProtectedRoute path='/create' component={PollCreateContainer} />
-      <Route path="/users/:userName" component={ActivePollContainer}/>
+      <ProtectedRoute path='/polls/:id' component={PollShowContainer} />
+      <Route exact path="/users/:userName" component={ActivePollContainer}/>
     </div>
   )
 };

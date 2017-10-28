@@ -29,6 +29,9 @@ function GroupReducer(state = _defaultState, action){
       }
       return newState
 
+    case RECEIVE_QUESTION:
+      return _defaultState;
+
     default:
 
       return state

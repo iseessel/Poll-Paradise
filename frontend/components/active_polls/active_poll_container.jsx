@@ -1,26 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchUsersActiveQuestion } from '../../actions/question_actions.js'
-import { chooseAnswer } from '../../util/api/answer_choice_api_util.js'
+import { chooseAnswer, takeBackAnswer } from '../../util/api/answer_choice_api_util.js'
 import PollHeaderContainer from '../my_polls/poll_header_container.jsx';
+import { Link } from 'react-router-dom';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 const mapStateToProps = (state, ownProps) => {
   const question = Object.values(state.entities.questions)[0]
   const propQuestion = question ? question : {}
   return { question: propQuestion,
-  answerChoices: Object.values(state.entities.answerChoices) }
+  answerChoices: Object.values(state.entities.answerChoices),
+  errors: state.ui.errors
+ }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     fetchUsersActiveQuestion:
       (username) => dispatch(fetchUsersActiveQuestion(username)),
-
   }
 }
-//this is not working because while it is changing local storage,
-//it is NOT changing our state
-//perhaps set state?
+
 class ActivePollContainer extends React.Component{
 
   constructor(props){
@@ -33,8 +34,9 @@ class ActivePollContainer extends React.Component{
     this.props.fetchUsersActiveQuestion(username)
       .then(() => this.setState(
         {selectedId: parseInt(localStorage.getItem(this.props.question.id))
-      })
-    )}
+        })
+      )
+  }
 
   handleAnswerChoiceClick(id){
     if(!this.state.selectedId){
@@ -44,30 +46,45 @@ class ActivePollContainer extends React.Component{
         chooseAnswer(id)
       }
     }else {
-      return (e) => {
-        console.log("You cannot do that!")
-      }
+      return (e) => { }
     }
+  }
 
+  clearResponse(){
+    if(this.state.selectedId){
+      return (e) => {
+        this.setState( {selectedId: null } )
+        const answerChoiceId = localStorage.getItem(this.props.question.id)
+        localStorage.setItem(this.props.question.id, null)
+        takeBackAnswer(answerChoiceId)
+      }
+    }else{
+      return (e) => { }
+    }
   }
 
   generateNumResponses(id){
-    debugger;
     return this.state.selectedId === id ? "1" : "0"
   }
 
   generateLiClassName(id){
-    const question = this.props.question
-    return (question &&
-    this.state.selectedId === id) ?
-    "answer-choice-item chosen" : "answer-choice-item not-chosen"
+    return this.state.selectedId ?
+    "answer-choice-item already-chosen" : "answer-choice-item not-chosen"
   }
 
-  generateUlClassName(){
-    const question = this.props.question
-    return (question &&
-    this.state.selectedId) ? "possible-answer-choices not-yet-chosen"
-      : "possible-answer-choices already-chosen"
+  generateClearLastResponseButton(){
+    if(this.state.selectedId){
+      return (
+        <button onClick={this.clearResponse().bind(this)}
+            className="clear-last-response">
+          Clear Last Response
+        </button>
+      )
+    }else{
+      return(
+        <div className='placeholder'></div>
+      )
+    }
   }
 
   generateAnswerChoices(){
@@ -78,7 +95,7 @@ class ActivePollContainer extends React.Component{
           <div className="num-responses">
             {this.generateNumResponses(answerChoice.id)}
           </div>
-          <p>{answerChoice.body}</p>
+          <p className="answer-choice-text">{answerChoice.body}</p>
         </li>
       )
     })
@@ -87,24 +104,44 @@ class ActivePollContainer extends React.Component{
     const question = this.props.question
     const questionText = this.props.question
       ? this.props.question.body : ""
+    if(this.props.errors.length === 0){
+      return (
+        <div className="main-poll-take">
+          <header className="answer-question-header">
 
-
-    return (
-      <div className="main-poll-take">
-        <header className="answer-question-header">
-
-        </header>
-        <div className="question-header">
-          <h2 className="question-title">{questionText}</h2>
-          <h4 className="question-subheading">You can respond once</h4>
+          </header>
+          <div className="question-header">
+            <h2 className="question-title">{questionText}</h2>
+            <h4 className="question-subheading">You can respond once</h4>
+          </div>
+          <ReactCSSTransitionGroup transitionName="answer-choice-group"
+            transitionAppear={true} transitionAppearTimeout={500}
+            transitionEnter={false} transitionLeave={false}>
+          <ul className="possible-answer-choices">
+            {this.generateAnswerChoices()}
+            {this.generateClearLastResponseButton()}
+          </ul>
+        </ReactCSSTransitionGroup>
         </div>
-        <ul className={this.generateUlClassName()}>
-          {this.generateAnswerChoices()}
-        </ul>
-      </div>
-    )
+      )
+    }else{
+      return (
+        <div className="no-active-polls">
+            <div className="poll-not-found-messages">
+              <h1 className='poll-not-found'>404</h1>
+              <h2 className="no-active-polls-message">
+                This user currently has no active polls.
+              </h2>
+            </div>
+            <div className="link-to-login">
+              <Link className="back-to-homepage" to="/">Go back to our homepage</Link>
+            </div>
+        </div>
+      )
+    }
   }
 
 }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(ActivePollContainer)
