@@ -19,14 +19,15 @@ const mapStateToProps = (state) => {
 class Errors extends React.Component{
 
   constructor(props){
+    debugger;
     super(props);
   }
 
   render(){
+    debugger;
     const liClassName = this.props.correctClass + "-li"
-    const errors = this.props.errors.map(
-      (error, idx) => <li className={liClassName} key={idx}>{error}</li>)
-
+    const errors = this.props.errors.map((error, idx) => <li className={liClassName} key={idx}>{error}</li>)
+    debugger;
     return (
         <ul className={this.props.correctClass}>
           {this.props.errors.map(
@@ -36,6 +37,7 @@ class Errors extends React.Component{
   }
 
   componentWillMount(){
+    debugger;
     this.props.clearErrors();
   }
 
