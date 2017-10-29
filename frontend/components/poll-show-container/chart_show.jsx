@@ -4,14 +4,16 @@ import { Bar } from 'react-chartjs-2';
 class ChartShow extends React.Component{
 
   constructor(props){
+
     super(props)
   }
 
   correctStepSize(){
     let totalNumResponses = 0
     this.props.answerChoices.forEach((answerChocie) => {
-      totalNumResponses += answerChoice.num_responses
+      totalNumResponses += answerChoice.numResponses
     })
+    return Math.ceil(totalNumResponses/5)
   }
 
   generateOptions(){
@@ -35,7 +37,7 @@ class ChartShow extends React.Component{
     const data = []
     this.props.answerChoices.forEach((answerChoice) => {
       labels.push(answerChoice.body)
-      data.push(answerChoice.times_chosen) // ?
+      data.push(answerChoice.timesChosen)
     })
     return {
       labels: labels,

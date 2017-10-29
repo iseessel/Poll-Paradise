@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { toggleSelected } from '../../actions/ui_actions.js';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger;
+  
   const groupsSelected = state.ui.groupsSelected
   const groupId = ownProps.poll.id
   const activeQuestions = ownProps.poll.questions.some(

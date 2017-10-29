@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => {
   const question = questions[wildcardId] ? questions[wildcardId] : {}
   const answers = Object.values(state.entities.answerChoices)
   const AnswerChoices = answers ? answers : []
-
+  
   return {
     question: question,
     answerChoices: AnswerChoices
@@ -29,6 +29,7 @@ class PollShowContainer extends React.Component{
 
   constructor(props){
     super(props)
+
   }
 
   componentDidMount(){
@@ -36,6 +37,7 @@ class PollShowContainer extends React.Component{
   }
 
   render(){
+
 
     return(
       <div>
@@ -46,7 +48,7 @@ class PollShowContainer extends React.Component{
           return (
             <li key={idx}>
               {answerChoice.body}
-              {answerChoice.times_chosen}
+              {answerChoice.timesChosen}
             </li>
           )
         })}
