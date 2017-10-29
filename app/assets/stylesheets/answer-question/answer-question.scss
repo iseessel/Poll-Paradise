@@ -78,7 +78,17 @@
   background-color: #D3D3D3;
 }
 
+
+
+.white-logo{
+  margin-top: 5px;
+}
+
 .answer-question-header{
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   height: 50px;
   border-bottom: none;
   box-shadow:none;

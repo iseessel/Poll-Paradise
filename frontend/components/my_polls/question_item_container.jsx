@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import { openModal, closeModal } from '../../actions/modal_actions.js'
 import { deleteQuestion, activateQuestion } from '../../actions/question_actions.js';
 import { Link } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
@@ -8,27 +9,37 @@ import FontAwesome from 'react-fontawesome';
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     deleteQuestion: (id) => dispatch(deleteQuestion(id)),
-    activateQuestion: (id) => dispatch(activateQuestion(id))
+    activateQuestion: (id) => dispatch(activateQuestion(id)),
+    openModal: (modal) => dispatch(openModal(modal))
   };
 };
 
 class QuestionItemContainer extends React.Component{
 
   constructor(props){
+
     super(props)
     this.state = {mouseover: false};
     this.handleDeleteClick = this.handleDeleteClick.bind(this)
     this.handleActivateClick = this.handleActivateClick.bind(this)
+    this.handleShareClick = this.handleShareClick.bind(this)
     this.handleMouseEnter = this.handleMouseEnter.bind(this)
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
   }
 
   handleActivateClick(){
-    this.props.activateQuestion(this.props.question.id)
+    return this.props.activateQuestion(this.props.question.id)
   }
 
   handleDeleteClick(){
-    this.props.deleteQuestion(this.props.question.id)
+    return this.props.deleteQuestion(this.props.question.id)
+  }
+
+  handleShareClick(){
+    this.props.question.active ?
+      this.props.openModal("active-poll-link") :
+      this.handleActivateClick()
+      .then(() => this.props.openModal("active-poll-link"))
   }
 
   handleMouseEnter(){
@@ -66,12 +77,19 @@ class QuestionItemContainer extends React.Component{
             <Link to={linkUrl}>{this.props.question.body}</Link>
           </div>
           <div className="right-row-question">
+
             <a className={this.mousoverClassName()}
-              onClick={this.handleActivateClick}>
-              {this.activeThumbIcon()}
+              onClick={this.handleDeleteClick}>Delete
             </a>
-            <a className={this.mousoverClassName()}
-              onClick={this.handleDeleteClick}>Delete</a>
+              <a className={this.mousoverClassName()}
+                onClick={this.handleShareClick}>
+                Share
+              </a>
+              <a className={this.mousoverClassName()}
+                onClick={this.handleActivateClick}>
+                {this.activeThumbIcon()}
+              </a>
+
           </div>
         </li>
     );

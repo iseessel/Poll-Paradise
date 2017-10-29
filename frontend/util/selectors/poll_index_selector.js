@@ -11,9 +11,9 @@ export const allPolls = (groups, questions) => {
 
   Object.values(groups).forEach((group) => {
 
-    groupQuestions = group.question_ids.map((question_id) => {
-      question = questionIndexSelector(allQuestions[question_id])
-      delete allQuestions[question_id]
+    groupQuestions = group.questionIds.map((questionId) => {
+      question = questionIndexSelector(allQuestions[questionId])
+      delete allQuestions[questionId]
       return question
     })
 
@@ -27,20 +27,20 @@ export const allPolls = (groups, questions) => {
 };
 
 const ungroupedQuestions = (questions) => {
-  const ungrouped_questions = []
+  const ungroupedQuestions = []
   let valuesSelected
-  debugger
+
   Object.values(questions).forEach((question) => {
-    debugger
+
     valuesSelected = questionIndexSelector(question)
-    ungrouped_questions.push(valuesSelected)
+    ungroupedQuestions.push(valuesSelected)
   })
-  return {title: "Ungrouped", id: -1, questions: ungrouped_questions}
+  return {title: "Ungrouped", id: -1, questions: ungroupedQuestions}
 }
 
 const questionIndexSelector = (question) => {
-  debugger
-  return {user: question.user_id,
+
+  return {user: question.userId,
     body: question.body, id: question.id,
     active: question.active }
 

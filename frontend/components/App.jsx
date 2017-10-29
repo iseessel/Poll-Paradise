@@ -18,7 +18,7 @@ const App = () => {
       <ProtectedRoute path='/mypolls' component={MyPolls} />
       <ProtectedRoute path='/create' component={PollCreateContainer} />
       <ProtectedRoute path='/polls/:id' component={PollShowContainer} />
-      <Route exact path="/users/:userName" component={ActivePollContainer}/>
+      <Route exact path="/active_polls/:userName" component={ActivePollContainer}/>
     </div>
   )
 };

@@ -1,15 +1,17 @@
 import React from 'react';
 import { retrieveOneQuestion } from '../../actions/question_actions.js'
 import { connect } from 'react-redux';
+import ChartShow from './chart_show.jsx'
+
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
+
   const questions = state.entities.questions
   const wildcardId = ownProps.match.params.id
   const question = questions[wildcardId] ? questions[wildcardId] : {}
   const answers = Object.values(state.entities.answerChoices)
   const AnswerChoices = answers ? answers : []
-  debugger
+
   return {
     question: question,
     answerChoices: AnswerChoices
@@ -26,7 +28,6 @@ class PollShowContainer extends React.Component{
 
 
   constructor(props){
-    debugger;
     super(props)
   }
 
@@ -35,9 +36,11 @@ class PollShowContainer extends React.Component{
   }
 
   render(){
-    debugger;
+
     return(
       <div>
+        <ChartShow question={this.props.question}
+          answerChoices={this.props.answerChoices}/>
         {this.props.question.body}
         {this.props.answerChoices.map((answerChoice, idx) => {
           return (

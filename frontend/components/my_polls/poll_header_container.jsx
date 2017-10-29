@@ -54,6 +54,10 @@ class PollHeader extends React.Component{
           <Link className="polls" to="/mypolls">Polls</Link>
         </div>
 
+        <a href="/" className="my-polls-header-middle">
+          <img className="palm-tree" src={window.palmTreeUrl} />
+        </a>
+
         <div className="my-polls-header-right">
           <DropDownMenu />
         </div>

@@ -15,7 +15,7 @@ import GroupName from './group_name.jsx'
   */
 
 const mapStateToProps = (state) => {
-  debugger;
+  
   return {
     polls: pollIndexSelector.allPolls(state.entities.groups,
       state.entities.questions)
@@ -23,7 +23,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  debugger;
+  
   return {
     retrieveGroups: () => dispatch(retrieveGroups())
   };
@@ -32,13 +32,13 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 class PollIndex extends React.Component{
 
   constructor(props){
-    debugger;
+    
     super(props)
     this.state = { loading: true }
   }
 
   componentDidMount(){
-    debugger;
+    
     setTimeout(() => this.props.retrieveGroups()
       .then(() => this.setState({loading: false})), 1000)
   }

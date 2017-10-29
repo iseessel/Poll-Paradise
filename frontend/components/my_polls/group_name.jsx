@@ -5,13 +5,16 @@ import { connect } from 'react-redux';
 import { toggleSelected } from '../../actions/ui_actions.js';
 
 const mapStateToProps = (state, ownProps) => {
+  debugger;
   const groupsSelected = state.ui.groupsSelected
   const groupId = ownProps.poll.id
-  const selected = groupsSelected.hasOwnProperty(groupId)
-    && groupsSelected[groupId]
-
+  const activeQuestions = ownProps.poll.questions.some(
+    (question) => question.active
+  )
+  const alreadySelected = (groupsSelected.hasOwnProperty(groupId)
+    && groupsSelected[groupId])
   return {
-    selected: selected
+    selected: (alreadySelected || activeQuestions)
   }
 
 }

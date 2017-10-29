@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom'
 
 const LeftSidebar = () => {
   return (
-    <div className="left-sidebar">
-      <p>img here!</p>
-    </div>
+    <a href="/" className="left-sidebar">
+      <img className="logo" src={window.logoUrl} />
+    </a>
   )
 }
 //Also could pass down props if I want to make it a bit more dry? However I prefer this explicitness.

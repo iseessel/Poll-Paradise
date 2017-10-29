@@ -108,7 +108,9 @@ class ActivePollContainer extends React.Component{
       return (
         <div className="main-poll-take">
           <header className="answer-question-header">
-
+            <a href="/#/signup">
+              <img className="white-logo" src={window.logoWhiteUrl}></img>
+            </a>
           </header>
           <div className="question-header">
             <h2 className="question-title">{questionText}</h2>

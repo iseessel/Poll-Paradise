@@ -1,0 +1,88 @@
+.my-polls{
+  position: relative;
+}
+
+.modal-backdrop {
+   position: fixed;
+   top: 0px;
+   bottom: 0px;
+   right: 0px;
+   left: 0px;
+   overflow: hidden;
+   z-index: 10;
+   background: rgba(0,0,0,0.5);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+
+ .modal-open{
+   width: 100%;
+   height: 100%;
+   overflow: hidden;
+ }
+
+ .share-modal{
+  box-shadow: 0 3px 9px rgba(0,0,0,0.5);
+  width: 605px;
+  font-family: "Source Sans Pro";
+  height: 190px;
+  background-color:white;
+ }
+
+ .shareable-response-link{
+   color: #2873A1;
+   cursor: pointer;
+   font-size: 20px;
+   font-weight: bold;
+   margin-top: 15px;
+   margin-bottom: 15px;
+ }
+
+ .poll-link{
+   box-sizing: border-box;
+   padding-left: 5px;
+   margin-top: 15px;
+   resize: none;
+   width: 570px;
+   height: 40px;
+   border: 2px solid #F2F2F2;
+ }
+
+ .share-modal-header{
+   display:flex;
+   justify-content: space-between;
+   align-items: center;
+   height: 40px;
+   background-color: #EDEDED;
+   margin-bottom: 15px;
+ }
+
+.window-close {
+   font-size: 30px;
+   color: #303334
+ }
+
+ .close-modal{
+   background-color: transparent;
+   height: 100%;
+   width: 50px;
+   color: black;
+  }
+
+ .active-share{
+   font-weight: bold;
+   font-size: 20px;
+   margin-left:15px;
+   color: #303334
+ }
+
+ .shareable-response-subheader{
+   font-size: 14px;
+   color: #303334
+ }
+
+ .share-modal-main-content{
+   margin-right: 15px;
+   margin-left: 15px; ;
+ }
