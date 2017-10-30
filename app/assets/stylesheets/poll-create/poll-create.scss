@@ -94,16 +94,45 @@
 
 .left-create-banner{
   width: 50%;
+  display: flex;
 }
 
 .right-create-banner{
   width: 50%;
 }
 
+.group-dropdown-overlay{
+  height: 50px;
+  width: 50px;
+  font-size: 20px;
+  border-radius: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #BBBFC3;
+  color: white;
+  position: relative;
+  pointer-events: none;
+  right: 50px;
+  z-index:1;
+}
+
+
+.group-overlay-carrot{
+  font-size: 30px;
+}
+
+.group-overlay-carrot:hover{
+  color: white;
+}
+
 .group-dropdown{
   width: 80%;
   height:50px;
   border: none;
+  border-radius: 0px;
+  -webkit-appearance: none;
+  padding-left: 8px;
 }
 
 .poll-input-item{

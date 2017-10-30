@@ -11,9 +11,9 @@
 }
 
 .chart-show-grid{
-  display: flex;
+  display: grid;
   height: auto;
-  min-height: 500px;
+  min-height: 10px;
 }
 
 .chart-title{

@@ -11,7 +11,8 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 const mapStateToProps = (state) => {
   return {
-    errors: state.ui.errors
+    errors: state.ui.errors,
+    groups: Object.values(state.entities.groups)
   };
 }
 
@@ -234,6 +235,10 @@ class PollCreate extends React.Component{
                     <option value="mercedes">Mercedes</option>
                     <option value="audi">Audi</option>
                   </select>
+                  <div className="group-dropdown-overlay">
+                    <FontAwesome className="group-overlay-carrot"
+                      name="caret-down" size="2x"/>
+                  </div>
                 </div>
 
                 <div className="right-create-banner">
