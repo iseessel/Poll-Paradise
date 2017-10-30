@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :questions, only: [:show, :create, :destroy, :update]
     resources :questions do
       patch 'activate', :to => 'questions#activate', :as => :activate
+      patch 'group', :to => 'questions#group', :as => :group
     end
     resources :answer_choices, only: [:update, :destroy, :create] do
       patch 'choose', :to => 'answer_choices#choose', :as => :choose

@@ -21,6 +21,7 @@ class ActivePollLink extends React.Component{
   }
 
   handleClickOutside(){
+    debugger;
     this.props.closeModal()
   }
 
@@ -40,7 +41,8 @@ class ActivePollLink extends React.Component{
           <h4 className="shareable-response-link">
             <a href={activePollsUrl}>Shareable response link</a>
           </h4>
-          <p className="shareable-response-subheader">Use this link to share with people on the web.</p>
+          <p className="shareable-response-subheader">
+            Use this link to share with people on the web.</p>
             <input value={activePollsUrl} onClick={(e) => e.target.select()}className="poll-link" readOnly={true}/>
         </div>
       </div>

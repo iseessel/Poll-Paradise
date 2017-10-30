@@ -11,6 +11,11 @@ export const createQuestion = (data) => {
 
 }
 
+export const groupQuestions = (id, data) => {
+  return $.ajax( { url: `/api/questions/${id}/group`,
+    method: "PATCH", data: data } )
+}
+
 export const updateQuestion = (id, data) => {
   return $.ajax( {url: `/api/questions/${id}`,
     method: "PATCH", data: data} );

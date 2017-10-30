@@ -23,7 +23,7 @@ function GroupReducer(state = _defaultState, action){
       newState = merge({}, state)
       const groupId = action.payload.groupId
 
-      if(groupId){
+      if(groupId && newState[groupId]){
         const questionIds = newState[groupId].questionIds
         const indexToDelete = questionIds.indexOf(action.payload.id)
         questionIds.splice(indexToDelete, 1)

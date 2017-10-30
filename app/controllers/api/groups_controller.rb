@@ -25,11 +25,18 @@ class Api::GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.user = current_user
+
+    params[:question_ids].each do |question_id|
+      @question = Question.find_by(id: question_id)
+      @question.group_id = params[:group_id]
+    end
+
     if @group.save
       render "api/groups/create"
     else
       render json: @group.errors.full_messages, status: 422
     end
+
   end
 
   def destroy

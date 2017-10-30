@@ -56,10 +56,24 @@ class PollCreate extends React.Component{
   handleTrashClick(idx){
     return (e) => {
       e.preventDefault();
-      const newState = this.state.answerChoices.slice(0)
-      newState.splice(idx, 1);
-      this.setState({answerChoices: newState })
+      this.deleteAnswerChoice(idx)
     }
+  }
+
+  handleKeyPress(idx){
+    return (e) => {
+      if(e.target.value === "" && e.key === "Backspace"){
+        this.deleteAnswerChoice(idx)
+      }
+    }
+  }
+
+
+  deleteAnswerChoice(idx){
+    const newState = this.state.answerChoices.slice(0)
+    newState.splice(idx, 1);
+    this.setState({answerChoices: newState })
+
   }
 
   handleAnswerChoiceChange(idx){
@@ -168,9 +182,9 @@ class PollCreate extends React.Component{
     })
   }
 
+
   generateAnswerChoiceInputs(){
     return this.state.answerChoices.map((body, idx) => {
-
       return (
         <ReactCSSTransitionGroup transitionName="example"
           transitionAppear={true} transitionAppearTimeout={500}
@@ -178,6 +192,7 @@ class PollCreate extends React.Component{
           <div className="answer-choice-transition">
             <div className={this.errorAnswerChoiceClassName(idx)}>
               <input key={idx} className="poll-input" placeholder="(Text or Image)"
+                onKeyDown={this.handleKeyPress(idx).bind(this)}
                 onChange={this.handleAnswerChoiceChange(idx).bind(this)}
                 value={this.state.answerChoices[idx]}/>
               <div onClick={this.handleTrashClick(idx).bind(this)}
@@ -227,7 +242,7 @@ class PollCreate extends React.Component{
               <div className="poll-question">
                 <div className={this.errorQuestionClassName()}>
                   <input
-                    className="poll-input"
+                    className="poll-input question"
                     placeholder="Question"
                     onChange={this.handleQuestionChange.bind(this)}
                     value={this.state.question}

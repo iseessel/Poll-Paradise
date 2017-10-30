@@ -81,6 +81,17 @@ class Api::QuestionsController < ApplicationController
     end
   end
 
+  def group
+    params[:question_ids].each do |question_id|
+      @question = Question.find_by(id: question_id)
+      @question.group_id = params[:group_id]
+    end
+
+    @groups = current_user.groups.includes(:questions)
+    @questions = current_user.questions.includes(:answer_choices)
+    render "api/groups/index"
+  end
+
   def toggle_active(question)
     active = question.active
     question.active = (active ? false : true)

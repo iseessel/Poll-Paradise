@@ -23,11 +23,14 @@
  }
 
  .share-modal{
+  margin-top: -400px;
   box-shadow: 0 3px 9px rgba(0,0,0,0.5);
   width: 605px;
   font-family: "Source Sans Pro";
   height: 190px;
   background-color:white;
+  position: relative;
+  z-index: 1;
  }
 
  .shareable-response-link{
