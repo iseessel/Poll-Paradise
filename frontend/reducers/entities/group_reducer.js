@@ -21,9 +21,10 @@ function GroupReducer(state = _defaultState, action){
 
     case DELETE_QUESTION:
       newState = merge({}, state)
-      const groupId = action.payload.group_id
+      const groupId = action.payload.groupId
+
       if(groupId){
-        const questionIds = newState[groupId].question_ids
+        const questionIds = newState[groupId].questionIds
         const indexToDelete = questionIds.indexOf(action.payload.id)
         questionIds.splice(indexToDelete, 1)
       }

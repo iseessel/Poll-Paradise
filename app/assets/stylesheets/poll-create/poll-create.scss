@@ -53,7 +53,8 @@
 }
 
 .poll-creation{
-  width: 950px;
+  width: 90%;
+  max-width: 900px;
   padding-top: 40px;
   display: flex;
   flex-direction: column;
@@ -119,7 +120,7 @@
 
 
 .group-overlay-carrot{
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .group-overlay-carrot:hover{
@@ -132,6 +133,8 @@
   border: none;
   border-radius: 0px;
   -webkit-appearance: none;
+  font-size: 14px;
+  font-family: 'Source Sans Pro';
   padding-left: 8px;
 }
 

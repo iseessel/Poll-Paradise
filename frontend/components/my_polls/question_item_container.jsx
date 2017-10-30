@@ -70,7 +70,7 @@ class QuestionItemContainer extends React.Component{
     const linkUrl = '/polls/' + this.props.question.id
     return (
         <li className={this.activeQuestionClassName()}
-          onMouseEnter={this.handleMouseEnter}
+          onMouseOver={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}>
           <div className="left-row-question">
             <FontAwesome name="wpforms" size="2x"/>

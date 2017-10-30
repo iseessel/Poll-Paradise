@@ -20,6 +20,7 @@ class Api::QuestionsController < ApplicationController
     @question.user_id = current_user.id
     @answer_choices = []
 
+
     if params[:answer_choices]
       params[:answer_choices].values.each do |answer_choice|
         answer_choice = AnswerChoice.new(answer_choice)
@@ -34,6 +35,7 @@ class Api::QuestionsController < ApplicationController
     else
       render json: @question.errors, status: 422
     end
+
   end
 
   def destroy
@@ -45,9 +47,9 @@ class Api::QuestionsController < ApplicationController
 
       @question.destroy!
       render json: {
-        group_id: @group_ids,
+        groupId: @group_ids,
         id: @question.id,
-        answer_choice_ids: @answer_choice_ids
+        answerChoiceIds: @answer_choice_ids
       }
     else
       render json: ["Question does not exist"], status: 422

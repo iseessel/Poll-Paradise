@@ -6,10 +6,13 @@ import PollHeaderContainer from '../my_polls/poll_header_container.jsx';
 import FontAwesome from 'react-fontawesome';
 import { Route, Redirect } from 'react-router'
 import { clearErrors } from '../../actions/errors.js'
+import { ensureSelected } from '../../actions/ui_actions.js'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { retrieveGroups } from '../../actions/group_actions.js';
 
 
 const mapStateToProps = (state) => {
+
   return {
     errors: state.ui.errors,
     groups: Object.values(state.entities.groups)
@@ -20,16 +23,17 @@ const mapStateToProps = (state) => {
 //                answerChoices: [{body},{},{}] }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
+  debugger;
   return {
-    createQuestion: (data) => {
-      return dispatch(createQuestion(data))},
-    clearErrors: () => {
-      dispatch(clearErrors())
-    }
+    createQuestion: (data) => dispatch(createQuestion(data)),
+    clearErrors: () => dispatch(clearErrors()),
+    retrieveGroups: () => dispatch(retrieveGroups()),
+    ensureSelected: (id) => dispatch(ensureSelected(id))
   };
 };
 
 const _defaultState = {
+  groupId: null,
   question: "",
   answerChoices: ["", "", ""]
 }
@@ -39,6 +43,10 @@ class PollCreate extends React.Component{
   constructor(props){
     super(props)
     this.state = _defaultState
+  }
+
+  componentDidMount(){
+    this.props.groups.length === 0 ? this.props.retrieveGroups() : null
   }
 
   componentWillUnmount(){
@@ -77,7 +85,8 @@ class PollCreate extends React.Component{
       }
     }
 
-    const question = { body: this.state.question }
+    const question = { body: this.state.question,
+      group_id: this.state.groupId }
     ;
     return {
       question: question,
@@ -89,6 +98,7 @@ class PollCreate extends React.Component{
     e.preventDefault();
     const data = this.packageData()
     return this.props.createQuestion(data)
+      .then(()=> this.props.ensureSelected(this.state.groupId))
       .then(()=>this.setState(_defaultState))
 
   }
@@ -146,6 +156,18 @@ class PollCreate extends React.Component{
     : <div></div>
   }
 
+  generateDropDowns(){
+    return this.props.groups.map((group, idx) => {
+      return(
+        <option key={idx}
+          className="dropdown-menu"
+          value={group.id}>
+        {group.title}
+        </option>
+      )
+    })
+  }
+
   generateAnswerChoiceInputs(){
     return this.state.answerChoices.map((body, idx) => {
 
@@ -167,14 +189,12 @@ class PollCreate extends React.Component{
             </div>
           </div>
        </ReactCSSTransitionGroup>
-
-
-
       )
     })
   }
 
   render(){
+    ;
     return (
       <div className="main">
         <PollHeaderContainer/>
@@ -229,11 +249,10 @@ class PollCreate extends React.Component{
 
               <div className="bottom-create-buttons">
                 <div className="left-create-banner">
-                  <select className="group-dropdown">
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
+                  <select onChange={(e) => this.setState({groupId: parseInt(e.currentTarget.value)})}
+                    className="group-dropdown">
+                    <option value={null}>Select an Optional Grouping</option>
+                    {this.generateDropDowns()}
                   </select>
                   <div className="group-dropdown-overlay">
                     <FontAwesome className="group-overlay-carrot"

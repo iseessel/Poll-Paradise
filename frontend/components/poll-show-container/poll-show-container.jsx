@@ -7,7 +7,7 @@ import PollHeaderContainer from '../my_polls/poll_header_container.jsx'
 import { Footer } from '../footer.jsx'
 
 const mapStateToProps = (state, ownProps) => {
-  debugger;
+  
   const questions = state.entities.questions
   const wildcardId = ownProps.match.params.id
   const question = questions[wildcardId] ? questions[wildcardId] : {}
@@ -31,7 +31,7 @@ class PollShowContainer extends React.Component{
 
 
   constructor(props){
-    debugger;
+    
     super(props)
     this.state = { loading: true }
   }

@@ -15,9 +15,9 @@ function AnswerChoiceReducer(state = _defaultState, action){
 
     case DELETE_QUESTION:
       const newState = merge({}, newState, state)
-      action.payload.answer_choice_ids
-        .forEach((answer_choice_id) => {
-          delete newState[answer_choice_id]
+      action.payload.answerChoiceIds
+        .forEach((answerChoiceId) => {
+          delete newState[answerChoiceId]
         })
       return newState
 

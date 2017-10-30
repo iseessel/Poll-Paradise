@@ -2,13 +2,11 @@ import merge from 'lodash/merge'
 
 //[: }]
 export const allPolls = (groups, questions) => {
-
   let allQuestions = Object.assign({}, questions)
   const polls = []
   let groupKey
   let groupQuestions
   let question
-
   Object.values(groups).forEach((group) => {
 
     groupQuestions = group.questionIds.map((questionId) => {
@@ -35,7 +33,7 @@ const ungroupedQuestions = (questions) => {
     valuesSelected = questionIndexSelector(question)
     ungroupedQuestions.push(valuesSelected)
   })
-  return {title: "Ungrouped", id: -1, questions: ungroupedQuestions}
+  return {title: "Ungrouped", id: null, questions: ungroupedQuestions}
 }
 
 const questionIndexSelector = (question) => {
