@@ -23,7 +23,7 @@ const mapStateToProps = (state) => {
 //                answerChoices: [{body},{},{}] }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  debugger;
+  
   return {
     createQuestion: (data) => dispatch(createQuestion(data)),
     clearErrors: () => dispatch(clearErrors()),

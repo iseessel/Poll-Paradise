@@ -10,9 +10,10 @@ const _defaultState = {}
 function GroupReducer(state = _defaultState, action){
   switch(action.type){
     case RECEIVE_GROUPS:
-
-      let newState = action.payload.groups
-      return merge({}, state, newState);
+      debugger;
+      // let newState = action.payload.groups
+      // return merge({}, state, newState);
+      return action.payload.groups
 
     case RECEIVE_GROUP:
       const group = action.payload.group

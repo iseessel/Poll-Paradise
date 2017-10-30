@@ -11,10 +11,15 @@ export const fetchOneGroup = (id) => {
 
 };
 
-export const createGroup = (group) => {
+export const createGroup = (data) => {
   return $.ajax( {url: "/api/groups",
-  method: "POST", data: group} );
+  method: "POST", data: data} );
 };
+
+export const groupQuestions = (id, data) => {
+  return $.ajax( { url: `/api/groups/${id}/group_questions`,
+    method: "PATCH", data: data } )
+}
 
 export const deleteGroup = (id) => {
   return $.ajax( {url: `/api/groups/${id}`,

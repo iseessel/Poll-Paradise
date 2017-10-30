@@ -55,7 +55,7 @@ class PollShowContainer extends React.Component{
   }
 
   handleDeleteClick(){
-    debugger;
+    
     return this.props.deleteQuestion(this.props.question.id)
     .then(() => this.props.history.push('/mypolls'))
   }

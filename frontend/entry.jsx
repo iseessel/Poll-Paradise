@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // TESTING START
   window.questionApi = questionApi
+  window.groupApi = groupApi
   window.getState = store.getState;
   window.allPolls = selector.allPolls
   window.dispatch = store.dispatch;

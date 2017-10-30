@@ -2,15 +2,18 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { openModal, closeModal } from '../../actions/modal_actions.js'
 import { deleteQuestion, activateQuestion } from '../../actions/question_actions.js';
+import { toggleQuestionToBeGrouped } from '../../actions/ui_actions.js'
 import { Link } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
 
 
 const mapDispatchToProps = (dispatch, ownProps) => {
+
   return {
     deleteQuestion: (id) => dispatch(deleteQuestion(id)),
     activateQuestion: (id) => dispatch(activateQuestion(id)),
-    openModal: (modal) => dispatch(openModal(modal))
+    openModal: (modal) => dispatch(openModal(modal)),
+    toggleQuestionToBeGrouped: (id) => dispatch(toggleQuestionToBeGrouped(id))
   };
 };
 
@@ -63,7 +66,10 @@ class QuestionItemContainer extends React.Component{
     return this.props.question.active ?
     <FontAwesome title="Deactivate" name="thumbs-down" size="2x"/> :
     <FontAwesome title="Activate" name="thumbs-up" size="2x"/>
+  }
 
+  handleCheckBoxChange(){
+    this.props.toggleQuestionToBeGrouped(this.props.question.id)
   }
 
   render(){
@@ -74,6 +80,8 @@ class QuestionItemContainer extends React.Component{
           onMouseLeave={this.handleMouseLeave}>
           <div className="left-row-question">
             <FontAwesome name="wpforms" size="2x"/>
+            <input onChange={this.handleCheckBoxChange.bind(this)}
+              id="checkBox" type="checkbox"/>
             <Link to={linkUrl}>{this.props.question.body}</Link>
           </div>
           <div className="right-row-question">

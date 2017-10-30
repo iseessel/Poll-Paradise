@@ -21,22 +21,39 @@ class Api::GroupsController < ApplicationController
     end
   end
 
-#expecting { group: {:title} }
+#expecting { group: {:title}, question_ids: [] }
   def create
     @group = Group.new(group_params)
     @group.user = current_user
+     if @group.save
+      questions = current_user.questions.where(id: params[:question_ids] )
 
-    params[:question_ids].each do |question_id|
-      @question = Question.find_by(id: question_id)
-      @question.group_id = params[:group_id]
-    end
+      questions.each do |question|
+        question.group_id = @group.id
+        question.save!
+      end
 
-    if @group.save
-      render "api/groups/create"
+      @groups = current_user.groups.includes(:questions)
+      @questions = current_user.questions.includes(:answer_choices)
+      render "api/groups/index"
     else
+
       render json: @group.errors.full_messages, status: 422
     end
+  end
 
+#expecting { question_ids: [] } + wildcard of group_id
+  def group_questions
+    questions = current_user.questions.where(id: params[:question_ids])
+
+    questions.each do |question|
+      question.group_id = params[:group_id]
+      question.save!
+    end
+
+    @groups = current_user.groups.includes(:questions)
+    @questions = current_user.questions.includes(:answer_choices)
+    render "api/groups/index"
   end
 
   def destroy

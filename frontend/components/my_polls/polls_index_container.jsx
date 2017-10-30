@@ -1,4 +1,5 @@
 import React from 'react'
+import { openModal, closeModal } from '../../actions/modal_actions.js'
 import { connect } from 'react-redux';
 import * as pollIndexSelector from '../../util/selectors/poll_index_selector.js';
 import { retrieveGroups } from '../../actions/group_actions.js';
@@ -18,29 +19,32 @@ const mapStateToProps = (state) => {
 
   return {
     polls: pollIndexSelector.allPolls(state.entities.groups,
-      state.entities.questions)
+      state.entities.questions),
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
 
   return {
-    retrieveGroups: () => dispatch(retrieveGroups())
+    retrieveGroups: () => dispatch(retrieveGroups()),
+    openModal: (modal) => dispatch(openModal(modal)),
   };
 };
 
 class PollIndex extends React.Component{
 
   constructor(props){
-
     super(props)
     this.state = { loading: true }
   }
 
   componentDidMount(){
-
     setTimeout(() => this.props.retrieveGroups()
       .then(() => this.setState({loading: false})), 500)
+  }
+
+  handleGroupClick(){
+    this.props.openModal("poll-create-modal")
   }
 
   render(){
@@ -59,7 +63,8 @@ class PollIndex extends React.Component{
         <div className="poll-view">
           <div className="poll-view-banner">
               <FontAwesome name="check" size="2x"/>
-              <div className="poll-banner-text">
+              <div onClick={this.handleGroupClick.bind(this)}
+                className="poll-banner-text">
                 Group
               </div>
           </div>
@@ -77,14 +82,7 @@ class PollIndex extends React.Component{
       );
     })
   }
-
-  generateLis(questions){
-    return questions.map((question, idx) => {
-      return (
-        <QuestionItemContainer key={question.id} question={question} />
-      );
-    })
-  }
+  
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PollIndex)

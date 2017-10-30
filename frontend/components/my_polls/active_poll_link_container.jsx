@@ -21,7 +21,6 @@ class ActivePollLink extends React.Component{
   }
 
   handleClickOutside(){
-    debugger;
     this.props.closeModal()
   }
 

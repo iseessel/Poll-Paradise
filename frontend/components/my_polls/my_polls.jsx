@@ -8,17 +8,18 @@ import { Footer } from '../footer.jsx';
 import { closeModal } from '../../actions/modal_actions.js'
 import MyModal from '../myModal.jsx'
 import ActivePollLinkContainer from './active_poll_link_container.jsx'
+import PollCreateModal from './poll_create_modal.jsx'
 
 const mapStateToProps = (state) => {
   return {
     currentUser: state.session.currentUser,
-    modal: state.ui.modal
+    modal: state.ui.modal,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
   }
 }
 
@@ -38,7 +39,11 @@ class MyPolls extends React.Component{
       <div className="my-polls">
 
         <MyModal component={ActivePollLinkContainer}
-          modal={this.props.modal}
+          modal={this.props.modal === "active-poll-link"}
+          closeModal={this.props.closeModal}/>
+
+        <MyModal component={PollCreateModal}
+          modal={this.props.modal === "poll-create-modal"}
           closeModal={this.props.closeModal}/>
 
         <div className={this.bodyClassName()}>

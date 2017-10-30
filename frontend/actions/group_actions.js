@@ -32,7 +32,7 @@ export const deleteGroupAction = (payload) => {
 // b/c the controller will find the current_user
 
 export const retrieveGroups = () => (dispatch) => {
-  
+
   return GroupUtil.fetchGroups().then((response) => dispatch(receiveGroups(response)),
     (err) => dispatch(receiveErrors(err.responseJSON))
     ).then(() => dispatch(clearErrors))
@@ -47,7 +47,7 @@ export const retrieveOneGroup = (id) => (dispatch) => {
 
 export const createGroup = (data) => (dispatch) => {
   return GroupUtil.createGroup(data)
-    .then((response) => dispatch(receiveOneGroup(response)),
+    .then((response) => dispatch(receiveGroups(response)),
       (err) => dispatch(receiveErrors(err.responseJSON))
     ).then(() => dispatch(clearErrors()))
 };
@@ -58,3 +58,9 @@ export const deleteGroup = (id) => (dispatch) => {
       (err) => dispatch(receiveErrors(err.responseJSON))
     ).then(() => dispatch(clearErrors()))
 };
+
+export const groupQuestions = (id, data) => (dispatch) => {
+  return GroupUtil.groupQuestions(id, data)
+    .then((response) => dispatch(receiveGroups(response)))
+    .then(() => dispatch(clearErrors()))
+}
