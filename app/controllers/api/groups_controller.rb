@@ -4,8 +4,8 @@ class Api::GroupsController < ApplicationController
 #NB: This action also returns 'ungrouped' questions.
   # .includes(:answer_choices)
   def index
-    @groups = current_user.groups.includes(:questions)
-    @questions = current_user.questions.includes(:answer_choices)
+    @groups = current_user.groups.includes(questions: :answer_choices)
+    @last_updated_id = @groups.last.id
     render "api/groups/index"
   end
 
@@ -33,8 +33,8 @@ class Api::GroupsController < ApplicationController
         question.save!
       end
 
-      @groups = current_user.groups.includes(:questions)
-      @questions = current_user.questions.includes(:answer_choices)
+      @last_updated_id = @group.id
+      @groups = current_user.groups.includes(questions: :answer_choices)
       render "api/groups/index"
     else
 
@@ -51,8 +51,8 @@ class Api::GroupsController < ApplicationController
       question.save!
     end
 
-    @groups = current_user.groups.includes(:questions)
-    @questions = current_user.questions.includes(:answer_choices)
+    @last_updated_id = params[:group_id]
+    @groups = current_user.groups.includes(questions: :answer_choices)
     render "api/groups/index"
   end
 

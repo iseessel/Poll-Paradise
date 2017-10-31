@@ -33,7 +33,6 @@ export const clearSelected = () => {
   }
 }
 
-
 export const toggleQuestionToBeGrouped = (questionId) => {
 
   return{

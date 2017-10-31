@@ -1,4 +1,5 @@
 import { TOGGLE_SELECTED, ENSURE_SELECTED } from '../../actions/ui_actions.js';
+import { RECEIVE_GROUPS } from '../../actions/group_actions.js'
 import merge from 'lodash/merge'
 
 
@@ -26,7 +27,13 @@ function GroupUIReducer(state = _defaultState, action){
       newState = merge({}, state)
       groupId = action.groupId
       newState[groupId] = true
-      
+      debugger;
+      return newState
+
+    case RECEIVE_GROUPS:
+      newState = merge({}, state)
+      newState[action.payload.lastUpdatedGroupId] = true
+
       return newState
 
     default:

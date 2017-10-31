@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import FontAwesome from 'react-fontawesome';
 import onClickOutside from 'react-onclickoutside'
 import { createGroup, groupQuestions } from '../../actions/group_actions.js'
+// import { ensureSelected } from '../../actions/ui_actions.js'
 
 const mapStateToProps = (state) => {
   return {
@@ -14,7 +15,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     createGroup: (data) => dispatch(createGroup(data)),
-    groupQuestions: (id, data) => dispatch(groupQuestions(id, data))
+    groupQuestions: (id, data) => dispatch(groupQuestions(id, data)),
+    // ensureSelected: (id, data) =>
   }
 }
 
@@ -51,8 +53,8 @@ class PollCreateModal extends React.Component{
         data = { question_ids : this.props.questionIds }
       return this.props.groupQuestions(groupId, data)
         .then(() => this.props.closeModal())
-        .then(() => this.props.)
     }else if(groupText){
+
       data = { question_ids: this.props.questionIds, group: {title: groupText }}
       return this.props.createGroup(data)
         .then(() => this.props.closeModal())

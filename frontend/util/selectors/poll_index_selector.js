@@ -10,6 +10,7 @@ export const allPolls = (groups, questions) => {
   Object.values(groups).forEach((group) => {
 
     groupQuestions = group.questionIds.map((questionId) => {
+
       question = questionIndexSelector(allQuestions[questionId])
       delete allQuestions[questionId]
       return question
