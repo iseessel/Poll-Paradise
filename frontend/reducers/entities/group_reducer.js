@@ -22,7 +22,7 @@ function GroupReducer(state = _defaultState, action){
     case DELETE_QUESTION:
       newState = merge({}, state)
 
-      const groupId = action.payload.groupId
+      let groupId = action.payload.groupId
 
       if(groupId && newState[groupId]){
         const questionIds = newState[groupId].questionIds
@@ -32,7 +32,16 @@ function GroupReducer(state = _defaultState, action){
       return newState
 
     case RECEIVE_QUESTION:
-      return _defaultState;
+      newState = merge({}, state)
+      let question = action.payload.question
+      groupId = question.group_id
+      if(groupId){
+        newState[groupId].questionIds.push(question.id)
+      }
+      return newState;
+
+    // case RECEIVE_QUESTION:
+    //   return _defaultState;
 
     default:
 

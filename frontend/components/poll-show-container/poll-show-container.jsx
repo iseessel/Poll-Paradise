@@ -10,6 +10,7 @@ import MyModal from '../myModal.jsx'
 import ActivePollLinkContainer from '../my_polls/active_poll_link_container.jsx'
 import { deleteQuestion, activateQuestion } from '../../actions/question_actions.js';
 import { openModal, closeModal } from '../../actions/modal_actions.js'
+import BarChart from './rechart_show.jsx'
 
 
 const mapStateToProps = (state, ownProps) => {

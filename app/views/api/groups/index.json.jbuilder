@@ -8,14 +8,12 @@ json.groups do
 end
 
 json.questions do
-  @groups.each do |group|
-    group.questions.each do |question|
-      json.set! question.id do
-        json.partial! 'api/questions/question', question: question
-      end
+  @questions.each do |question|
+    json.set! question.id do
+      json.partial! 'api/questions/question', question: question
     end
   end
 end
 
 
-json.lastUpdatedGroupId @last_updated_id 
+json.lastUpdatedGroupId @last_updated_id
