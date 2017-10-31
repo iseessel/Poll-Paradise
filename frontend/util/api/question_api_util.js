@@ -8,7 +8,6 @@ export const fetchOneQuestion = (id) => {
 export const createQuestion = (data) => {
   return $.ajax( {url: `/api/questions`,
     method: "POST", data: data} );
-
 }
 
 export const updateQuestion = (id, data) => {

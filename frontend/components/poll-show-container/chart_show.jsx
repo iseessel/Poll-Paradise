@@ -4,6 +4,7 @@ import { HorizontalBar } from 'react-chartjs-2';
 class ChartShow extends React.Component{
 
   constructor(props){
+    debugger;
     super(props)
   }
 
@@ -12,6 +13,7 @@ class ChartShow extends React.Component{
   }
 
   totalNumResponses(){
+    debugger;
     let totalNumResponses = 0
     this.props.answerChoices.forEach((answerChoice) => {
       totalNumResponses += answerChoice.timesChosen
@@ -61,6 +63,7 @@ class ChartShow extends React.Component{
   }
 
   generateData(){
+    debugger;
     const totalNumResponses = this.totalNumResponses()
     const labels = []
     const data = []

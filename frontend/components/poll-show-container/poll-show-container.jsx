@@ -17,16 +17,12 @@ const mapStateToProps = (state, ownProps) => {
 
   const questions = state.entities.questions
   const wildcardId = ownProps.match.params.id
-  const question = questions[wildcardId] ? questions[wildcardId] : {}
-  const answers = question.answerChoiceIds.map((answerChoice) =>{
-    return state.entities.answerChoices[answerChoice]
-  })
-  // const answers = Object.values(state.entities.answerChoices)
-  const AnswerChoices = answers ? answers : []
+  const question = questions[wildcardId] ? questions[wildcardId] : null
+  const answerChoices = Object.values(state.entities.answerChoices)
 
   return {
     question: question,
-    answerChoices: AnswerChoices,
+    answerChoices: answerChoices,
     currentUser: state.session.currentUser,
     modal: state.ui.modal
   }
@@ -52,24 +48,6 @@ class PollShowContainer extends React.Component{
     this.state = { loading: true }
   }
 
-  handleActivateClick(){
-    console.log("hello")
-    return this.props.activateQuestion(this.props.question.id)
-  }
-
-  handleDeleteClick(){
-    return this.props.deleteQuestion(this.props.question.id)
-    .then(() => this.props.history.push('/mypolls'))
-  }
-
-  handleShareClick(){
-    this.props.question.active ?
-      this.props.openModal("active-poll-link") :
-      this.handleActivateClick()
-      .then(() => this.props.openModal("active-poll-link"))
-  }
-
-
   componentDidMount(){
     const questionId = this.props.match.params.id
     this.props.fetchQuestion(questionId)
@@ -93,6 +71,23 @@ class PollShowContainer extends React.Component{
           .then(() => this.setState( { loading: true } ))
           .then(() => this.setState({ loading: false }))
       }.bind(this));
+  }
+
+  handleActivateClick(){
+    console.log("hello")
+    return this.props.activateQuestion(this.props.question.id)
+  }
+
+  handleDeleteClick(){
+    return this.props.deleteQuestion(this.props.question.id)
+    .then(() => this.props.history.push('/mypolls'))
+  }
+
+  handleShareClick(){
+    this.props.question.active ?
+      this.props.openModal("active-poll-link") :
+      this.handleActivateClick()
+      .then(() => this.props.openModal("active-poll-link"))
   }
 
   render(){
@@ -161,24 +156,22 @@ class PollShowContainer extends React.Component{
       )
     }else{
       return (
-        <div className="loading">
-          <FontAwesome
-            name='spinner'
-            size='2x'
-            pulse
-          />
+        <div className="main-polls-show">
+          <PollHeaderContainer />
+            <div className="loading">
+              <FontAwesome
+                name='spinner'
+                size='2x'
+                pulse
+              />
+            </div>
         </div>
+
       )
     }
 
   }
 
-
-  componentWillUnmount(){
-    // Need to clear the answer choices, or else when we
-    // navigate to another page and click a different
-    this.props.clearAnswerChoices()
-  }
 }
 
 

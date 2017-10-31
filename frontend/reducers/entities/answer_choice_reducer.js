@@ -10,8 +10,7 @@ function AnswerChoiceReducer(state = _defaultState, action){
       return _defaultState
 
     case RECEIVE_QUESTION:
-      const answerChoices = action.payload.answerChoices
-      return merge({}, state, answerChoices)
+      return action.payload.answerChoices;
 
     case DELETE_QUESTION:
       const newState = merge({}, newState, state)
