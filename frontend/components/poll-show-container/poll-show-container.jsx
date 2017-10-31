@@ -119,8 +119,7 @@ class PollShowContainer extends React.Component{
 
                   </h4>
                   <p className="how-to-respond-body">
-                    Audience can respond <a className="respond-modal-here">here</a>
-                    as long as the poll is active.
+                    Audience can respond as long as the poll is active.
                     <br/>
                   </p>
                 </div>
