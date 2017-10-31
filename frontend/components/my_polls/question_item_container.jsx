@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger;
+  
   return {
     checked: state.ui.userInput.groupedQuestions
       .includes(ownProps.question.id)

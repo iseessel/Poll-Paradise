@@ -10,11 +10,17 @@ class Api::AnswerChoicesController < ApplicationController
     end
   end
 
+  #change to a patch request to AnswerChoice
+  #trigger an event called the question_id 
+
   def choose
     @answer_choice = AnswerChoice.find_by(id: params[:answer_choice_id])
     if @answer_choice
       @answer_choice.times_chosen += 1
       @answer_choice.save
+      Pusher.trigger('choose_question_answer_choice' + @answer_choice.id.to_s,
+         'my-event', {} )
+      #lets publish an event
       render 'api/answer_choices/show'
     else
       render json: ["Answer choice cannot be found"], status: 422
@@ -27,6 +33,8 @@ class Api::AnswerChoicesController < ApplicationController
     if @answer_choice
       @answer_choice.times_chosen -= 1
       @answer_choice.save
+      Pusher.trigger('take_back_answer_choice_' + @answer_choice.id.to_s,
+        'my-event', {})
       render 'api/answer_choices/show'
     else
       render json: ["Answer choice cannot be found"], status: 422
