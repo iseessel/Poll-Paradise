@@ -49,7 +49,7 @@ class PollCreateModal extends React.Component{
     const groupText = this.state.groupText
     let data
     if(groupId && groupText){
-      this.setState({errors: "You must either create a group or select a group! Not Both!"})
+      this.setState({error: "You must create or select a group. Not Both."})
     }else if(groupId){
         //need a way of reassigning questions to be ungrouped
         groupId = ( groupId === -2 ? null : groupId)
@@ -62,7 +62,24 @@ class PollCreateModal extends React.Component{
       return this.props.createGroup(data)
         .then(() => this.props.closeModal())
     }else{
-      this.setState({errors: "You must either create a group or select a group!"})
+      this.setState({error: "You must create or select a group."})
+    }
+  }
+
+  generateErrors(){
+    if(this.state.error){
+      return  (
+        <ul className="poll-create-modal-errors">
+          <li className="poll-create-modal-error">
+            {this.state.error}
+          </li>
+        </ul>
+      )
+    }else {
+      return (
+        <div className="hidden">
+        </div>
+      )
     }
   }
 
@@ -96,21 +113,33 @@ class PollCreateModal extends React.Component{
             </div>
           </div>
           <div className="middle-poll-create">
-            Or
+            <p>
+              Or
+            </p>
           </div>
           <div className="poll-create-new-group">
-            <h3 className="new-group-title">Create a New Group</h3>
+            <div className="new-group-title-banner">
+              <h3 className="new-group-title">
+                Create a New Group
+              </h3>
+              {this.generateErrors()}
+            </div>
+
             <input
-              className="poll-create-group-text"
+              className={this.state.error ?
+                "poll-create-group-text group-error" :
+                "poll-create-group-text"}
               onChange={(e) => this.setState({
                 groupText: e.currentTarget.value}
               )}/>
           </div>
-          <button
-            onClick={this.handleSubmit.bind(this)}
-            className="create-new-group-button">
-            Assign to a Group
-          </button>
+          <div className="poll-create-bottom-button">
+            <button
+              onClick={this.handleSubmit.bind(this)}
+              className="create-new-group-button">
+              Group
+            </button>
+          </div>
         </form>
       </div>
     )

@@ -6,6 +6,14 @@ import { toggleQuestionToBeGrouped } from '../../actions/ui_actions.js'
 import { Link } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
 
+const mapStateToProps = (state, ownProps) => {
+  debugger;
+  return {
+    checked: state.ui.userInput.groupedQuestions
+      .includes(ownProps.question.id)
+  }
+
+}
 
 const mapDispatchToProps = (dispatch, ownProps) => {
 
@@ -80,7 +88,8 @@ class QuestionItemContainer extends React.Component{
           onMouseLeave={this.handleMouseLeave}>
           <div className="left-row-question">
             <input onChange={this.handleCheckBoxChange.bind(this)}
-              className="checkbox" type="checkbox"/>
+              className="checkbox" type="checkbox"
+              defaultChecked={this.props.checked}/>
             <FontAwesome name="wpforms" size="2x"/>
             <Link to={linkUrl}>{this.props.question.body}</Link>
           </div>
@@ -104,4 +113,4 @@ class QuestionItemContainer extends React.Component{
   }
 }
 
-export default connect(null, mapDispatchToProps)(QuestionItemContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(QuestionItemContainer)

@@ -1,7 +1,7 @@
 .main-polls-show{
+  height: 100%;
   display: flex;
   flex-direction: column;
-  width: 100%;
   background-color: white;
   font-style: "Lucida Grande";
 }
@@ -13,20 +13,20 @@
 }
 
 .chart-show-left{
-  width: 100%;
-  min-width: 750px;
+  // min-width: 750px;
+  width: 67%;
   margin: 30px;
   margin: 38px;
+  flex-grow: 1;
 }
 
 .chart-show-grid{
   display: flex;
-  height: auto;
-  min-height: 10px;
+  height: 100%;
 }
 
 .how-to-respond{
-  height: 100%;
+  height: 95%;
   font-size: 13px;
   background-color: #E9EFF4;
   padding-top: 15px;
@@ -55,11 +55,12 @@
 
 .chart-show-right{
   display: flex;
+  width: 33%;
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
   height: auto;
-  width: 325px;
+  max-width: 325px;
 }
 
 .how-to-respond-title{
@@ -85,10 +86,13 @@
   font-size: 13px;
 }
 
+.chart-show-right-footer{
+  height: 40px;
+}
+
 .chart-show-activate, .chart-show-share,
 .chart-show-delete{
   width: 33.3333333%;
-  height: 40px;
   background-color: #255071;
   font-style: "Lucida Grande";
   font-weight: bold;

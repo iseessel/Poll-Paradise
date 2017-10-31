@@ -55,7 +55,6 @@ class PollShowContainer extends React.Component{
   }
 
   handleDeleteClick(){
-
     return this.props.deleteQuestion(this.props.question.id)
     .then(() => this.props.history.push('/mypolls'))
   }
@@ -71,6 +70,7 @@ class PollShowContainer extends React.Component{
   componentDidMount(){
     this.props.fetchQuestion(this.props.match.params.id)
       .then(() => this.setState({loading: false}))
+
   }
 
   render(){
@@ -135,12 +135,16 @@ class PollShowContainer extends React.Component{
               </div>
             </div>
           </div>
-          <Footer/>
         </div>
       )
     }else{
       return (
         <div className="loading">
+          <FontAwesome
+            name='spinner'
+            size='2x'
+            pulse
+          />
         </div>
       )
     }
