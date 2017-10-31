@@ -15,6 +15,11 @@
   opacity: 0.01;
 }
 
+.main-poll-create{
+  height: 100%;
+  background-color: #d3d3d3;
+}
+
 .main-create-page-appear-active {
   opacity: 1;
   transition: opacity .5s ease-in;
@@ -61,7 +66,7 @@
 }
 
 .main-poll{
-  height: 89.5%;
+  height: 100%;
   background-color: #d3d3d3;
 }
 
@@ -114,7 +119,7 @@
   color: white;
   position: relative;
   pointer-events: none;
-  right: 50px;
+  right: 47px;
   z-index:1;
 }
 
@@ -228,10 +233,8 @@
 }
 
 
-
-
 .transition-wrapper{
-  height: 100%;
+  height: auto;
 }
 
 .poll-question{

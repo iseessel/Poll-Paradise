@@ -23,7 +23,7 @@ const mapStateToProps = (state) => {
 //                answerChoices: [{body},{},{}] }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  
+
   return {
     createQuestion: (data) => dispatch(createQuestion(data)),
     clearErrors: () => dispatch(clearErrors()),
@@ -211,7 +211,7 @@ class PollCreate extends React.Component{
   render(){
     ;
     return (
-      <div className="main">
+      <div className="main-poll-create">
         <PollHeaderContainer/>
           <ReactCSSTransitionGroup transitionName="example"
             transitionAppear={true} transitionAppearTimeout={500}
@@ -266,7 +266,7 @@ class PollCreate extends React.Component{
                 <div className="left-create-banner">
                   <select onChange={(e) => this.setState({groupId: parseInt(e.currentTarget.value)})}
                     className="group-dropdown">
-                    <option value={null}>Select an Optional Grouping</option>
+                    <option value={null}>Select an optional grouping</option>
                     {this.generateDropDowns()}
                   </select>
                   <div className="group-dropdown-overlay">

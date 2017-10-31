@@ -79,9 +79,9 @@ class QuestionItemContainer extends React.Component{
           onMouseOver={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}>
           <div className="left-row-question">
-            <FontAwesome name="wpforms" size="2x"/>
             <input onChange={this.handleCheckBoxChange.bind(this)}
-              id="checkBox" type="checkbox"/>
+              className="checkbox" type="checkbox"/>
+            <FontAwesome name="wpforms" size="2x"/>
             <Link to={linkUrl}>{this.props.question.body}</Link>
           </div>
           <div className="right-row-question">

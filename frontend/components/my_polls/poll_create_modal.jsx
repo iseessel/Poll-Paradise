@@ -70,24 +70,36 @@ class PollCreateModal extends React.Component{
     return(
       <div className="poll-create-container">
         <form className="main-poll-create">
-          <div className="group-dropdown">
-            <h2 className="group-dropdown-title"> Select a Group</h2>
-            <select onChange={(e) => this.setState(
-                {groupId: parseInt(e.currentTarget.value)}
-              )}
-              className="group-dropdown-select">
-              <option value={null}>Select an Optional Grouping</option>
-              {this.generateDropDowns()}
-              <option key={-1}
-                className="dropdown-menu"
-                value={-2}>
-                Ungrouped
-              </option>
-            </select>
-            <h2 className="middle-poll-create"> Or </h2>
+          <div className="main-poll-create-header">
+              <h3>
+                Assign Questions to a Group
+              </h3>
+            <button onClick={this.handleClickOutside.bind(this)} className="close-modal">
+              <FontAwesome className="window-close" name="window-close" size="2x"/>
+            </button>
+          </div>
+          <div className="group-dropdown-main">
+            <h3 className="group-dropdown-title"> Select a Group</h3>
+            <div className="poll-create-dropdown-menu">
+              <select onChange={(e) => this.setState({groupId: parseInt(e.currentTarget.value)})}
+                className="poll-create-dropdown">
+                <option value={null}>Select an optional grouping</option>
+                {this.generateDropDowns()}
+                <option value={-2}>
+                  Ungrouped
+                </option>
+              </select>
+              <div className="poll-create-overlay">
+                <FontAwesome className="poll-create-carrot"
+                  name="caret-down" size="2x"/>
+              </div>
+            </div>
+          </div>
+          <div className="middle-poll-create">
+            Or
           </div>
           <div className="poll-create-new-group">
-            <h2 className="new-group-title">Create a New Group</h2>
+            <h3 className="new-group-title">Create a New Group</h3>
             <input
               className="poll-create-group-text"
               onChange={(e) => this.setState({

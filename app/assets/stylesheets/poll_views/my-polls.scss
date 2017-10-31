@@ -16,6 +16,12 @@
   justify-content: center;
 }
 
+.checkbox{
+  margin-top: 3px;
+  margin-right: 10px;
+  height: 13px;
+}
+
 .my-polls-header{
   height: 53px;
   display: flex;
@@ -209,10 +215,12 @@
 
 .left-row-question {
   margin-left: 15px;
+  display: flex;
+  align-items: center;
 }
 
 .left-row-question a {
-  margin-left: 18px;
+  margin-left: 10px;
 }
 
 .inactive {
