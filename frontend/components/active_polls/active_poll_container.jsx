@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchUsersActiveQuestion } from '../../actions/question_actions.js'
-import { chooseAnswer, takeBackAnswer } from '../../util/api/answer_choice_api_util.js'
+import { updateTimesChosen } from '../../util/api/answer_choice_api_util.js'
 import PollHeaderContainer from '../my_polls/poll_header_container.jsx';
 import { Link } from 'react-router-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
@@ -43,7 +43,7 @@ class ActivePollContainer extends React.Component{
       return (e) => {
         this.setState({selectedId: id})
         localStorage.setItem(this.props.question.id, id)
-        chooseAnswer(id)
+        updateTimesChosen(id, 1)
       }
     }else {
       return (e) => { }
@@ -56,7 +56,7 @@ class ActivePollContainer extends React.Component{
         this.setState( {selectedId: null } )
         const answerChoiceId = localStorage.getItem(this.props.question.id)
         localStorage.setItem(this.props.question.id, null)
-        takeBackAnswer(answerChoiceId)
+        updateTimesChosen(answerChoiceId, -1)
       }
     }else{
       return (e) => { }

@@ -11,31 +11,16 @@ class Api::AnswerChoicesController < ApplicationController
   end
 
   #change to a patch request to AnswerChoice
-  #trigger an event called the question_id 
+  #trigger an event called the question_id
 
-  def choose
+
+  def update_times_chosen
     @answer_choice = AnswerChoice.find_by(id: params[:answer_choice_id])
     if @answer_choice
-      @answer_choice.times_chosen += 1
+      @answer_choice.times_chosen += params[:differential].to_i
       @answer_choice.save
-      Pusher.trigger('choose_question_answer_choice' + @answer_choice.id.to_s,
-         'my-event', {} )
-      #lets publish an event
-      render 'api/answer_choices/show'
-    else
-      render json: ["Answer choice cannot be found"], status: 422
-    end
-  end
-
-
-  def take_back
-    @answer_choice = AnswerChoice.find_by(id: params[:answer_choice_id])
-    if @answer_choice
-      @answer_choice.times_chosen -= 1
-      @answer_choice.save
-      Pusher.trigger('take_back_answer_choice_' + @answer_choice.id.to_s,
-        'my-event', {})
-      render 'api/answer_choices/show'
+      Pusher.trigger('update_question_' + @answer_choice
+        .question.id.to_s, 'my-event', {} )
     else
       render json: ["Answer choice cannot be found"], status: 422
     end

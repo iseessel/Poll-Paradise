@@ -1,12 +1,11 @@
-export const chooseAnswer = (id) => {
-  return $.ajax( {url: `/api/answer_choices/${id}/choose`,
-    method: "PATCH"} );
-};
-
-export const takeBackAnswer = (id) => {
-  return $.ajax( {url: `/api/answer_choices/${id}/takeback`,
-    method: "PATCH"} );
-};
+export const updateTimesChosen = (id, diff) => {
+  return $.ajax( {
+            url: `/api/answer_choices/${id}/update_times_chosen`,
+            method: "PATCH",
+            data: {differential: diff}
+            }
+          )
+      }
 
 export const deleteAnswerChoice = (id) => {
   return $.ajax( {url: `/api/answer_choices/${id}`,

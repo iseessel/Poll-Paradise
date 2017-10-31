@@ -71,15 +71,15 @@ class PollShowContainer extends React.Component{
     this.props.fetchQuestion(this.props.match.params.id)
       .then(() => this.setState({loading: false}))
     //subscription code here
-    var pusher = new Pusher('c46aa86a38d2bd68ba6c', {
-      cluster: 'us2',
-      encrypted: true
-    });
-
-    var channel = pusher.subscribe('my-channel');
-      channel.bind('my-event', function(data) {
-        alert(data.message);
-      });
+    // var pusher = new Pusher('c46aa86a38d2bd68ba6c', {
+    //   cluster: 'us2',
+    //   encrypted: true
+    // });
+    //
+    // var channel = pusher.subscribe('my-channel');
+    //   channel.bind('my-event', function(data) {
+    //     alert(data.message);
+    //   });
   }
 
   render(){
