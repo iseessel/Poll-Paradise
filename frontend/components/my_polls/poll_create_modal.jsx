@@ -43,13 +43,16 @@ class PollCreateModal extends React.Component{
     })
   }
 
-  handleSubmit(){
-    const groupId = this.state.groupId
+  handleSubmit(e){
+    e.preventDefault()
+    let groupId = this.state.groupId
     const groupText = this.state.groupText
     let data
     if(groupId && groupText){
       this.setState({errors: "You must either create a group or select a group! Not Both!"})
     }else if(groupId){
+        //need a way of reassigning questions to be ungrouped
+        groupId = ( groupId === -2 ? null : groupId)
         data = { question_ids : this.props.questionIds }
       return this.props.groupQuestions(groupId, data)
         .then(() => this.props.closeModal())
@@ -75,6 +78,11 @@ class PollCreateModal extends React.Component{
               className="group-dropdown-select">
               <option value={null}>Select an Optional Grouping</option>
               {this.generateDropDowns()}
+              <option key={-1}
+                className="dropdown-menu"
+                value={-2}>
+                Ungrouped
+              </option>
             </select>
             <h2 className="middle-poll-create"> Or </h2>
           </div>

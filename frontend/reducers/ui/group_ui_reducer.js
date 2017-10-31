@@ -27,7 +27,7 @@ function GroupUIReducer(state = _defaultState, action){
       newState = merge({}, state)
       groupId = action.groupId
       newState[groupId] = true
-      debugger;
+      
       return newState
 
     case RECEIVE_GROUPS:
