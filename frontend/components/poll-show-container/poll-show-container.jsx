@@ -48,7 +48,6 @@ class PollShowContainer extends React.Component{
     this.state = { loading: true }
   }
 
-
   handleActivateClick(){
     console.log("hello")
     return this.props.activateQuestion(this.props.question.id)
@@ -68,21 +67,33 @@ class PollShowContainer extends React.Component{
 
 
   componentDidMount(){
-    this.props.fetchQuestion(this.props.match.params.id)
+    debugger;
+    const questionId = this.props.match.params.id
+    this.props.fetchQuestion(questionId)
       .then(() => this.setState({loading: false}))
-    //subscription code here
-    // var pusher = new Pusher('c46aa86a38d2bd68ba6c', {
-    //   cluster: 'us2',
-    //   encrypted: true
-    // });
-    //
-    // var channel = pusher.subscribe('my-channel');
-    //   channel.bind('my-event', function(data) {
-    //     alert(data.message);
-    //   });
+      .then(() => console.log("hello!"))
+      .then(this.setUpWebSocket.bind(this))
+  }
+
+  setUpWebSocket(){
+    let pusher = new Pusher('c46aa86a38d2bd68ba6c', {
+      cluster: 'us2',
+      encrypted: true
+    });
+
+    const questionId = this.props.match.params.id
+
+    const subscriptionChannel = "update_question_" + questionId
+    let channel = pusher.subscribe(subscriptionChannel);
+      channel.bind('update_answer_choices', function(data){
+        this.props.fetchQuestion(questionId)
+          .then(() => this.setState( { loading: true } ))
+          .then(() => this.setState({ loading: false }))
+      }.bind(this));
   }
 
   render(){
+    debugger;
     const activePollsUrl
       = "https://poll-paradise.herokuapp.com/#/active_polls/" +
       this.props.currentUser.username

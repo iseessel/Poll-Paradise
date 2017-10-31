@@ -18,8 +18,11 @@ class Api::AnswerChoicesController < ApplicationController
     if @answer_choice
       @answer_choice.times_chosen += params[:differential].to_i
       @answer_choice.save
-      Pusher.trigger('update_question_' + @answer_choice
-        .question.id.to_s, 'my-event', {} )
+      subscriptionChannel = 'update_question_' + @answer_choice.question.id.to_s
+      pusher = Pusher.trigger(subscriptionChannel,
+        'update_answer_choices', {id: @answer_choice.id,
+          times_chosen: @answer_choice.times_chosen } )
+      render json: { timesChosen: @answer_choice.times_chosen }
     else
       render json: ["Answer choice cannot be found"], status: 422
     end

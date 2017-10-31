@@ -4,8 +4,11 @@ import { HorizontalBar } from 'react-chartjs-2';
 class ChartShow extends React.Component{
 
   constructor(props){
-    ;
     super(props)
+  }
+
+  componentDidMount(){
+    debugger;
   }
 
   totalNumResponses(){
@@ -83,6 +86,7 @@ class ChartShow extends React.Component{
   }
 
   render(){
+    debugger;
     return (
       <div className="chart">
         <h1 className="chart-title">{this.props.question.body}</h1>
