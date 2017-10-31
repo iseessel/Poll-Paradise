@@ -18,7 +18,10 @@ const mapStateToProps = (state, ownProps) => {
   const questions = state.entities.questions
   const wildcardId = ownProps.match.params.id
   const question = questions[wildcardId] ? questions[wildcardId] : {}
-  const answers = Object.values(state.entities.answerChoices)
+  const answers = question.answerChoiceIds.map((answerChoice) =>{
+    return state.entities.answerChoices[answerChoice]
+  })
+  // const answers = Object.values(state.entities.answerChoices)
   const AnswerChoices = answers ? answers : []
 
   return {
@@ -68,7 +71,6 @@ class PollShowContainer extends React.Component{
 
 
   componentDidMount(){
-    debugger;
     const questionId = this.props.match.params.id
     this.props.fetchQuestion(questionId)
       .then(() => this.setState({loading: false}))
