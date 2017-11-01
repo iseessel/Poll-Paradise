@@ -88,7 +88,7 @@ class ChartShow extends React.Component{
   }
 
   render(){
-    debugger;
+    ;
     return (
       <div className="chart">
         <img src={this.props.question.imageUrl} />

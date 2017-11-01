@@ -19,7 +19,7 @@ class Api::QuestionsController < ApplicationController
     @question = Question.new(question_params)
     @question.user_id = current_user.id
     @answer_choices = []
-    debugger
+
 
     answer_choices_params.each_with_index do |answer_choice, idx|
       answer_choice = AnswerChoice.new(answer_choice)

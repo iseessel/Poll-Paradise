@@ -43,7 +43,7 @@ class PollShowContainer extends React.Component{
 
 
   constructor(props){
-    debugger;
+    ;
     super(props)
     this.state = { loading: true }
   }

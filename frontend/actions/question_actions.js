@@ -41,11 +41,11 @@ export const retrieveOneQuestion = (id) => (dispatch) => {
 export const createQuestion = (data) => (dispatch) => {
   return QuestionUtil.createQuestion(data)
     .then((response) => {
-      debugger
+      
       dispatch(receiveOneQuestion(response))
     },
       (err) => {
-        debugger
+        
         dispatch(receiveErrors(err.responseJSON))
       }
     ).then(() => dispatch(clearErrors()))

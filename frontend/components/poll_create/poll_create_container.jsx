@@ -201,9 +201,9 @@ class PollCreate extends React.Component{
   }
 
   updateFile(idx){
-    debugger;
+    ;
     return (e) => {
-      debugger;
+      ;
       const newState = this.state.imageFiles.slice(0)
       const file = e.currentTarget.files[0]
       newState[idx] = file
@@ -260,7 +260,7 @@ class PollCreate extends React.Component{
   }
 
   render(){
-    debugger;
+    ;
     return (
       <div className="main-poll-create">
         <PollHeaderContainer/>
