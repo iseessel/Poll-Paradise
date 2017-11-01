@@ -12,7 +12,28 @@
 }
 
 .file-upload{
-  display: none;
+  position:relative;
+  overflow: hidden;
+  padding-top: 14px;
+  border-left: 1px solid #E5E5E5;
+}
+
+.picture-upload{
+  color: #CFD1D4;
+  margin-right: 13px;
+  margin-left: 9px;
+}
+
+.input-file{
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
 }
 
 .main-create-page-appear {

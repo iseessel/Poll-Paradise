@@ -36,8 +36,7 @@ const _defaultState = {
   groupId: null,
   question: "",
   answerChoices: ["", "", ""],
-  imageFiles: [null, null, null],
-  imageURLS: [null, null, null]
+  imageFiles: [false, false, false],
  }
 
 class PollCreate extends React.Component{
@@ -92,12 +91,15 @@ class PollCreate extends React.Component{
 
   packageData(){
     const userInputAnswerChoices = this.state.answerChoices
+    const imageFiles = this.state.imageFiles
     let answerChoices = []
     let body
+    let file
     for (let i = 0; i < userInputAnswerChoices.length; i++){
       body = userInputAnswerChoices[i]
+      file = imageFiles[i]
       if(body){
-        answerChoices.push({body: body })
+        answerChoices.push({body: body})
       }
     }
 
@@ -115,6 +117,9 @@ class PollCreate extends React.Component{
     const data = this.packageData()
     const formData = new FormData();
     const formDataTwo = new FormData();
+    this.state.imageFiles.forEach((image) => {
+      formData.append('images[]', image)
+    })
     formData.append("question",
       JSON.stringify(data.question)
       )
@@ -194,10 +199,11 @@ class PollCreate extends React.Component{
   updateFile(idx){
     return (e) => {
       const newState = this.state.imageFiles.slice(0)
-      newState[idx] = e.currentTarget.files[0]
+      const file = e.currentTarget.files[0]
+      newState[idx] = file
       const fileReader = new FileReader();
       fileReader.onloadend = () => {
-        this.setState({imageFile: newState })
+        this.setState({imageFiles: newState })
       }
 
       if (file){
@@ -219,9 +225,16 @@ class PollCreate extends React.Component{
                 onKeyDown={this.handleKeyPress(idx).bind(this)}
                 onChange={this.handleAnswerChoiceChange(idx).bind(this)}
                 value={this.state.answerChoices[idx]}/>
-              <input className=""
-                type="file-upload"
-                onChange={this.updateFile(idx)}/>
+
+              <div className="file-upload">
+                <span className="picture-upload">
+                  <FontAwesome name="picture-o"/>
+                </span>
+                <input type="file"
+                  className="input-file"
+                  onChange={this.updateFile(idx)}/>
+              </div>
+
               <div className="delete-answer-choice"
                 onClick={this.handleTrashClick(idx).bind(this)}>
                 <FontAwesome name="trash" size="2x"/>

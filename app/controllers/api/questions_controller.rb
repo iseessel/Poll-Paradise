@@ -16,14 +16,17 @@ class Api::QuestionsController < ApplicationController
   # =>        answer_choices: [{},{},{}] }
 
   def create
-    debugger
     @question = Question.new(question_params)
     @question.user_id = current_user.id
     @answer_choices = []
+    debugger
 
-    answer_choices_params.each do |answer_choice|
+    answer_choices_params.each_with_index do |answer_choice, idx|
       answer_choice = AnswerChoice.new(answer_choice)
       answer_choice.times_chosen = 0
+      image = params[:images][idx]
+      #Because we are receiving an optional array of images, null values are stringified
+      answer_choice.image = image unless image === "null"
       @question.answer_choices << answer_choice
       @answer_choices << answer_choice
     end
@@ -106,7 +109,11 @@ class Api::QuestionsController < ApplicationController
     json_decryped_array = JSON.parse(params.require(:answer_choices))
     answer_choices_params = { answer_choices: json_decryped_array }
     ActionController::Parameters.new(answer_choices_params)
-      .permit(answer_choices: [:body])[:answer_choices]
+      .permit(answer_choices: [:body, :image])[:answer_choices]
   end
+
+  # def image_params
+  #   params.require(:images).split(',')
+  # end
 
 end

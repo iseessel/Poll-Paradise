@@ -44,6 +44,7 @@ class PollShowContainer extends React.Component{
 
 
   constructor(props){
+    debugger;
     super(props)
     this.state = { loading: true }
   }
@@ -91,7 +92,7 @@ class PollShowContainer extends React.Component{
   }
 
   render(){
-    
+
     const activePollsUrl
       = "https://poll-paradise.herokuapp.com/#/active_polls/" +
       this.props.currentUser.username
@@ -106,6 +107,7 @@ class PollShowContainer extends React.Component{
 
           <PollHeaderContainer />
           <div className="chart-show-grid">
+            <img src={this.props.answerChoices[0].imageUrl}/>
             <div className="chart-show-left">
               <ChartShow question={this.props.question}
                   answerChoices={this.props.answerChoices}/>
