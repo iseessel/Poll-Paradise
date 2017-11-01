@@ -69,12 +69,13 @@ class PollCreate extends React.Component{
     }
   }
 
-
   deleteAnswerChoice(idx){
-    const newState = this.state.answerChoices.slice(0)
-    newState.splice(idx, 1);
-    this.setState({answerChoices: newState })
-
+    const newAnswerChoiceState = this.state.answerChoices.slice(0)
+    const newImageFilesState = this.state.imageFiles.slice(0)
+    newAnswerChoiceState.splice(idx, 1);
+    newImageFilesState.splice(idx, 1);
+    this.setState({answerChoices: newAnswerChoiceState,
+      imageFiles: newImageFilesState})
   }
 
   handleAnswerChoiceChange(idx){
@@ -143,9 +144,12 @@ class PollCreate extends React.Component{
 
   handlePlusClick(e){
     e.preventDefault()
-    const newState = this.state.answerChoices.slice(0)
-    newState.push("")
-    this.setState({answerChoices: newState })
+    const answerChoiceState = this.state.answerChoices.slice(0)
+    const imageFilesState = this.state.imageFiles.slice(0)
+    answerChoiceState.push("")
+    imageFilesState.push(false)
+    this.setState({answerChoices: answerChoiceState,
+      imageFiles: imageFilesState})
   }
 
   hasQuestionError(){
@@ -197,7 +201,9 @@ class PollCreate extends React.Component{
   }
 
   updateFile(idx){
+    debugger;
     return (e) => {
+      debugger;
       const newState = this.state.imageFiles.slice(0)
       const file = e.currentTarget.files[0]
       newState[idx] = file
@@ -212,6 +218,10 @@ class PollCreate extends React.Component{
     }
   }
 
+  fileUpdatedClassName(idx){
+    return this.state.imageFiles[idx] ? "file-upload file-uploaded" :
+      "file-upload"
+  }
 
   generateAnswerChoiceInputs(){
     return this.state.answerChoices.map((body, idx) => {
@@ -226,13 +236,14 @@ class PollCreate extends React.Component{
                 onChange={this.handleAnswerChoiceChange(idx).bind(this)}
                 value={this.state.answerChoices[idx]}/>
 
-              <div className="file-upload">
+              <div className={this.fileUpdatedClassName(idx)}>
                 <span className="picture-upload">
                   <FontAwesome name="picture-o"/>
                 </span>
                 <input type="file"
                   className="input-file"
-                  onChange={this.updateFile(idx)}/>
+                  onChange={this.updateFile(idx).bind(this)}
+                  />
               </div>
 
               <div className="delete-answer-choice"
@@ -249,7 +260,7 @@ class PollCreate extends React.Component{
   }
 
   render(){
-    ;
+    debugger;
     return (
       <div className="main-poll-create">
         <PollHeaderContainer/>

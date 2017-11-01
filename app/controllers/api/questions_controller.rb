@@ -25,8 +25,7 @@ class Api::QuestionsController < ApplicationController
       answer_choice = AnswerChoice.new(answer_choice)
       answer_choice.times_chosen = 0
       image = params[:images][idx]
-      #Because we are receiving an optional array of images, null values are stringified
-      answer_choice.image = image unless image === "null"
+      answer_choice.image = image unless image === "false"
       @question.answer_choices << answer_choice
       @answer_choices << answer_choice
     end
