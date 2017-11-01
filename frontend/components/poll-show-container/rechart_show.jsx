@@ -2,7 +2,7 @@ import { BarChart, Label, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } fr
 import React from 'react'
 
 const CustomBarLabel = () => {
-  debugger;
+  
   return (
 <text x={0} y={0} dy={-4} fill={stroke} fontSize={10} textAnchor="middle">{value}</text>
   )

@@ -91,7 +91,7 @@ class PollShowContainer extends React.Component{
   }
 
   render(){
-    debugger;
+    
     const activePollsUrl
       = "https://poll-paradise.herokuapp.com/#/active_polls/" +
       this.props.currentUser.username

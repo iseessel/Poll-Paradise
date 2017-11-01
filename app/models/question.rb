@@ -19,6 +19,10 @@ class Question < ApplicationRecord
   belongs_to :group, optional: true
   has_many :answer_choices, inverse_of: :question, dependent: :destroy
 
+  has_attached_file :image, default_url: "background-image.jpg"
+  validates_attachment_content_type :image,
+    content_type: /\Aimage\/.*\Z/
+
   def active?
     self.active
   end
