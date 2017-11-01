@@ -6,8 +6,13 @@ export const fetchOneQuestion = (id) => {
 
 //Note: will be responsible for creating associated answer choices
 export const createQuestion = (data) => {
-  return $.ajax( {url: `/api/questions`,
-    method: "POST", data: data} );
+  return $.ajax( {
+    url: `/api/questions`,
+    method: "POST",
+    data: data,
+    contentType: false,
+    processData: false
+  } );
 }
 
 export const updateQuestion = (id, data) => {

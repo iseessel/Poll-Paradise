@@ -35,8 +35,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 const _defaultState = {
   groupId: null,
   question: "",
-  answerChoices: ["", "", ""]
-}
+  answerChoices: ["", "", ""],
+  imageFiles: [null, null, null],
+  imageURLS: [null, null, null]
+ }
 
 class PollCreate extends React.Component{
 
@@ -111,7 +113,14 @@ class PollCreate extends React.Component{
   handleSubmit(e){
     e.preventDefault();
     const data = this.packageData()
-    return this.props.createQuestion(data)
+    const formData = new FormData();
+    const formDataTwo = new FormData();
+    formData.append("question",
+      JSON.stringify(data.question)
+      )
+    formData.append("answer_choices",
+      JSON.stringify(data.answer_choices))
+    return this.props.createQuestion(formData)
       .then(()=> this.props.ensureSelected(this.state.groupId))
       .then(()=>this.setState(_defaultState))
 
@@ -182,6 +191,21 @@ class PollCreate extends React.Component{
     })
   }
 
+  updateFile(idx){
+    return (e) => {
+      const newState = this.state.imageFiles.slice(0)
+      newState[idx] = e.currentTarget.files[0]
+      const fileReader = new FileReader();
+      fileReader.onloadend = () => {
+        this.setState({imageFile: newState })
+      }
+
+      if (file){
+        fileReader.readAsDataURL(file);
+      }
+    }
+  }
+
 
   generateAnswerChoiceInputs(){
     return this.state.answerChoices.map((body, idx) => {
@@ -195,8 +219,11 @@ class PollCreate extends React.Component{
                 onKeyDown={this.handleKeyPress(idx).bind(this)}
                 onChange={this.handleAnswerChoiceChange(idx).bind(this)}
                 value={this.state.answerChoices[idx]}/>
-              <div onClick={this.handleTrashClick(idx).bind(this)}
-                className="delete-answer-choice">
+              <input className=""
+                type="file-upload"
+                onChange={this.updateFile(idx)}/>
+              <div className="delete-answer-choice"
+                onClick={this.handleTrashClick(idx).bind(this)}>
                 <FontAwesome name="trash" size="2x"/>
                   <li className="answer-choice-errors">
                   </li>

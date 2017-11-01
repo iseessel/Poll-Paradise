@@ -16,18 +16,16 @@ class Api::QuestionsController < ApplicationController
   # =>        answer_choices: [{},{},{}] }
 
   def create
+    debugger
     @question = Question.new(question_params)
     @question.user_id = current_user.id
     @answer_choices = []
 
-
-    if params[:answer_choices]
-      params[:answer_choices].values.each do |answer_choice|
-        answer_choice = AnswerChoice.new(answer_choice)
-        answer_choice.times_chosen = 0
-        @question.answer_choices << answer_choice
-        @answer_choices << answer_choice
-      end
+    answer_choices_params.each do |answer_choice|
+      answer_choice = AnswerChoice.new(answer_choice)
+      answer_choice.times_chosen = 0
+      @question.answer_choices << answer_choice
+      @answer_choices << answer_choice
     end
 
     if @question.save
@@ -89,9 +87,26 @@ class Api::QuestionsController < ApplicationController
 
   private
 
+  # def question_params
+  #   params.require(:question).permit(:group_id, :body,
+  #     answer_choices_attributes: [:body]) #will this mess up the rest of my params?
+  # end
+
+
+#NB: Because the form data object(in js) does not accept nested attributes, we must
+#    json encode the body of each param; therefore we must decode it here.
+
   def question_params
-    params.require(:question).permit(:group_id, :body, answer_choices_attributes: [:body] ) #will this mess up the rest of my params?
+    question_params = JSON.parse(params.require(:question))
+    ActionController::Parameters.new(question_params)
+      .permit(:group_id, :body)
   end
-  #nested_attributes will automatically create these for you!
+
+  def answer_choices_params
+    json_decryped_array = JSON.parse(params.require(:answer_choices))
+    answer_choices_params = { answer_choices: json_decryped_array }
+    ActionController::Parameters.new(answer_choices_params)
+      .permit(answer_choices: [:body])[:answer_choices]
+  end
 
 end

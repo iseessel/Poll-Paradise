@@ -40,8 +40,14 @@ export const retrieveOneQuestion = (id) => (dispatch) => {
 
 export const createQuestion = (data) => (dispatch) => {
   return QuestionUtil.createQuestion(data)
-    .then((response) => dispatch(receiveOneQuestion(response)),
-      (err) => dispatch(receiveErrors(err.responseJSON))
+    .then((response) => {
+      debugger
+      dispatch(receiveOneQuestion(response))
+    },
+      (err) => {
+        debugger
+        dispatch(receiveErrors(err.responseJSON))
+      }
     ).then(() => dispatch(clearErrors()))
 };
 
