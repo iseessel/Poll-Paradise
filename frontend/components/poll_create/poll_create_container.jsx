@@ -260,7 +260,7 @@ class PollCreate extends React.Component{
   }
 
   render(){
-    ;
+    debugger;
     return (
       <div className="main-poll-create">
         <PollHeaderContainer/>

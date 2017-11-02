@@ -1,4 +1,5 @@
 import React from 'react'
+import Chart from './rechart_show.jsx'
 import { HorizontalBar } from 'react-chartjs-2';
 
 class ChartShow extends React.Component{
@@ -9,7 +10,6 @@ class ChartShow extends React.Component{
   }
 
   componentDidMount(){
-
   }
 
   totalNumResponses(){
@@ -88,16 +88,16 @@ class ChartShow extends React.Component{
   }
 
   render(){
-    ;
     return (
       <div className="chart">
         <img src={this.props.question.imageUrl} />
         <h1 className="chart-title">{this.props.question.body}</h1>
-        <HorizontalBar data={this.generateData()}
-          options={this.generateOptions()}/>
       </div>
     )
   }
 }
+
+// <HorizontalBar data={this.generateData()}
+//   options={this.generateOptions()}/>
 
 export default ChartShow

@@ -7,6 +7,7 @@ import PollHeaderContainer from '../my_polls/poll_header_container.jsx'
 import { Footer } from '../footer.jsx'
 import FontAwesome from 'react-fontawesome';
 import MyModal from '../myModal.jsx'
+import Chart from './rechart_show.jsx'
 import ActivePollLinkContainer from '../my_polls/active_poll_link_container.jsx'
 import { deleteQuestion, activateQuestion } from '../../actions/question_actions.js';
 import { openModal, closeModal } from '../../actions/modal_actions.js'
@@ -91,7 +92,6 @@ class PollShowContainer extends React.Component{
   }
 
   render(){
-
     const activePollsUrl
       = "https://poll-paradise.herokuapp.com/#/active_polls/" +
       this.props.currentUser.username
@@ -106,10 +106,8 @@ class PollShowContainer extends React.Component{
 
           <PollHeaderContainer />
           <div className="chart-show-grid">
-            <img src={this.props.answerChoices[0].imageUrl}/>
             <div className="chart-show-left">
-              <ChartShow question={this.props.question}
-                  answerChoices={this.props.answerChoices}/>
+              <Chart />
             </div>
             <div className="chart-show-right">
               <div className="chart-show-right-body">
