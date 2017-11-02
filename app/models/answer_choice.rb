@@ -11,10 +11,9 @@
 #
 
 class AnswerChoice < ApplicationRecord
-  validates :body, :question, :times_chosen, presence: true
+  validates :question, :times_chosen, presence: true
 
-  #styles?
-  has_attached_file :image, default_url: "background-image.jpg"
+  has_attached_file :image
   validates_attachment_content_type :image,
     content_type: /\Aimage\/.*\Z/
 

@@ -19,12 +19,14 @@ class Api::QuestionsController < ApplicationController
     @question = Question.new(question_params)
     @question.user_id = current_user.id
     @answer_choices = []
-
-
-    answer_choices_params.each_with_index do |answer_choice, idx|
-      answer_choice = AnswerChoice.new(answer_choice)
+    answer_choice_bodies = answer_choices_params
+    debugger
+    params[:images].each_with_index do |image, idx|
+      answer_choice = AnswerChoice.new()
+      answer_choice_body = answer_choice_bodies[idx][:body]
+      answer_choice.body = answer_choice_body unless
+        answer_choice_body.length === 0 
       answer_choice.times_chosen = 0
-      image = params[:images][idx]
       answer_choice.image = image unless image === "false"
       @question.answer_choices << answer_choice
       @answer_choices << answer_choice

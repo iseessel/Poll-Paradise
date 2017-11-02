@@ -89,13 +89,17 @@ class ActivePollContainer extends React.Component{
 
   generateAnswerChoices(){
     return this.props.answerChoices.map((answerChoice) => {
+      const body = answerChoice.imageUrl !== "/images/original/missing.png" ?
+        <img style={{width: 125}} className="answer-choice-image" src={answerChoice.imageUrl}/> :
+        <p className="answer-choice-text">{answerChoice.body}</p>
+
       return (
         <li onClick={this.handleAnswerChoiceClick(answerChoice.id)}
           className={this.generateLiClassName(answerChoice.id)}>
           <div className="num-responses">
             {this.generateNumResponses(answerChoice.id)}
           </div>
-          <p className="answer-choice-text">{answerChoice.body}</p>
+          {body}
         </li>
       )
     })

@@ -61,12 +61,17 @@
   font-size: 14px;
 }
 
+.answer-choice-image{
+  margin: 15px 0px;
+}
+
 .answer-choice-item{
   display: flex;
   align-items: center;
   width: 100%;
   background-color: #EBEBEB;
-  height:62px;
+  height: 100%;
+  min-height:62px;
   margin-bottom: 8px;
   font-family: "Source Sans Pro";
   font-size: 14px;

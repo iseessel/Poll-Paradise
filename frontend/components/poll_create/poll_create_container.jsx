@@ -99,9 +99,7 @@ class PollCreate extends React.Component{
     for (let i = 0; i < userInputAnswerChoices.length; i++){
       body = userInputAnswerChoices[i]
       file = imageFiles[i]
-      if(body){
-        answerChoices.push({body: body})
-      }
+      answerChoices.push({body: body})
     }
 
     const question = { body: this.state.question,

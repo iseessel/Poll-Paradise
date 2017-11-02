@@ -80,8 +80,8 @@ class PollShowContainer extends React.Component{
   }
 
   handleDeleteClick(){
-    return this.props.deleteQuestion(this.props.question.id)
-    .then(() => this.props.history.push('/mypolls'))
+    this.props.history.push('/mypolls')
+    this.props.deleteQuestion(this.props.question.id)
   }
 
   handleShareClick(){
@@ -107,7 +107,9 @@ class PollShowContainer extends React.Component{
           <PollHeaderContainer />
           <div className="chart-show-grid">
             <div className="chart-show-left">
-              <Chart />
+              <h1 className="chart-title">{this.props.question.body}</h1>
+              <Chart answerChoices={this.props.answerChoices}
+                question={this.props.question}/>
             </div>
             <div className="chart-show-right">
               <div className="chart-show-right-body">
