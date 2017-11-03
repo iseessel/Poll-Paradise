@@ -21,7 +21,7 @@ class Api::QuestionsController < ApplicationController
     @answer_choices = []
     answer_choice_bodies = answer_choices_params
 
-    debugger
+
     params[:images].each_with_index do |image, idx|
       if image != "false" ||
         answer_choice_bodies[idx][:body].length != 0
