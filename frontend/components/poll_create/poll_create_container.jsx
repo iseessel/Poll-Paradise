@@ -131,7 +131,6 @@ class PollCreate extends React.Component{
   handleCreateClick(e){
     this.handleSubmit(e)
       .then(() => this.props.history.push('/mypolls'))
-
   }
 
   handleXClick(e){

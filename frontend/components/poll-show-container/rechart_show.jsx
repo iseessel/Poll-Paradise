@@ -25,7 +25,7 @@ class CustomTicks extends React.Component{
         </g>
       )
     }else {
-      const shiftX = this.props.payload.value.length * 7
+      const shiftX = this.props.payload.value.length * 8
       return(
         <g transform={ "translate( " + this.props.x + "," + this.props.y + " )"}>
           <text

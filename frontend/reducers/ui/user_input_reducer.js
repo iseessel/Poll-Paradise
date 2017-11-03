@@ -10,9 +10,9 @@ function UserInputReducer(state = _defaultState, action){
     case TOGGLE_QUESTION_TO_BE_GROUPED:
 
       let groupedQuestions = state.groupedQuestions.slice(0)
-
       let questionId = action.questionId
       let questionIndex = groupedQuestions.indexOf(questionId)
+      debugger;
       questionIndex ? groupedQuestions.push(action.questionId) :
        groupedQuestions.splice(questionIndex, 1)
 
