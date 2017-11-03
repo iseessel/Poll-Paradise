@@ -53,12 +53,13 @@ class GroupName extends React.Component{
   //   return this.props.deleteGroup(this.props.poll.id)
   // }
   //
-  // 
+  //
   // <a className="active"
   //   onClick={this.handleDeleteClick.bind(this)}>
   //   Delete
   // </a>
   //
+  
   handleClick(){
     this.props.toggleSelected(this.props.poll.id)
   }
