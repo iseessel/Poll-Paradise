@@ -71,7 +71,7 @@ class PollShowContainer extends React.Component{
         const newState = Object.assign({}, this.state.answerChoices)
         const newAnswerChoice = Object.assign({}, newState[data.id],
           {timesChosen: data.times_chosen})
-        debugger;
+
         newState[data.id] = newAnswerChoice
         this.setState({answerChoices: newState})
 
@@ -99,7 +99,7 @@ class PollShowContainer extends React.Component{
   }
 
   render(){
-    debugger;
+
     const activePollsUrl
       = "https://poll-paradise.herokuapp.com/#/active_polls/" +
       this.props.currentUser.username

@@ -30,7 +30,7 @@ export const deleteGroupAction = (payload) => {
 }
 
 export const clearGroups = () => {
-  debugger
+  
   return {
     type: CLEAR_GROUPS,
   }

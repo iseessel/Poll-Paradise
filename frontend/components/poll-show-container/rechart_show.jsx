@@ -44,12 +44,12 @@ class Chart extends React.Component{
 
   constructor(props){
     super(props)
-    debugger;
+
   }
 
   totalNumResponses(){
     let totalNumResponses = 0
-    debugger;
+
     this.props.answerChoices.forEach((answerChoice) => {
       totalNumResponses += answerChoice.timesChosen
     })
