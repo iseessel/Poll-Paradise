@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Features
+- Create multiple-choice questions and send them to users.
+- Ability to upload pictures as an answer choice
+- Ability to group questions into descriptive groups
+- Live-update poll-view that updates as users respond
+- Full-user authentication
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+---
