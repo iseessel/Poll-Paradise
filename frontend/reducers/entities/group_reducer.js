@@ -25,6 +25,7 @@ function GroupReducer(state = _defaultState, action){
       }else{
         return _defaultState
       }
+      
     case DELETE_GROUP:
       newState = merge({}, state)
       delete newState[action.payload.id]
@@ -44,7 +45,7 @@ function GroupReducer(state = _defaultState, action){
 
     case RECEIVE_QUESTION:
       newState = merge({}, state)
-      debugger;
+      ;
       let question = action.payload.question
       groupId = question.groupId
       let groupQuestionIds = groupId ? newState[groupId].questionIds
