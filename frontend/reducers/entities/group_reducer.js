@@ -51,11 +51,13 @@ function GroupReducer(state = _defaultState, action){
     case RECEIVE_QUESTION:
       newState = merge({}, state)
       let question = action.payload.question
-      groupId = question.groupId
-      let groupQuestionIds = groupId ? newState[groupId].questionIds
-        : []
+      groupId = question.group_id
+
       if(groupId && !groupQuestionIds.includes(question.id)){
-          groupQuestionIds.push(question.id)
+        let groupQuestionIds = newState[groupId].questionIds
+        groupQuestionIds.includes(question.id) ?
+          groupQuestionIds.push(question.id) :
+          null
       }
       return newState;
 
