@@ -49,17 +49,10 @@ class GroupName extends React.Component{
     }
   }
 
-  // handleDeleteClick(){
-  //   return this.props.deleteGroup(this.props.poll.id)
-  // }
-  //
-  //
-  // <a className="active"
-  //   onClick={this.handleDeleteClick.bind(this)}>
-  //   Delete
-  // </a>
-  //
-  
+  handleDeleteClick(){
+    return this.props.deleteGroup(this.props.poll.id)
+  }
+
   handleClick(){
     this.props.toggleSelected(this.props.poll.id)
   }
@@ -81,6 +74,20 @@ class GroupName extends React.Component{
 
   }
 
+  deleteButton(){
+    if(this.props.poll.title === "Ungrouped"){
+      return <div>
+      </div>
+    }else{
+      return(
+      <a className="active group-delete"
+        onClick={this.handleDeleteClick.bind(this)}>
+        Delete
+      </a>
+    )
+    }
+  }
+
   render(){
     return (
       <ul>
@@ -93,7 +100,7 @@ class GroupName extends React.Component{
           </div>
 
           <div className="right-group-view">
-
+            {this.deleteButton()}
             <p>{this.numActivities()}</p>
           </div>
         </div>

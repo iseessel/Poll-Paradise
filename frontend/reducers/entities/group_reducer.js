@@ -1,5 +1,5 @@
 import merge from 'lodash/merge'
-import { RECEIVE_GROUPS, RECEIVE_GROUP }
+import { RECEIVE_GROUPS, RECEIVE_GROUP, DELETE_GROUP }
   from '../../actions/group_actions.js'
 import { RECEIVE_QUESTION, DELETE_QUESTION }
   from '../../actions/question_actions.js';
@@ -27,6 +27,10 @@ function GroupReducer(state = _defaultState, action){
       }else{
         return _defaultState
       }
+    case DELETE_GROUP:
+      newState = merge({}, state)
+      delete newState[action.payload.id]
+      return newState
 
     case DELETE_QUESTION:
       newState = merge({}, state)
@@ -42,14 +46,13 @@ function GroupReducer(state = _defaultState, action){
 
     case RECEIVE_QUESTION:
       newState = merge({}, state)
+      debugger;
       let question = action.payload.question
-      groupId = question.group_id
-
+      groupId = question.groupId
+      let groupQuestionIds = groupId ? newState[groupId].questionIds
+        : []
       if(groupId && !groupQuestionIds.includes(question.id)){
-        let groupQuestionIds = newState[groupId].questionIds
-        groupQuestionIds.includes(question.id) ?
-          groupQuestionIds.push(question.id) :
-          null
+          groupQuestionIds.push(question.id)
       }
       return newState;
 

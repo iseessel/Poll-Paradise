@@ -14,4 +14,5 @@ class Group < ApplicationRecord
 
   belongs_to :user
   has_many :questions, dependent: :destroy
+  has_many :answer_choices, through: :questions
 end
