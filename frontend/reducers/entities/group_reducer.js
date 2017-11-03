@@ -52,18 +52,28 @@ function GroupReducer(state = _defaultState, action){
       newState = merge({}, state)
       let question = action.payload.question
       groupId = question.groupId
-      debugger;
       if(groupId){
-        let groupQuestionIds = newState[groupId].questionIds
-        groupQuestionIds.includes(question.id)
-          ? null
-          : groupQuestionIds.push(question.id)
+        let groupQuestionIds = newState[groupId]
+          ? newState[groupId].questionIds
+          : []
+        groupQuestionIds.includes(question.id) ?
+          null :
+          groupQuestionIds.push(question.id)
       }
 
       return newState;
 
-    default:
+      // let question = action.payload.question
+      // groupId = question.group_id
+      // let groupQuestionIds = newState[groupId] ? newState[groupId].questionIds
+      //   : null
+      // if(groupId && !groupQuestionIds.includes(question.id)){
+      //   groupQuestionIds.includes(question.id) ?
+      //     null :
+      //     groupQuestionIds.push(question.id)
+      // }
 
+    default:
       return state
   }
 }
