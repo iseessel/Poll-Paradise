@@ -8,16 +8,25 @@ import { RECEIVE_QUESTION, DELETE_QUESTION }
 const _defaultState = {}
 
 function GroupReducer(state = _defaultState, action){
+  let newState
   switch(action.type){
     case RECEIVE_GROUPS:
       // let newState = action.payload.groups
       // return merge({}, state, newState);
-      return action.payload.groups
+      if(action.payload.groups){
+        return action.payload.groups
+      }else{
+        return _defaultState
+      }
 
     case RECEIVE_GROUP:
       const group = action.payload.group
-      let newState = {[group.id]: group}
-      return merge({}, state, newState);
+      if(group){
+        newState = {[group.id]: group}
+        return merge({}, state, newState);
+      }else{
+        return _defaultState
+      }
 
     case DELETE_QUESTION:
       newState = merge({}, state)

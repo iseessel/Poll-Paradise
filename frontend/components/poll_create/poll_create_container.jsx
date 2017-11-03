@@ -92,15 +92,13 @@ class PollCreate extends React.Component{
 
   packageData(){
     const userInputAnswerChoices = this.state.answerChoices
-    const imageFiles = this.state.imageFiles
     let answerChoices = []
     let body
-    let file
     for (let i = 0; i < userInputAnswerChoices.length; i++){
       body = userInputAnswerChoices[i]
-      file = imageFiles[i]
       answerChoices.push({body: body})
     }
+
 
     const question = { body: this.state.question,
       group_id: this.state.groupId }
