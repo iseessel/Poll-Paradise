@@ -1,7 +1,9 @@
 import merge from 'lodash/merge';
-import { RECEIVE_QUESTION, DELETE_QUESTION, RECEIVE_QUESTIONS }
+import { RECEIVE_QUESTION, DELETE_QUESTION,
+    RECEIVE_QUESTIONS}
   from '../../actions/question_actions.js';
-import { RECEIVE_GROUPS, RECEIVE_GROUP, DELETE_GROUP }
+import { RECEIVE_GROUPS, RECEIVE_GROUP,
+    DELETE_GROUP, CLEAR_GROUPS }
   from '../../actions/group_actions.js'
 
 
@@ -34,6 +36,10 @@ function QuestionReducer(state = _defaultState, action){
   case RECEIVE_GROUP:
     questions = action.payload.questions
     return merge({}, state, questions)
+
+  case CLEAR_GROUPS:
+    debugger;
+    return _defaultState;
 
   case DELETE_QUESTION:
     newState = merge({}, state)

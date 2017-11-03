@@ -4,6 +4,7 @@ import { receiveErrors, clearErrors } from './errors.js'
 export const RECEIVE_GROUPS = "RECEIVE_GROUPS"
 export const RECEIVE_GROUP = "RECEIVE_GROUP"
 export const DELETE_GROUP = "DELETE_GROUP"
+export const CLEAR_GROUPS = "CLEAR_GROUPS"
 
 //NB: Receive Groups also returns all the questions for a user.
 export const receiveGroups = (payload) => {
@@ -26,6 +27,13 @@ export const deleteGroupAction = (payload) => {
     type: DELETE_GROUP,
     payload: payload
   };
+}
+
+export const clearGroups = () => {
+  debugger
+  return {
+    type: CLEAR_GROUPS,
+  }
 }
 
 //NB: We do not need the users id,

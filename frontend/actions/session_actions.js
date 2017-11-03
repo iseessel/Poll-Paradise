@@ -1,5 +1,6 @@
 import * as SessionUtil from '../util/session_api_util';
 import { receiveErrors } from './errors.js';
+import { clearGroups } from './group_actions.js'
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const CLEAR_SESSION_ERRORS = "CLEAR_SESSION_ERRORS";
 
@@ -22,7 +23,7 @@ export const logoutAction = () => (dispatch) => {
   return SessionUtil.logout()
     .then((response) => dispatch(receiveCurrentUser(null)),
       (err) => dispatch(receiveErrors(err.responseJSON))
-    );
+    ).then(() => dispatch(clearGroups()))
 };
 
 export const loginAction = (user) => (dispatch) => {
