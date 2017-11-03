@@ -26,7 +26,7 @@ class ActivePollContainer extends React.Component{
 
   constructor(props){
     super(props)
-    this.state = {selectedId: null}
+    this.state = {selectedId: null, loading: true}
   }
 
   componentDidMount(){
@@ -36,6 +36,7 @@ class ActivePollContainer extends React.Component{
         {selectedId: parseInt(localStorage.getItem(this.props.question.id))
         })
       )
+      .then(() => this.setState({loading: false}))
   }
 
   handleAnswerChoiceClick(id){
@@ -82,7 +83,7 @@ class ActivePollContainer extends React.Component{
       )
     }else{
       return(
-        <div className='placeholder'></div>
+        <div className='clear-last-response inactive-response'></div>
       )
     }
   }

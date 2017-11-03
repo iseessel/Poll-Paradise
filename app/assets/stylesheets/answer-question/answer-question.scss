@@ -10,6 +10,7 @@
   border: 1px solid white;
   background-color: transparent;
   margin-top: 10px;
+  margin-bottom: 15px;
 }
 
 .possible-answer-choices{
@@ -23,8 +24,11 @@
   margin-top: 13px;
 }
 
+.inactive-response{
+  visibility: hidden;
+}
+
 .main-poll-take{
-  height: 100%;
   background-color: #2E5676;
 }
 
