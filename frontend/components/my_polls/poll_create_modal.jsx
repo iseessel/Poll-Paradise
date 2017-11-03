@@ -91,9 +91,9 @@ class PollCreateModal extends React.Component{
               <h3>
                 Assign Questions to a Group
               </h3>
-            <button onClick={this.handleClickOutside.bind(this)} className="close-modal">
+            <div onClick={this.handleClickOutside.bind(this)} className="close-modal">
               <FontAwesome className="window-close" name="window-close" size="2x"/>
-            </button>
+            </div>
           </div>
           <div className="group-dropdown-main">
             <h3 className="group-dropdown-title"> Select a Group</h3>
