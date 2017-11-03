@@ -9,8 +9,8 @@
 
 # USERS
 User.destroy_all
-user_one = User.create(email: 'iseessel@gmail.com', username:'iseessel153', first_name: "isaac",
-  last_name: "seessel", password:"password")
+user_one = User.create(email: 'demo@gmail.com', username:'demo153', first_name: "demo",
+  last_name: "user", password:"password")
 
 user_two = User.create(email: 'iseessel@msn.com', username:'iseessel1534', first_name: "isaac",
   last_name: "seessel", password:"password")

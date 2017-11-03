@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import ErrorsContainer from '../errors/errors_container.jsx';
 import { withRouter, Link } from 'react-router-dom';
 import HeaderContainer from '../header_container.jsx';
-import { Footer } from '../footer.jsx';
+import FooterContainer from '../footer.jsx';
 
 const mapStateToProps = (state) => {
   return {
@@ -116,7 +116,7 @@ class AuthForm extends React.Component{
             {this.generateBottomText()}
           </div>
         </div>
-        <Footer />
+        <FooterContainer />
       </div>
 
     )

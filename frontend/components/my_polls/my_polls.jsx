@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
 import { connect } from 'react-redux';
 import PollHeaderContainer from './poll_header_container.jsx'
-import { Footer } from '../footer.jsx';
+import FooterContainer from '../footer.jsx';
 import { closeModal } from '../../actions/modal_actions.js'
 import MyModal from '../myModal.jsx'
 import ActivePollLinkContainer from './active_poll_link_container.jsx'
@@ -57,7 +57,7 @@ class MyPolls extends React.Component{
               <PollIndexContainer />
             </div>
           </div>
-          <Footer />
+          <FooterContainer />
         </div>
 
       </div>
