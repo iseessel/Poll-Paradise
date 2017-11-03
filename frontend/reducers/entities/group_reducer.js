@@ -19,7 +19,7 @@ function GroupReducer(state = _defaultState, action){
       }
 
     case CLEAR_GROUPS:
-      
+
       return _defaultState;
 
     case RECEIVE_GROUP:
