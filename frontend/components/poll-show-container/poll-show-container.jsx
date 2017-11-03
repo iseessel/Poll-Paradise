@@ -18,7 +18,7 @@ const mapStateToProps = (state, ownProps) => {
   const questions = state.entities.questions
   const wildcardId = ownProps.match.params.id
   const question = questions[wildcardId] ? questions[wildcardId] : null
-  const answerChoices = Object.values(state.entities.answerChoices)
+  const answerChoices = state.entities.answerChoices
 
   return {
     question: question,
@@ -45,12 +45,13 @@ class PollShowContainer extends React.Component{
 
   constructor(props){
     super(props)
-    this.state = { loading: true, answerChoices: props.answerChoices }
+    this.state = { loading: true}
   }
 
   componentDidMount(){
     const questionId = this.props.match.params.id
     this.props.fetchQuestion(questionId)
+      .then(() => this.setState({answerChoices: this.props.answerChoices}))
       .then(() => this.setState({loading: false}))
       .then(() => console.log("hello!"))
       .then(this.setUpWebSocket.bind(this))
@@ -67,12 +68,16 @@ class PollShowContainer extends React.Component{
     const subscriptionChannel = "update_question_" + questionId
     let channel = pusher.subscribe(subscriptionChannel);
       channel.bind('update_answer_choices', function(data){
-        // const newState = Object.assign({}, this.state.answerChoices)
-        // newState[data.id] = data.times_chosen
-        // this.setState(answerChoices: newState)
-        this.props.fetchQuestion(questionId)
-          .then(() => this.setState( { loading: true } ))
-          .then(() => this.setState({ loading: false }))
+        const newState = Object.assign({}, this.state.answerChoices)
+        const newAnswerChoice = Object.assign({}, newState[data.id],
+          {timesChosen: data.times_chosen})
+        debugger;
+        newState[data.id] = newAnswerChoice
+        this.setState({answerChoices: newState})
+
+        // this.props.fetchQuestion(questionId)
+        //   .then(() => this.setState( { loading: true } ))
+        //   .then(() => this.setState({ loading: false }))
       }.bind(this));
   }
 
@@ -94,6 +99,7 @@ class PollShowContainer extends React.Component{
   }
 
   render(){
+    debugger;
     const activePollsUrl
       = "https://poll-paradise.herokuapp.com/#/active_polls/" +
       this.props.currentUser.username
@@ -110,7 +116,7 @@ class PollShowContainer extends React.Component{
           <div className="chart-show-grid">
             <div className="chart-show-left">
               <h1 className="chart-title">{this.props.question.body}</h1>
-              <Chart answerChoices={this.props.answerChoices}
+              <Chart answerChoices={Object.values(this.state.answerChoices)}
                 question={this.props.question}/>
             </div>
             <div className="chart-show-right">
