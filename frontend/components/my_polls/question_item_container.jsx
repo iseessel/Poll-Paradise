@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
 
 const mapStateToProps = (state, ownProps) => {
-
   return {
     checked: state.ui.userInput.groupedQuestions
       .includes(ownProps.question.id)
@@ -28,7 +27,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 class QuestionItemContainer extends React.Component{
 
   constructor(props){
-
     super(props)
     this.state = {mouseover: false};
     this.handleDeleteClick = this.handleDeleteClick.bind(this)
@@ -36,6 +34,7 @@ class QuestionItemContainer extends React.Component{
     this.handleShareClick = this.handleShareClick.bind(this)
     this.handleMouseEnter = this.handleMouseEnter.bind(this)
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
+    debugger;
   }
 
   handleActivateClick(){
@@ -81,6 +80,7 @@ class QuestionItemContainer extends React.Component{
   }
 
   render(){
+    debugger;
     const linkUrl = '/polls/' + this.props.question.id
     return (
         <li className={this.activeQuestionClassName()}
@@ -89,7 +89,7 @@ class QuestionItemContainer extends React.Component{
           <div className="left-row-question">
             <input onChange={this.handleCheckBoxChange.bind(this)}
               className="checkbox" type="checkbox"
-              defaultChecked={this.props.checked}/>
+              checked={this.props.checked}/>
             <FontAwesome name="wpforms" size="2x"/>
             <Link to={linkUrl}>{this.props.question.body}</Link>
           </div>

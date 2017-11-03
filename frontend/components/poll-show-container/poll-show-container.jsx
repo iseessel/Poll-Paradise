@@ -50,7 +50,7 @@ class PollShowContainer extends React.Component{
 
   componentDidMount(){
     const questionId = this.props.match.params.id
-    debugger;
+    
     this.props.fetchQuestion(questionId)
       .then(() => this.setState({answerChoices: this.props.answerChoices}))
       .then(() => this.setState({loading: false}))

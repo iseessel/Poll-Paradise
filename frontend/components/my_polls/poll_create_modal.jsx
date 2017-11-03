@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import FontAwesome from 'react-fontawesome';
 import onClickOutside from 'react-onclickoutside'
 import { createGroup, groupQuestions } from '../../actions/group_actions.js'
+import { clearCheckBoxes } from '../../actions/ui_actions.js'
 // import { ensureSelected } from '../../actions/ui_actions.js'
 
 const mapStateToProps = (state) => {
@@ -16,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     createGroup: (data) => dispatch(createGroup(data)),
     groupQuestions: (id, data) => dispatch(groupQuestions(id, data)),
-    // ensureSelected: (id, data) =>
+    // clearCheckBoxes: () => dispatch(clearCheckBoxes())
   }
 }
 
@@ -55,6 +56,7 @@ class PollCreateModal extends React.Component{
         groupId = ( groupId === -2 ? null : groupId)
         data = { question_ids : this.props.questionIds }
       return this.props.groupQuestions(groupId, data)
+        .then($('input:checkbox').removeAttr('checked'))
         .then(() => this.props.closeModal())
     }else if(groupText){
 
