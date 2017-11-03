@@ -44,9 +44,8 @@ class PollShowContainer extends React.Component{
 
 
   constructor(props){
-    ;
     super(props)
-    this.state = { loading: true }
+    this.state = { loading: true, answerChoices: props.answerChoices }
   }
 
   componentDidMount(){
@@ -68,6 +67,9 @@ class PollShowContainer extends React.Component{
     const subscriptionChannel = "update_question_" + questionId
     let channel = pusher.subscribe(subscriptionChannel);
       channel.bind('update_answer_choices', function(data){
+        // const newState = Object.assign({}, this.state.answerChoices)
+        // newState[data.id] = data.times_chosen
+        // this.setState(answerChoices: newState)
         this.props.fetchQuestion(questionId)
           .then(() => this.setState( { loading: true } ))
           .then(() => this.setState({ loading: false }))
