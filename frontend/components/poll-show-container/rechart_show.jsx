@@ -12,7 +12,7 @@ class CustomTicks extends React.Component{
   }
 
   render(){
-    debugger;
+    ;
     if(this.props.payload.value.slice(0, 4) === "http"){
       return(
         <g transform={  "translate( " + this.props.x + "," + this.props.y + " )"}>
@@ -57,7 +57,7 @@ class Chart extends React.Component{
         datum["name"] = answerChoice.body
       return datum
     });
-    debugger;
+    ;
     return data
   }
 

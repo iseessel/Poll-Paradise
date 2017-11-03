@@ -20,7 +20,7 @@ class Api::QuestionsController < ApplicationController
     @question.user_id = current_user.id
     @answer_choices = []
     answer_choice_bodies = answer_choices_params
-    debugger
+    
     params[:images].each_with_index do |image, idx|
       answer_choice = AnswerChoice.new()
       answer_choice_body = answer_choice_bodies[idx][:body]
