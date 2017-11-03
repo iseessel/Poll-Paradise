@@ -96,12 +96,6 @@ class Api::QuestionsController < ApplicationController
 
   private
 
-  # def question_params
-  #   params.require(:question).permit(:group_id, :body,
-  #     answer_choices_attributes: [:body]) #will this mess up the rest of my params?
-  # end
-
-
 #NB: Because the form data object(in js) does not accept nested attributes, we must
 #    json encode the body of each param; therefore we must decode it here.
 
@@ -117,9 +111,5 @@ class Api::QuestionsController < ApplicationController
     ActionController::Parameters.new(answer_choices_params)
       .permit(answer_choices: [:body, :image])[:answer_choices]
   end
-
-  # def image_params
-  #   params.require(:images).split(',')
-  # end
 
 end

@@ -11,9 +11,7 @@ function GroupReducer(state = _defaultState, action){
   let newState
   switch(action.type){
     case RECEIVE_GROUPS:
-      // let newState = action.payload.groups
-      // return merge({}, state, newState);
-      if(action.payload.groups){
+       if(action.payload.groups){
         return action.payload.groups
       }else{
         return _defaultState
@@ -55,9 +53,6 @@ function GroupReducer(state = _defaultState, action){
           groupQuestionIds.push(question.id)
       }
       return newState;
-
-    // case RECEIVE_QUESTION:
-    //   return _defaultState;
 
     default:
 

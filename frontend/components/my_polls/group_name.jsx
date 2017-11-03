@@ -101,7 +101,9 @@ class GroupName extends React.Component{
 
           <div className="right-group-view">
             {this.deleteButton()}
-            <p>{this.numActivities()}</p>
+            <div className="number-of-activities">
+              <p>{this.numActivities()}</p>
+            </div>
           </div>
         </div>
         {this.generateLis(this.props.poll.questions)}
