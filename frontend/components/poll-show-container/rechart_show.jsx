@@ -61,11 +61,6 @@ class Chart extends React.Component{
     return data
   }
 
-  percent(dec){
-    return `${(dec * 100).toFixed(0)}%`;
-  }
-
-
   render(){
     return(
         <ResponsiveContainer width='90%' height="95%">
@@ -76,7 +71,7 @@ class Chart extends React.Component{
             layout="vertical"
             margin={{top: 5, right: 30, left: 20, bottom: 5}}
           >
-            <XAxis tickFormatter={this.percent}type="number"/>
+            <XAxis type="number"/>
             <YAxis tick={<CustomTicks/>} type="category" dataKey="name" />
             <Bar dataKey="amt" fill="#82ca9d" />
           </BarChart>
