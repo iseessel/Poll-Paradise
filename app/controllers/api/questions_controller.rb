@@ -21,12 +21,12 @@ class Api::QuestionsController < ApplicationController
     @answer_choices = []
     answer_choice_bodies = answer_choices_params
 
-    
-    if params[:images]
-      params[:images].each_with_index do |image, idx|
+    debugger
+    params[:images].each_with_index do |image, idx|
+      if image != "false" ||
+        answer_choice_bodies[idx][:body].length != 0
         answer_choice = AnswerChoice.new()
-
-        answer_choice_body = answer_choice_bodies[idx][:body]
+          answer_choice_body = answer_choice_bodies[idx][:body]
         answer_choice.body = answer_choice_body unless
           answer_choice_body.length === 0
         answer_choice.times_chosen = 0
