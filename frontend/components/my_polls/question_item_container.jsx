@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
 
 const mapStateToProps = (state, ownProps) => {
-  
+
   return {
     checked: state.ui.userInput.groupedQuestions
       .includes(ownProps.question.id)
@@ -98,15 +98,14 @@ class QuestionItemContainer extends React.Component{
             <a className={this.mousoverClassName()}
               onClick={this.handleDeleteClick}>Delete
             </a>
-              <a className={this.mousoverClassName()}
-                onClick={this.handleShareClick}>
-                Share
-              </a>
-              <a className={this.mousoverClassName()}
-                onClick={this.handleActivateClick}>
-                {this.activeThumbIcon()}
-              </a>
-
+            <a className={this.mousoverClassName()}
+              onClick={this.handleActivateClick}>
+              {this.activeThumbIcon()}
+            </a>
+            <a className={this.mousoverClassName()}
+              onClick={this.handleShareClick}>
+              Share
+            </a>
           </div>
         </li>
     );

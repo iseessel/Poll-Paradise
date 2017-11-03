@@ -16,7 +16,7 @@ export const ensureSelected = (groupId) => {
     type: ENSURE_SELECTED,
     groupId: groupId
   }
-
+  
 }
 
 export const toggleSelected = (groupId) => {
