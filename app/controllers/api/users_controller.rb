@@ -2,11 +2,12 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    email = user_params[:email]
-    @user.username = unique_username(email) if email
-    until User.find_by(username: @user.username).nil?
-      @user.username = unique_username(email)
-    end
+    # email = user_params[:email]
+    # @user.username = unique_username(email) if email
+    # until User.find_by(username: @user.username).nil?
+    #   @user.username = unique_username(email)
+    # end
+    # debugger
     if @user.save
       login!(@user)
       render "api/users/show"
@@ -23,7 +24,7 @@ class Api::UsersController < ApplicationController
   def active_question
     @user = User.find_by(username: params[:username])
     @question = @user.question_activated
-    
+
     if @question
       @answer_choices = @question.answer_choices
       render "api/questions/show"
