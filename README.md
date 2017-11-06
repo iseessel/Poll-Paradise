@@ -14,10 +14,10 @@
 - Full-user authentication.
 
 ## Structure
-  ### Backend
+### Backend
 - Ruby on Rails with PostgreSQL.
 
-  ### Frontend
+### Frontend
 - Single page app made with React/Redux.
 
 ## Technical Highlights
