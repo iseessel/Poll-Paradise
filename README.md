@@ -24,17 +24,18 @@
 
 ## Technical Highlights
 
+![Live-Update-Gif](public/code-screenshots/poll-paradise-live-update.gif)
+
 ### WebSockets and Pusher API for live-update polling
 
   Poll-Paradise uses the Pusher API, and React/Redux Router to dynamically subscribe to the appropriate web-socket. Implementation is scalable, as each time web-socket is triggered, the updated answer choice object is delivered to the frontend. This destroys the need to make another request to the server as responses shuffles in.
+
 
   /app/controllers/api/answer_choices_controller.rb
   ![Web-Socket-Backend](public/code-screenshots/web-socket-backend.png)
 
   /frontend/components/poll-show/poll-show-container.js
   ![Web-Socket-Frontend](public/code-screenshots/web-socket-frontend.png)
-
-  ![Live-Update-Gif](public/code-screenshots/poll-paradise-live-update.gif)
 
 ### Local storage to ensure integrity of data
 
@@ -59,6 +60,6 @@ By dynamically generating our inputs based on React props, we are able to keep o
 Using a UI slice of state, and UI actions, poll-paradise remembers which groups you have displayed and which groups you have hidden. Upon creating a group, and upon assigning questions to that group, this group is automatically opened for you. Additionally upon your first request, your active-poll and your most-recently-updated poll are both automatically opened for you.
 
   ![hiding-showing-polls](public/code-screenshots/groups_selected.png)
-
+  ![hiding-show-polls-2](public/code-screenshots/groups_selected2.png)
 
 ---
