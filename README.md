@@ -24,12 +24,12 @@
 
 ## Technical Highlights
 
-![Live-Update-Gif](public/code-screenshots/poll-paradise-live-update.gif)
 
 ### WebSockets and Pusher API for live-update polling
 
   Poll-Paradise uses the Pusher API, and React/Redux Router to dynamically subscribe to the appropriate web-socket. Implementation is scalable, as each time web-socket is triggered, the updated answer choice object is delivered to the frontend. This destroys the need to make another request to the server as responses shuffles in.
 
+  ![Live-Update-Gif](public/code-screenshots/poll-paradise-live-update.gif)
 
   /app/controllers/api/answer_choices_controller.rb
   ![Web-Socket-Backend](public/code-screenshots/web-socket-backend.png)
