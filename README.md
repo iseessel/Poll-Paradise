@@ -21,14 +21,13 @@
 ### Frontend
 - Single page app made with React/Redux.
 
-###Libraries
+### Libraries
 - Pusher API and service for WebSockets
 - Recharts for data-visualization
 - Paperclip and Amazon Web Services for Images
 - Figaro to store keys for AWS
 - BCrypt for user authentication
 - Jquery for Ajax requests and occasional DOM manipulation
--
 
 ## Technical Highlights
 
