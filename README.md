@@ -1,8 +1,9 @@
 # README
 
 ## Overview
-https://poll-paradise.herokuapp.com/
 Poll-Paradise is a Ruby on Rails/React-Redux single-page clone of Poll Everywhere, a live-update poll service using Web Sockets.
+https://poll-paradise.herokuapp.com/
+
 
 ## List of Features
 - Live-update poll-view that updates as users respond.
