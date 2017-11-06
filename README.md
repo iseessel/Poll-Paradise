@@ -15,10 +15,10 @@
 
 ## Structure
   ### Backend
-    - Ruby on Rails with PostgreSQL.
+- Ruby on Rails with PostgreSQL.
 
   ### Frontend
-    - Single page app made with React/Redux.
+- Single page app made with React/Redux.
 
 ## Technical Highlights
   ### WebSockets and Pusher API for live-update polling.
