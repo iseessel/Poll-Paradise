@@ -1,8 +1,8 @@
 # README
 
 ## Overview
-- https://poll-paradise.herokuapp.com/
-- Poll-Paradise is a Ruby on Rails/React-Redux single-page clone of Poll Everywhere, a live-update poll service using Web Sockets.
+https://poll-paradise.herokuapp.com/
+Poll-Paradise is a Ruby on Rails/React-Redux single-page clone of Poll Everywhere, a live-update poll service using Web Sockets.
 
 ## List of Features
 - Live-update poll-view that updates as users respond.
@@ -79,6 +79,6 @@ Using a UI slice of state, and UI actions, poll-paradise remembers which groups 
 ### Responsive and Specific Error Messages
 
   ![errors](public/code-screenshots/errors.gif)
-Sending errors back as a hash with keys of type of error, and values of the message itself, we are able to enable to render responsive and specific errors, allowing for ease-of-use.
+Sending errors back as a hash with keys of type of error, and values of the message, we can render, responsive and specific errors, allowing for ease-of-use.
 
 ---
