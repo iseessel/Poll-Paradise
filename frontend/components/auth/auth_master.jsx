@@ -7,9 +7,6 @@ export const Login = () => {
       inputText="Log in"/> )
 }
 
-//could add header prop and handleForm prop here as well, and bottom text
-// here as well
-// (would then have to connect it!)
 export const SignIn = () => {
   return (
     <AuthContainer inputs={["Email", "First Name", "Last Name"]}

@@ -39,7 +39,7 @@ class PollIndex extends React.Component{
   }
 
   componentDidMount(){
-    //props will always have default ungrouped questions.
+    //props will always have by default ungrouped questions.
     if(this.props.polls.length === 1){
       setTimeout(() => this.props.retrieveGroups()
         .then(() => this.setState({loading: false})), 500)

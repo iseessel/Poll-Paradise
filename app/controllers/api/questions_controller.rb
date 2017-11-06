@@ -18,7 +18,7 @@ class Api::QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     @question.user_id = current_user.id
-    
+
     @answer_choices = []
     answer_choice_bodies = answer_choices_params
 
@@ -97,7 +97,7 @@ class Api::QuestionsController < ApplicationController
   private
 
 #NB: Because the form data object(in js) does not accept nested attributes, we must
-#    json encode the body of each param; therefore we must decode it here.
+#json encode the body of each param in the frontend; therefore we must decode it here.
 
   def question_params
     question_params = JSON.parse(params.require(:question))

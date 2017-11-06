@@ -48,6 +48,17 @@ class AuthForm extends React.Component{
     });
   }
 
+  submitForm(e){
+    return (e) => {
+      const data = (this.state ? this.state : {empty: true})
+      const user = Object.assign({}, { user: data });
+
+      this.props.match.url === "/login" ?
+        this.props.login(user).then(null, this.resetLoginText.bind(this)) :
+        this.props.signup(user).then(null, this.resetLoginText.bind(this))
+    }
+  }
+
   generateBottomText(){
     if (this.props.match.url === "/login") {
       return (
@@ -79,17 +90,6 @@ class AuthForm extends React.Component{
 
   resetLoginText(){
     this.setState({submitText: this.props.inputText})
-  }
-
-  submitForm(e){
-    return (e) => {
-      const data = (this.state ? this.state : {empty: true})
-      const user = Object.assign({}, { user: data });
-
-      this.props.match.url === "/login" ?
-        this.props.login(user).then(null, this.resetLoginText.bind(this)) :
-        this.props.signup(user).then(null, this.resetLoginText.bind(this))
-    }
   }
 
   render(){

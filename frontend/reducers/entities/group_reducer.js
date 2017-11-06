@@ -62,17 +62,7 @@ function GroupReducer(state = _defaultState, action){
       }
 
       return newState;
-
-      // let question = action.payload.question
-      // groupId = question.group_id
-      // let groupQuestionIds = newState[groupId] ? newState[groupId].questionIds
-      //   : null
-      // if(groupId && !groupQuestionIds.includes(question.id)){
-      //   groupQuestionIds.includes(question.id) ?
-      //     null :
-      //     groupQuestionIds.push(question.id)
-      // }
-
+      
     default:
       return state
   }
