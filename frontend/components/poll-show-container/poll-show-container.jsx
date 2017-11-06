@@ -50,7 +50,7 @@ class PollShowContainer extends React.Component{
 
   componentDidMount(){
     const questionId = this.props.match.params.id
-    
+
     this.props.fetchQuestion(questionId)
       .then(() => this.setState({answerChoices: this.props.answerChoices}))
       .then(() => this.setState({loading: false}))
@@ -75,12 +75,10 @@ class PollShowContainer extends React.Component{
 
         newState[data.id] = newAnswerChoice
         this.setState({answerChoices: newState})
-
-        // this.props.fetchQuestion(questionId)
-        //   .then(() => this.setState( { loading: true } ))
-        //   .then(() => this.setState({ loading: false }))
       }.bind(this));
   }
+
+  
 
   handleActivateClick(){
     console.log("hello")
