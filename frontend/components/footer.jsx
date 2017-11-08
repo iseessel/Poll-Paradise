@@ -1,15 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux';
-import { loginAction } from '../actions/session_actions.js'
-
-const user = {user: { email: "demo@gmail.com",
-  password: "password" }}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    login: (user) => dispatch(loginAction(user)),
-  }
-}
 
 class Footer extends React.Component{
 
@@ -28,9 +17,6 @@ class Footer extends React.Component{
             <a href="https://github.com/iseessel/Poll-Everywhere">
               Github
             </a>
-            <a onClick={() => this.props.login(user)}>
-              Demo Login
-            </a>
           </div>
         </div>
         <div className="lower-footer">
@@ -40,4 +26,4 @@ class Footer extends React.Component{
   }
 }
 
-export default connect(null, mapDispatchToProps)(Footer)
+export default Footer
