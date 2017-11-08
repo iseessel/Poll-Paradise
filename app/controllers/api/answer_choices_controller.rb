@@ -10,9 +10,6 @@ class Api::AnswerChoicesController < ApplicationController
     end
   end
 
-  #change to a patch request to AnswerChoice
-  #trigger an event called the question_id
-
   def update_times_chosen
     @answer_choice = AnswerChoice.find_by(id: params[:answer_choice_id])
     if @answer_choice

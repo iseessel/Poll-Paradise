@@ -236,7 +236,7 @@ class PollCreate extends React.Component{
                   <FontAwesome name="picture-o"/>
                 </span>
                 <input type="file"
-                  tabindex="-1"
+                  tabIndex="-1"
                   className="input-file"
                   onChange={this.updateFile(idx).bind(this)}
                   />
