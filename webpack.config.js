@@ -1,10 +1,9 @@
-var path = require("path");
-var webpack = require("webpack");
+const path = require("path");
+const webpack = require("webpack");
+const plugins = []; // if using any plugins for both dev and production
+const devPlugins = []; // if using any plugins for development
 
-var plugins = []; // if using any plugins for both dev and production
-var devPlugins = []; // if using any plugins for development
-
-var prodPlugins = [
+const prodPlugins = [
   new webpack.DefinePlugin({
     'process.env': {
       'NODE_ENV': JSON.stringify('production')
@@ -40,6 +39,7 @@ module.exports = {
       }
     ]
   },
+  plugins: plugins,
   devtool: 'source-map',
   resolve: {
     extensions: [".js", ".jsx", "*"]
