@@ -221,12 +221,12 @@ class PollCreate extends React.Component{
   generateAnswerChoiceInputs(){
     return this.state.answerChoices.map((body, idx) => {
       return (
-        <ReactCSSTransitionGroup transitionName="example"
+        <ReactCSSTransitionGroup key={idx} transitionName="example"
           transitionAppear={true} transitionAppearTimeout={500}
           transitionEnter={false} transitionLeave={false}>
           <div className="answer-choice-transition">
             <div className={this.errorAnswerChoiceClassName(idx)}>
-              <input key={idx} className="poll-input" placeholder="(Text or Image)"
+              <input className="poll-input" placeholder="(Text or Image)"
                 onKeyDown={this.handleKeyPress(idx).bind(this)}
                 onChange={this.handleAnswerChoiceChange(idx).bind(this)}
                 value={this.state.answerChoices[idx]}/>
