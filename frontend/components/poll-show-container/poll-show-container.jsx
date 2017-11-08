@@ -53,7 +53,6 @@ class PollShowContainer extends React.Component{
     this.props.fetchQuestion(questionId)
       .then(() => this.setState({answerChoices: this.props.answerChoices}))
       .then(() => this.setState({loading: false}))
-      .then(() => console.log("hello!"))
       .then(this.setUpWebSocket.bind(this))
   }
 

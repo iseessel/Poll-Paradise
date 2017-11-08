@@ -21,7 +21,6 @@ function UserInputReducer(state = _defaultState, action){
 
         groupedQuestions.splice(questionIndex, 1)
       }
-      console.log(groupedQuestions);
 
       return Object.assign({}, state,
         { groupedQuestions: groupedQuestions } )
@@ -31,7 +30,7 @@ function UserInputReducer(state = _defaultState, action){
 
     case RECEIVE_GROUPS:
       return _defaultState
-      
+
     default:
       return state
   }
