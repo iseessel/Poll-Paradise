@@ -1,7 +1,6 @@
 import React from 'react';
 import { retrieveOneQuestion } from '../../actions/question_actions.js'
 import { connect } from 'react-redux';
-import ChartShow from './chart_show.jsx'
 import { clearAnswerChoices } from '../../actions/answer_choice_actions.js';
 import PollHeaderContainer from '../my_polls/poll_header_container.jsx'
 import { Footer } from '../footer.jsx'
@@ -78,7 +77,7 @@ class PollShowContainer extends React.Component{
       }.bind(this));
   }
 
-  
+
 
   handleActivateClick(){
     console.log("hello")
