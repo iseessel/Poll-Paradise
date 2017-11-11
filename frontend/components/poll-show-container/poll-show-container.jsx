@@ -79,7 +79,6 @@ class PollShowContainer extends React.Component{
 
 
   handleActivateClick(){
-    console.log("hello")
     return this.props.activateQuestion(this.props.question.id)
   }
 

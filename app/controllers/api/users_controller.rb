@@ -7,7 +7,7 @@ class Api::UsersController < ApplicationController
     # until User.find_by(username: @user.username).nil?
     #   @user.username = unique_username(email)
     # end
-    # debugger
+    # 
     if @user.save
       login!(@user)
       render "api/users/show"

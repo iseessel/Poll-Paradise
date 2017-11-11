@@ -34,7 +34,7 @@ class QuestionItemContainer extends React.Component{
     this.handleShareClick = this.handleShareClick.bind(this)
     this.handleMouseEnter = this.handleMouseEnter.bind(this)
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
-    debugger;
+    ;
   }
 
   handleActivateClick(){
@@ -80,7 +80,7 @@ class QuestionItemContainer extends React.Component{
   }
 
   render(){
-    debugger;
+    ;
     const linkUrl = '/polls/' + this.props.question.id
     return (
         <li className={this.activeQuestionClassName()}

@@ -10,6 +10,9 @@ class Footer extends React.Component{
     return (
       <div className="footer">
         <div className="top-footer">
+          <div className="signature">
+            Created by Isaac Seessel
+          </div>
           <div className="links">
             <a href="https://www.linkedin.com/in/isaac-seessel-469042138">
               Linkedin
