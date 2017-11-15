@@ -15,7 +15,7 @@ const mapStateToProps = (state, ownProps) => {
   const alreadySelected = (groupsSelected.hasOwnProperty(groupId)
     && groupsSelected[groupId])
   return {
-    selected: (alreadySelected || activeQuestions)
+    selected: (alreadySelected)
   }
 
 }
