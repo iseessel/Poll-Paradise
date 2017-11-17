@@ -117,7 +117,6 @@ class AuthForm extends React.Component{
               {this.generateBottomText()}
             </div>
           </div>
-          <FooterContainer />
         </div>
       </div>
     )
