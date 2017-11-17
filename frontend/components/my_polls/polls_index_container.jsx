@@ -67,7 +67,6 @@ class PollIndex extends React.Component{
       return (
         <div className="poll-view">
           <div className="poll-view-banner">
-              <FontAwesome name="check" size="2x"/>
               <div onClick={this.handleGroupClick.bind(this)}
                 className="poll-banner-text">
                 Group
