@@ -95,30 +95,31 @@ class AuthForm extends React.Component{
   render(){
 
     return (
-      <div className="main-session">
-        <HeaderContainer />
-        <div className="session-form">
-          <div className="session-form-container">
-            <h2>{this.generateHeader()}</h2>
-            <ErrorsContainer correctClass="session-errors" />
-            <form onSubmit={this.handleSubmit.bind(this)}>
-              {this.generateInputs()}
-              <label className="session-form-element">
-                Password
-                <input className="auth-input" type="password"
-                  onChange={(e) => this.setState(
-                    { password: e.currentTarget.value})}/>
-              </label>
-            <button className="auth-form-button">
-              {this.state.submitText}
-            </button>
-            </form>
-            {this.generateBottomText()}
+      <div className="main">
+        <div className="main-session">
+          <HeaderContainer />
+          <div className="session-form">
+            <div className="session-form-container">
+              <h2>{this.generateHeader()}</h2>
+              <ErrorsContainer correctClass="session-errors" />
+              <form onSubmit={this.handleSubmit.bind(this)}>
+                {this.generateInputs()}
+                <label className="session-form-element">
+                  Password
+                  <input className="auth-input" type="password"
+                    onChange={(e) => this.setState(
+                      { password: e.currentTarget.value})}/>
+                </label>
+              <button className="auth-form-button">
+                {this.state.submitText}
+              </button>
+              </form>
+              {this.generateBottomText()}
+            </div>
           </div>
+          <FooterContainer />
         </div>
-        <FooterContainer />
       </div>
-
     )
   }
 }
