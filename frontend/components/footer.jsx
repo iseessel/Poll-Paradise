@@ -11,7 +11,7 @@ class Footer extends React.Component{
       <div className="footer">
         <div className="top-footer">
           <div className="signature">
-            <a href="http ://www.isaacseessel.com">
+            <a href="http://www.isaacseessel.com">
               Created by Isaac Seessel
             </a>
           </div>
