@@ -63,6 +63,7 @@ body, html {
 }
 
 
-.fa-caret-down:hover{
+.fa-caret-down:hover, .fa-caret-right:hover{
+  cursor: pointer;
   color: #3F739E;
 }
