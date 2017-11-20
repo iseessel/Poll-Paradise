@@ -36,31 +36,34 @@ class MyPolls extends React.Component{
   render(){
 
     return (
-      <div className="my-polls">
+      <div className="main no-background">
+        <div className="my-polls">
 
-        <MyModal component={ActivePollLinkContainer}
-          modal={this.props.modal === "active-poll-link"}
-          closeModal={this.props.closeModal}/>
+          <MyModal component={ActivePollLinkContainer}
+            modal={this.props.modal === "active-poll-link"}
+            closeModal={this.props.closeModal}/>
 
-        <MyModal component={PollCreateModal}
-          modal={this.props.modal === "poll-create-modal"}
-          closeModal={this.props.closeModal}/>
+          <MyModal component={PollCreateModal}
+            modal={this.props.modal === "poll-create-modal"}
+            closeModal={this.props.closeModal}/>
 
-        <div className={this.bodyClassName()}>
-          <PollHeaderContainer />
-          <div className="main-polls">
-            <div className="my-polls-sidebar">
-              <button onClick={() => this.props.history.push('create')}>Create</button>
-            </div>
+          <div className={this.bodyClassName()}>
+            <PollHeaderContainer />
+            <div className="main-polls">
+              <div className="my-polls-sidebar">
+                <button onClick={() => this.props.history.push('create')}>Create</button>
+              </div>
 
-            <div className="polls-index">
-              <PollIndexContainer />
+              <div className="polls-index">
+                <PollIndexContainer />
+              </div>
             </div>
           </div>
-          <FooterContainer />
-        </div>
 
+        </div>
+        <FooterContainer />
       </div>
+
     );
   }
 }
