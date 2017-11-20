@@ -118,6 +118,7 @@ class AuthForm extends React.Component{
             </div>
           </div>
         </div>
+        <FooterContainer />
       </div>
     )
   }
