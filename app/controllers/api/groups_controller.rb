@@ -5,7 +5,12 @@ class Api::GroupsController < ApplicationController
   def index
     @groups = current_user.groups.includes(:questions)
     @questions = current_user.questions.includes(:answer_choices)
-    @last_updated_id = current_user.questions.find_by(active: true).group.id
+    last_updated_question = current_user.questions.find_by(active: true)
+    if last_updated_question && last_updated_question.group
+      @last_updated_id = last_updated_question.group.id
+    else
+      @last_updated_id = -1
+    end
     render "api/groups/index"
   end
 
