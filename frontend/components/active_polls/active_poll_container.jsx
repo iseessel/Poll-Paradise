@@ -111,24 +111,26 @@ class ActivePollContainer extends React.Component{
       ? this.props.question.body : ""
     if(this.props.errors.length === 0){
       return (
-        <div className="main-poll-take">
-          <header className="answer-question-header">
-            <a href="/#/signup">
-              <img className="white-logo" src={window.logoWhiteUrl}></img>
-            </a>
-          </header>
-          <div className="question-header">
-            <h2 className="question-title">{questionText}</h2>
-            <h4 className="question-subheading">You can respond once</h4>
+        <div className="active-polls">
+          <div className="main-poll-take">
+            <header className="answer-question-header">
+              <a href="/#/signup">
+                <img className="white-logo" src={window.logoWhiteUrl}></img>
+              </a>
+            </header>
+            <div className="question-header">
+              <h2 className="question-title">{questionText}</h2>
+              <h4 className="question-subheading">You can respond once</h4>
+            </div>
+            <ReactCSSTransitionGroup transitionName="answer-choice-group"
+              transitionAppear={true} transitionAppearTimeout={500}
+              transitionEnter={false} transitionLeave={false}>
+            <ul className="possible-answer-choices">
+              {this.generateAnswerChoices()}
+              {this.generateClearLastResponseButton()}
+            </ul>
+          </ReactCSSTransitionGroup>
           </div>
-          <ReactCSSTransitionGroup transitionName="answer-choice-group"
-            transitionAppear={true} transitionAppearTimeout={500}
-            transitionEnter={false} transitionLeave={false}>
-          <ul className="possible-answer-choices">
-            {this.generateAnswerChoices()}
-            {this.generateClearLastResponseButton()}
-          </ul>
-        </ReactCSSTransitionGroup>
         </div>
       )
     }else{
