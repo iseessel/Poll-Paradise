@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-//you cannot use expressions in jsx
 const Protected = ({component: Component, path, loggedIn}) => (
   <Route path={path} render={(props) => (
     loggedIn ? (

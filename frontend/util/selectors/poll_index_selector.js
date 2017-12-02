@@ -1,6 +1,5 @@
 import merge from 'lodash/merge'
 
-//[: }]
 export const allPolls = (groups, questions) => {
   let allQuestions = Object.assign({}, questions)
   const polls = []

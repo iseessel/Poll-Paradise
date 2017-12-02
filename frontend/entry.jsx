@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let store;
 
 
-  //boot strap current user by setting him equal to window.currentUser!
+//boot strap the current user by setting current user to the window.
   if (window.currentUser) {
     const preloadedState = { session: { currentUser: window.currentUser } };
     store = configureStore(preloadedState);

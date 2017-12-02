@@ -3,13 +3,6 @@ export const DISABLE_LOADING = "DISABLE_LOADING"
 export const ENSURE_SELECTED = "ENSURE_SELECTED"
 export const TOGGLE_QUESTION_TO_BE_GROUPED = "TOGGLE_QUESTION_TO_BE_GROUPED"
 export const CLEAR_SELECTED = "CLEAR_SELECTED"
-// export const CLEAR_CHECK_BOXES = "CLEAR_CHECK_BOXES"
-//
-// export const clearCheckBoxes = () => {
-//   return {
-//     type: CLEAR_CHECK_BOXES
-//   }
-// }
 
 export const disableLoading = () => {
   return {

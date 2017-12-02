@@ -47,7 +47,7 @@ function GroupReducer(state = _defaultState, action){
         questionIds.splice(indexToDelete, 1)
       }
       return newState
-
+      
     case RECEIVE_QUESTION:
       newState = merge({}, state)
       let question = action.payload.question
@@ -62,7 +62,7 @@ function GroupReducer(state = _defaultState, action){
       }
 
       return newState;
-      
+
     default:
       return state
   }

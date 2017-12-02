@@ -19,9 +19,6 @@ const mapStateToProps = (state) => {
   };
 }
 
-//data expected: { question: { group_id, body},
-//                answerChoices: [{body},{},{}] }
-
 const mapDispatchToProps = (dispatch, ownProps) => {
 
   return {
@@ -114,9 +111,13 @@ class PollCreate extends React.Component{
     const data = this.packageData()
     const formData = new FormData();
     const formDataTwo = new FormData();
+
+    //Image index will match with appropriate answer_choice.
     this.state.imageFiles.forEach((image) => {
       formData.append('images[]', image)
     })
+
+    //formData does not support nested objects, so we have to JSON encode it.
     formData.append("question",
       JSON.stringify(data.question)
       )
@@ -125,7 +126,6 @@ class PollCreate extends React.Component{
     return this.props.createQuestion(formData)
       .then(()=> this.props.ensureSelected(this.state.groupId))
       .then(()=>this.setState(_defaultState))
-
   }
 
   handleCreateClick(e){
@@ -196,9 +196,8 @@ class PollCreate extends React.Component{
   }
 
   updateFile(idx){
-    ;
+
     return (e) => {
-      ;
       const newState = this.state.imageFiles.slice(0)
       const file = e.currentTarget.files[0]
       newState[idx] = file
@@ -211,6 +210,7 @@ class PollCreate extends React.Component{
         fileReader.readAsDataURL(file);
       }
     }
+    
   }
 
   fileUpdatedClassName(idx){
@@ -280,7 +280,6 @@ class PollCreate extends React.Component{
       <div className="main-poll">
           <div className="poll-form">
               <div className="poll-selection">
-
               </div>
 
 
@@ -336,7 +335,6 @@ class PollCreate extends React.Component{
         </ReactCSSTransitionGroup>
       </div>
     )
-    //make left-create-banner
   }
 }
 

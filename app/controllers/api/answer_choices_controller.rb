@@ -15,6 +15,9 @@ class Api::AnswerChoicesController < ApplicationController
     if @answer_choice
       @answer_choice.times_chosen += params[:differential].to_i
       @answer_choice.save
+      
+      #Dynamically set up subscription channel and trigger pusher to respond with the
+      # answer_choice_id and the times_chosen
       subscriptionChannel = 'update_question_' + @answer_choice.question.id.to_s
       pusher = Pusher.trigger(subscriptionChannel,
         'update_answer_choices', {id: @answer_choice.id,

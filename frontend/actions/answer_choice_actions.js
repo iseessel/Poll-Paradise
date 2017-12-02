@@ -4,12 +4,6 @@ export const RECEIVE_ANSWER = "RECEIVE_ANSWER"
 
 export const CLEAR_ANSWER_CHOICES = "CLEAR_ANSWER_CHOICES"
 
-// export const clearAnswerChoices = () => {
-//   return {
-//     type: CLEAR_ANSWER_CHOICES
-//   }
-// }
-
 export const chooseAnswer = (id) => (dispatch) => {
   return answerChoiceUtil.chooseAnswer(id)
     .then((response) => dispatch(receiveAnswerChoice()))

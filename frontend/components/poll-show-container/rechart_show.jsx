@@ -1,9 +1,7 @@
 import {BarChart, Bar, XAxis, YAxis,
   CartesianGrid, Tooltip, Legend, ResponsiveContainer} from 'recharts';
-import React from 'react'
+import React from 'react';
 
-
-// const userData = props.data[props.index]
 
 class CustomTicks extends React.Component{
 

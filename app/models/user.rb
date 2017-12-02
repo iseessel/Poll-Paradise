@@ -54,7 +54,6 @@ class User < ApplicationRecord
     self.questions.find_by(active: true)
   end
 
-
   private
 
   def ensure_session_token

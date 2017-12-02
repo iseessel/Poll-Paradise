@@ -4,7 +4,7 @@ import merge from 'lodash/merge'
 
 
 //In my selector, I am artificailly giving the ungrouped actions
-//an ID of -1; in order to have the clicked state persist.
+//"null" in order to have the ungrouped questions automatically opened.
 
 const _defaultState = {"null": true}
 
@@ -30,8 +30,10 @@ function GroupUIReducer(state = _defaultState, action){
 
       return newState
 
+
     case RECEIVE_GROUPS:
       newState = merge({}, state)
+      //Makes the currently shared question's group automatically opened.
       newState[action.payload.lastUpdatedGroupId] = true
 
       return newState

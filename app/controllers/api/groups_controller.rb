@@ -26,7 +26,7 @@ class Api::GroupsController < ApplicationController
     end
   end
 
-#expecting { group: {:title}, question_ids: [] }
+#Expecting data of form: { group: {:title}, question_ids: [] }
   def create
     @group = Group.new(group_params)
     @group.user = current_user
@@ -48,7 +48,7 @@ class Api::GroupsController < ApplicationController
     end
   end
 
-#expecting { question_ids: [] } + wildcard of group_id
+#Expecting data of form: { question_ids: [] } + wildcard of group_id
   def group_questions
     questions = current_user.questions.where(id: params[:question_ids])
 

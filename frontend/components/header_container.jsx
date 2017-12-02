@@ -10,7 +10,6 @@ const LeftSidebar = () => {
     </a>
   )
 }
-//Also could pass down props if I want to make it a bit more dry? However I prefer this explicitness.
 const Header = ({loggedIn, logout}) => {
   if(loggedIn){
     return(

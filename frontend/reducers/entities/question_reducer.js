@@ -38,7 +38,6 @@ function QuestionReducer(state = _defaultState, action){
     return merge({}, state, questions)
 
   case CLEAR_GROUPS:
-    
     return _defaultState;
 
   case DELETE_QUESTION:

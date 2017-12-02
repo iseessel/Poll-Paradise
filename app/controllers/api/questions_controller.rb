@@ -12,8 +12,8 @@ class Api::QuestionsController < ApplicationController
     end
   end
 
-  # expecting { question: { group_id, body},
-  # =>        answer_choices: [{},{},{}] }
+  # expecting data of type: { question: { group_id, body},
+ # answer_choices: [{},{},{}] }
 
   def create
     @question = Question.new(question_params)
@@ -22,16 +22,20 @@ class Api::QuestionsController < ApplicationController
     @answer_choices = []
     answer_choice_bodies = answer_choices_params
 
+    #Go through each of the image objects
 
+    #NB: Form Data Object encodes false as the string false --
+    # not able to decode this, without effecting the possible image objects.
     params[:images].each_with_index do |image, idx|
       if image != "false" ||
         answer_choice_bodies[idx][:body].length != 0
         answer_choice = AnswerChoice.new()
           answer_choice_body = answer_choice_bodies[idx][:body]
         answer_choice.body = answer_choice_body unless
-          answer_choice_body.length === 0
-        answer_choice.times_chosen = 0
+          answer_choice_body.length == 0
         answer_choice.image = image unless image === "false"
+        answer_choice.times_chosen = 0
+      # Use the inverse_of, when we save the question, we also save the answer_choices
         @question.answer_choices << answer_choice
         @answer_choices << answer_choice
       end
