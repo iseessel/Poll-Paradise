@@ -15,4 +15,12 @@ class Group < ApplicationRecord
   belongs_to :user
   has_many :questions, dependent: :destroy
   has_many :answer_choices, through: :questions
+
+  def dependencies
+    {
+      questions: self.questions.includes(:answer_choices)
+      answer_choices: self.answer_choices
+    }
+  end
+  
 end

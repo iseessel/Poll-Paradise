@@ -23,6 +23,7 @@ class Api::QuestionsController < ApplicationController
     answer_choice_bodies = answer_choices_params
 
     #Go through each of the image objects
+    #NB: Abstract out this logic into a class! QuestionCreate
 
     #NB: Form Data Object encodes false as the string false --
     # not able to decode this, without effecting the possible image objects.

@@ -18,10 +18,14 @@ class User < ApplicationRecord
   validates :email, :session_token, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
+
   attr_reader :password
 
   has_many :groups
   has_many :questions
+  has_one :active_question,
+    -> { where(active: true) },
+    class_name: :Question
 
   after_initialize :ensure_session_token
 

@@ -30,7 +30,7 @@ export const deleteGroupAction = (payload) => {
 }
 
 export const clearGroups = () => {
-  
+
   return {
     type: CLEAR_GROUPS,
   }
@@ -40,7 +40,6 @@ export const clearGroups = () => {
 // b/c the controller will find the current_user
 
 export const retrieveGroups = () => (dispatch) => {
-
   return GroupUtil.fetchGroups().then((response) => dispatch(receiveGroups(response)),
     (err) => dispatch(receiveErrors(err.responseJSON))
     ).then(() => dispatch(clearErrors))

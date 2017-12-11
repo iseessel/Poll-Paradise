@@ -15,9 +15,12 @@ class Question < ApplicationRecord
   validates :user, :body, presence: true
   validate :at_least_one_answer_choice
   validate :twoQuestionsCannotBeActivated
+
   belongs_to :user, inverse_of: :questions
   belongs_to :group, optional: true
   has_many :answer_choices, inverse_of: :question, dependent: :destroy
+
+  scope :active, -> { find_by(active: true) }
 
   def active?
     self.active

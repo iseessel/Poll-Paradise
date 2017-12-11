@@ -18,4 +18,10 @@ class AnswerChoice < ApplicationRecord
     content_type: /\Aimage\/.*\Z/
 
   belongs_to :question, inverse_of: :answer_choices
+
+  def update_times_chosen(differential)
+    self.times_chosen += differential
+    self.save
+  end
+
 end

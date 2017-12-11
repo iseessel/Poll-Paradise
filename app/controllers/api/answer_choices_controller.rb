@@ -2,7 +2,6 @@ class Api::AnswerChoicesController < ApplicationController
 
   def create
     @answer_choice = AnswerChoice.new(answer_choice_params)
-    @answer_choice.times_chosen = 0
     if @answer_choice.save
       render 'api/answer_choices/show'
     else
@@ -12,16 +11,10 @@ class Api::AnswerChoicesController < ApplicationController
 
   def update_times_chosen
     @answer_choice = AnswerChoice.find_by(id: params[:answer_choice_id])
-    if @answer_choice
-      @answer_choice.times_chosen += params[:differential].to_i
-      @answer_choice.save
-      
+    if @answer_choice.update_times_chosen(params[:differential].to_i)
       #Dynamically set up subscription channel and trigger pusher to respond with the
       # answer_choice_id and the times_chosen
-      subscriptionChannel = 'update_question_' + @answer_choice.question.id.to_s
-      pusher = Pusher.trigger(subscriptionChannel,
-        'update_answer_choices', {id: @answer_choice.id,
-          times_chosen: @answer_choice.times_chosen } )
+      Subscription.new(@answer_choice).subscribe
       render json: { timesChosen: @answer_choice.times_chosen }
     else
       render json: ["Answer choice cannot be found"], status: 422
