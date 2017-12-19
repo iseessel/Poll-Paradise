@@ -21,20 +21,21 @@ class Api::GroupsController < ApplicationController
   end
 
 #Expecting data of form: { group: {:title}, question_ids: [] }
-
   def create
-    @group = Group.new(group_params)
-    @group.user = current_user
-    if @group.save
-      @questions = @group.dependencies.values_at(:questions)
+    group_create = GroupCreate.new(group_params, params[:question_ids],
+      current_user)
+    @group = group_create.create
+    if @group
+      polls = UserPolls.new(current_user)
+      @groups, @questions, @last_updated_id = polls.dependencies
+        .values_at(:groups, :questions, :last_updated_id)
+      render "api/groups/index"
     else
-      render json: @group.errors.full_messages, status: 422
+      group.group_errors
     end
   end
 
 #Expecting data of form: { question_ids: [] } + wildcard of group_id
-#NB: Create GroupQuestions Class that takes in params[:question_ids]
- # and make a manual save method.
 
   def group_questions
     questions = current_user.questions.where(id: params[:question_ids])

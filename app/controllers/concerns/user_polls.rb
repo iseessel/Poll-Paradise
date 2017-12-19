@@ -23,8 +23,8 @@ class UserPolls
   end
 
   def last_updated_question_id
-    active_question = @user.active_question
-    active_question ? active_question.id : -1
+    active_question_group = @user.active_question.group
+    active_question_group ? active_question_group.id : -1
   end
 
 end

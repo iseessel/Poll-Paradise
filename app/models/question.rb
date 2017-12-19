@@ -14,7 +14,7 @@
 class Question < ApplicationRecord
   validates :user, :body, presence: true
   validate :at_least_one_answer_choice
-  validate :twoQuestionsCannotBeActivated
+  validate :two_questions_cannot_be_activated
 
   belongs_to :user, inverse_of: :questions
   belongs_to :group, optional: true
@@ -32,7 +32,7 @@ class Question < ApplicationRecord
     end
   end
 
-  def twoQuestionsCannotBeActivated
+  def two_questions_cannot_be_activated
     if self.user.questions.where(active: true).length > 1
       errors.add(:question, "cannot be activated. User already has
         activated a question.")

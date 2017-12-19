@@ -18,7 +18,7 @@ class Footer extends React.Component{
           <a href="https://www.linkedin.com/in/isaac-seessel-469042138">
             Linkedin
           </a>
-          <a href="https://github.com/iseessel/Poll-Everywhere">
+          <a href="https://github.com/iseessel/">
             Github
           </a>
         </div>
