@@ -9,12 +9,6 @@ class Api::UsersController < ApplicationController
       render json: @user.errors.full_messages, status: 422
     end
   end
-  
-#These should be model methods
-  def unique_username(email)
-    email = email.split('@')
-    email[0] + Random.rand(9999).to_s
-  end
 
   def active_question
     @user = User.find_by(username: params[:username])

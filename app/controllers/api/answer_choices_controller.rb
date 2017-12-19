@@ -12,8 +12,8 @@ class Api::AnswerChoicesController < ApplicationController
   def update_times_chosen
     @answer_choice = AnswerChoice.find_by(id: params[:answer_choice_id])
     if @answer_choice.update_times_chosen(params[:differential].to_i)
-      #Dynamically set up subscription channel and trigger pusher to respond with the
-      # answer_choice_id and the times_chosen
+      #Dynamically set up subscription channel and trigger pusher to
+        #respond with the answer_choice_id and the times_chosen
       Subscription.new(@answer_choice).subscribe
       render json: { timesChosen: @answer_choice.times_chosen }
     else
