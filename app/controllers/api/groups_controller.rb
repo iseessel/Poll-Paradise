@@ -28,25 +28,8 @@ class Api::GroupsController < ApplicationController
     if @group.save
       @questions = @group.dependencies.values_at(:questions)
     else
+      render json: @group.errors.full_messages, status: 422
     end
-#     @group = Group.new(group_params)
-#     @group.user = current_user
-#      if @group.save
-#       questions = current_user.questions.where(id: params[:question_ids] )
-#
-#       questions.each do |question|
-#         question.group_id = @group.id
-#         question.save!
-#       end
-# #How would I get these things to be available in my views?
-#       @last_updated_id = @group.id
-#       @groups = current_user.groups.includes(:questions)
-#       @questions = current_user.questions.includes(:answer_choices)
-#       render "api/groups/index"
-#     else
-#
-#       render json: @group.errors.full_messages, status: 422
-#     end
   end
 
 #Expecting data of form: { question_ids: [] } + wildcard of group_id
