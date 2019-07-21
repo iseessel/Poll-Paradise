@@ -9,11 +9,6 @@ const prodPlugins = [
       'NODE_ENV': JSON.stringify('production')
     }
   }),
-  new webpack.optimize.UglifyJsPlugin({
-    compress: {
-      warnings: true
-    }
-  })
 ];
 
 plugins = plugins.concat(
@@ -43,5 +38,8 @@ module.exports = {
   devtool: 'source-map',
   resolve: {
     extensions: [".js", ".jsx", "*"]
+  },
+  optimization: {
+    minimize: true
   }
 };
