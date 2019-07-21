@@ -28,6 +28,7 @@ class User < ApplicationRecord
     class_name: :Question
 
   after_initialize :ensure_session_token
+  before_validation :default_username
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
@@ -64,4 +65,9 @@ class User < ApplicationRecord
     self.session_token ||= SecureRandom.urlsafe_base64(16)
   end
 
+  def default_username
+    if email
+      self.username ||= email.split('@')[0] + Random.rand(9999).to_s
+    end
+  end
 end

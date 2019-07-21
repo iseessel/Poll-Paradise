@@ -1,9 +1,10 @@
 class Api::GroupsController < ApplicationController
   before_action :ensure_logged_in
 
-#NB: This action also returns 'ungrouped' questions.
+  #NB: This action also returns 'ungrouped' questions.
   def index
     polls = UserPolls.new(current_user)
+
     @groups, @questions, @last_updated_id = polls.dependencies
       .values_at(:groups, :questions, :last_updated_id)
     render "api/groups/index"
