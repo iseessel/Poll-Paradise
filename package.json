@@ -24,7 +24,9 @@
     "webpack": "^3.8.1"
   },
   "devDependencies": {
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "webpack": "^3.12.0",
+    "webpack-dev-server": "^1.9.0"
   },
   "engines": {
     "node": "6.10.1",
