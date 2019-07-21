@@ -94,7 +94,6 @@ class PollShowContainer extends React.Component{
   }
 
   render(){
-    
     const activePollsUrl
       = "https://poll-paradise.herokuapp.com/#/active_polls/" +
       this.props.currentUser.username
@@ -107,7 +106,6 @@ class PollShowContainer extends React.Component{
             modal={this.props.modal}
             closeModal={this.props.closeModal}/>
 
-          <PollHeaderContainer />
           <div className="chart-show-grid">
             <div className="chart-show-left">
               <h1 className="chart-title">{this.props.question.body}</h1>
@@ -120,21 +118,20 @@ class PollShowContainer extends React.Component{
                   How people can respond
                 </h4>
                 <div className="how-to-respond">
+                  <p className="how-to-respond-body">
+                    Audience can respond as long as the poll is active.
+                    <br/>
+                  </p>
                   <h4 className="website-response">
                     <FontAwesome className="globe" name="globe" size="2x"/>
-                    Website:{'  '}
+                    Website: {'  '}
                   {this.props.question.active ? <span className="active">
                     Active
                   </span> :
                     <span className="inactive">
                       Deactivated
                     </span>}
-
                   </h4>
-                  <p className="how-to-respond-body">
-                    Audience can respond as long as the poll is active.
-                    <br/>
-                  </p>
                 </div>
               </div>
               <div className="chart-show-right-footer">

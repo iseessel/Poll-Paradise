@@ -8,7 +8,6 @@
 
 .active{
   font-weight: bold;
-  font-size: 13px;
   color: #5490C6;
 }
 
@@ -25,7 +24,7 @@
 .chart-show-left{
   // min-width: 750px;
   width: 67%;
-  padding: 38px;
+  padding-bottom: 30px;
   flex-grow: 1;
 }
 
@@ -35,12 +34,10 @@
 }
 
 .how-to-respond{
-  height: 95%;
-  font-size: 13px;
+  height: 94%;
+  font-size: 14px;
   background-color: #E9EFF4;
-  padding-top: 15px;
-  padding-left: 40px;
-  padding-right: 20px;
+  padding: 10px;
 }
 
 .chart-title{
@@ -74,10 +71,10 @@
 
 .how-to-respond-title{
   margin-top: 0px;
-  height: 40px;
+  height: 55px;
   background-color: #CCDCE7;
   border-bottom: 1px solid #E9EFF4;
-  font-size: 13px;
+  font-size: 14px;
   color:#255071;
   display: flex;
   align-items: center;
@@ -85,9 +82,7 @@
 }
 
 .how-to-respond-body{
-  font-size: 12px;
-  font-style: "Lucida Grande";
-  margin-top: 5px;
+  font-size: 13px;
 }
 
 .chart-show-right-footer{
@@ -131,7 +126,7 @@
   height: 50px;
 }
 .fa-globe{
-  margin-right: 5px;
+  margin-right: 3px;
 }
 
 .configure{
@@ -143,4 +138,14 @@
   font-weight: bold;
   padding-left: 30px;
   padding-top: 15px;
+}
+
+.website-response {
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.poll-inactive {
+  color: #F95652;
+  font-weight: bold;
 }
